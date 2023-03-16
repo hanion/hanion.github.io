@@ -63,6 +63,18 @@ main {
   padding: 20px;
 }
 
+.games-mobile-version {
+  display: none;
+  width: 220px;
+  /* Set a width for the container */
+  margin: 0 auto;
+  align-items: center;
+  overflow-y: scroll;
+  float: center;
+  padding: 20px;
+}
+
+
 
 
 
@@ -115,4 +127,51 @@ footer p {
 
 .social-media a:hover {
   color: #ccc;
+}
+
+
+@media only screen and (max-device-width: 620px) {
+  .games-mobile-version {
+    display: block;
+  }
+
+  .games {
+    display: none;
+  }
+
+  .header-right {
+    display: none;
+  }
+
+  .social-media {
+    margin: 0 auto;
+    width: 300px;
+    justify-content: center;
+  }
+
+  .social-media a {
+    padding: 10px;
+    margin-right: 0px;
+    margin: 0 auto;
+  }
+
+  .social-media a i {
+    margin-right: 0px;
+    margin: 0 auto;
+  }
+
+}
+
+@media only screen and (min-device-width: 621px) {
+  .games {
+    display: block;
+  }
+
+  .games-mobile-version {
+    display: none;
+  }
+
+  .social-media-mobile-verison {
+    display: none;
+  }
 }
