@@ -162,7 +162,7 @@ footer p {
 
 }
 
-@media only screen and (min-device-width: 621px) {
+@media only screen and (min-device-width: 621px) and (pointer: fine), (pointer: none){
   .games {
     display: block;
   }
@@ -174,4 +174,37 @@ footer p {
   .social-media-mobile-verison {
     display: none;
   }
+}
+
+
+@media (pointer: coarse)  {
+  .games-mobile-version {
+    display: block;
+  }
+
+  .games {
+    display: none;
+  }
+
+  .header-right {
+    display: none;
+  }
+
+  .social-media {
+    margin: 0 auto;
+    width: 300px;
+    justify-content: center;
+  }
+
+  .social-media a {
+    padding: 10px;
+    margin-right: 0px;
+    margin: 0 auto;
+  }
+
+  .social-media a i {
+    margin-right: 0px;
+    margin: 0 auto;
+  }
+
 }
