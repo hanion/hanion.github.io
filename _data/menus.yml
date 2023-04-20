@@ -10,11 +10,11 @@
 #  url: /about/
 #  external: false # set true if you using external link, see below
 
-- title: github
-  url: https://github.com/hanion
-  external: true
+#- title: github
+#  url: https://github.com/hanion
+#  external: true
 
-- title: itch
-  url: https://hanion.itch.io
-  external: true
+#- title: itch
+#  url: https://hanion.itch.io
+#  external: true
 
