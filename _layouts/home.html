@@ -23,3 +23,7 @@ home: true
   </div>
 </article>
 {%- endfor -%}
+
+{%- if site.posts.size > 2 %}
+<div class="pagination" ><a  href="/2">more posts &raquo;</a></div>
+{%- endif -%} 

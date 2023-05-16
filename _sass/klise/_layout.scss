@@ -422,3 +422,14 @@
     background-color: rgba(128, 128, 128, 0.1);
   }
 }
+
+.pagination {
+  text-align: center;
+}
+.pagination a, .pagination span {
+  padding: 3px 15px;
+  margin-left: -4px;
+  margin-right: -4px;
+  display: inline-block;
+  
+}

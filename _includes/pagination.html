@@ -1,21 +1,27 @@
 <!-- NOTE: unused file, but u can use if necessary -->
 <div class="pagination">
   {% if paginator.previous_page %}
-  <a
-    class="page-previous"
-    href="{{ paginator.previous_page_path }}"
-    class="previous"
-  >
-    <span aria-hidden="true">←</span> NEWER POSTS
-  </a>
+    <a href="{{ paginator.previous_page_path }}">&laquo; newer</a>
+  {% else %}
+    <span>&laquo; newer</span>
   {% endif %}
-  <span class="page_number"
-    >PAGE {{ paginator.page }} OF {{ paginator.total_pages }}</span
-  >
+  
+  
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <span>{{ page }}</span>
+    {% elsif page == 1 %}
+      <a href="/">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+  
+  
+  
   {% if paginator.next_page %}
-  <a class="page-next" href="{{ paginator.next_page_path }}" class="next"
-    >OLDER POSTS
-    <span aria-hidden="true">→</span>
-  </a>
+    <a href="{{ paginator.next_page_path }}">older &raquo;</a>
+  {% else %}
+    <span>older &raquo;</span>
   {% endif %}
 </div>

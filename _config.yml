@@ -57,7 +57,9 @@ jekyll_compose:
     description:
 
 # Homepage limit posts
-number_of_posts: 300
+number_of_posts: 2
+paginate: 2
+paginate_path: "/:num/"
 
 # Build settings
 # theme: klise
@@ -86,3 +88,4 @@ exclude:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-paginate
