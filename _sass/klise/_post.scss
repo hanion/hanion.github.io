@@ -76,11 +76,14 @@
 
   iframe {
     text-align: center;
+    align-items: center;
+    align-content: center;
+    border-radius: 1rem;
   }
 
   figure {
     img {
-      border-radius: 2px;
+      border-radius: 1rem;
     }
 
     figcaption {
