@@ -297,7 +297,7 @@
 
     min-width: 96px;
     color: $black;
-    font-weight: normal;
+    font-weight: 350;
     padding-right: 10px;
 
     @include media-query($on-mobile) {
