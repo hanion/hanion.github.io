@@ -19,9 +19,11 @@ A [Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) is defined by
 ### Linear Bézier curve
 
 <figure>
-<img src="./linear_bezier_curve.png" alt="Linear Bézier curve" height="200">
+<img src="linear_bezier_curve.png" alt="Linear Bézier curve" height="200">
 <figcaption>Linear Bézier curve</figcaption>
 </figure>
+
+![Linear Bézier curve](linear_bezier_curve.png)
 
 Given distinct points \\(P_0\\) and \\(P_1\\), a linear Bézier curve is simply a line between those two points and is equivalent to linear interpolation.
 
