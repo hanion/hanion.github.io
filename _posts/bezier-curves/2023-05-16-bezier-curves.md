@@ -1,7 +1,7 @@
 ---
 title:  Bézier curves
 date:   2023-05-16
-image: "bezier-curves/bezier_curves_cover.png"
+image: "./bezier-curves/bezier_curves_cover.png"
 tags: [math, simulation]
 usemathjax: true
 ---
@@ -19,7 +19,7 @@ A [Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) is defined by
 ### Linear Bézier curve
 
 <figure>
-<img src="linear_bezier_curve.png" alt="Linear Bézier curve" height="200">
+<img src="./linear_bezier_curve.png" alt="Linear Bézier curve" height="200">
 <figcaption>Linear Bézier curve</figcaption>
 </figure>
 
@@ -38,7 +38,7 @@ def liear_bezier(p0, p1, t):
 ### Quadratic Bézier curve
 
 <figure>
-<img src="quadratic_bezier_curve.png" alt="Quadratic Bézier curve" height="200">
+<img src="./quadratic_bezier_curve.png" alt="Quadratic Bézier curve" height="200">
 <figcaption>Quadratic Bézier curve</figcaption>
 </figure>
 
@@ -60,7 +60,7 @@ def quadratic_bezier(p0, p1, p2, t):
 ### Cubic Bézier curve
 
 <figure>
-<img src="cubic_bezier_curve.png" alt="Cubic Bézier curve" height="200">
+<img src="./cubic_bezier_curve.png" alt="Cubic Bézier curve" height="200">
 <figcaption>Cubic Bézier curve</figcaption>
 </figure>
 
