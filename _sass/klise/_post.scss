@@ -1,5 +1,8 @@
 // Post wrapper
 .wrapper.post {
+  $enlarge-post-content: 100px;
+  max-width: -webkit-calc(#{$narrow-size + $enlarge-post-content} - (#{$spacing-full} * 2));
+  max-width: calc(#{$narrow-size + $enlarge-post-content} - (#{$spacing-full} * 2));
   @include media-query($on-mobile) {
     padding-left: $spacing-half;
     padding-right: $spacing-half;
