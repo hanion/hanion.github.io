@@ -1,0 +1,16 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('#load-iframe-button').click(function(){ 
+            if(!$('#iframe').length) {
+                $('#iframe-container').html('<iframe class="embed" src="{{ page.embed }}" width="100%" height="500px" frameborder="0"></iframe>');
+        }
+    });   
+});
+
+</script>
+ 
+<div id="iframe-container">
+    <button id="load-iframe-button">
+        <i style="padding-right: 10px;" class="fa-solid fa-play"></i>Run Simulation</button>
+</div>
