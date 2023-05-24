@@ -4,12 +4,9 @@ date:   2023-05-16
 image: "/assets/post/bezier-curves/bezier_curves_cover.png"
 tags: [math, simulation]
 usemathjax: true
+embed: "/assets/embeds/bezier_curve/index.html"
 ---
 
-
-<div style="display:flex;">
-    <iframe class="embed" src="/assets/embeds/bezier_curve/index.html" title="bezier_curve" width="100%" height="500" frameborder="0"></iframe>
-</div>
 
 
 A [Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) is defined by a set of control points \\(P_0\\) through \\(P_n\\).
