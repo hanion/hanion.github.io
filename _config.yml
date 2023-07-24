@@ -1,7 +1,7 @@
 # Site settings
 title: hanion # site title
 description: >- # site description
-  game developer
+  software developer
 lang: en-US # default lang
 timezone: Turkey # set your timezone
 image: assets/img/avatar.png 
@@ -11,7 +11,7 @@ mode: dark # default theme "dark" | "light"
 author:
   name: hanion # author name
   bio: >- # tell to the world
-    game developer
+    sofware developer
   username: hanion # general username
   github: hanion # github username
   twitter: twitter_username # twitter username
