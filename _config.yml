@@ -11,7 +11,7 @@ mode: dark # default theme "dark" | "light"
 author:
   name: hanion # author name
   bio: >- # tell to the world
-    sofware developer
+    software developer
   username: hanion # general username
   github: hanion # github username
   twitter: twitter_username # twitter username
