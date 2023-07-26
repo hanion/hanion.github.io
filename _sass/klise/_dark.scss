@@ -91,6 +91,7 @@ body[data-theme="dark"] {
   a {
     color: inherit;
     text-decoration-color: $dark-smoke;
+    border-radius: 1px;
 
     &:hover {
       color: $dark-text-link-blue;
