@@ -226,6 +226,9 @@
 
 // List of posts
 .post-item {
+  margin-left: 80px;
+  margin-right: 80px;
+
   display: flex;
   padding-top: 5px;
   padding-bottom: 6px;
@@ -240,8 +243,8 @@
   margin-bottom: 15px; 
 
   .post-item-image-box {
-    width: 240px;
-    height: 135px;
+    width: 192px;
+    height: 108px;
     margin: 0;
     border: 0;
     padding: 5px;
