@@ -236,6 +236,7 @@
   align-items: center;
 
   @include media-query($on-mobile) {
+    margin: 0;
     margin-top: 20px;
     margin-bottom: 20px;
   }
