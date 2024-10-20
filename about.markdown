@@ -1,18 +1,11 @@
 ---
 layout: page
-title: About
+title: about
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+I’m a software developer working on a game engine called [enik-engine](https://github.com/hanion/enik-engine) and an interpreted language called [minik-script](https://github.com/hanion/minik-script). I’m also really into low-level programming.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+Check out my [GitHub](https://github.com/hanion) for my projects, and explore the games I've released on my [itch.io](https://hanion.itch.io/).
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+This blog is where I share thoughts and topics that interest me. If you want to get in touch, you can reach me at [{{ site.author.email }}](mailto:{{ site.author.email }}).
