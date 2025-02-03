@@ -1,13 +1,13 @@
 ---
 title: My experience with Jolt Physics
 date: 2025-02-03
-image: "/my-experience-with-jolt/cover.png"
+image: "/assets/post/my-experience-with-jolt/cover.png"
 tags: [game engine, physics]
 ---
 
 
 <figure>
-<img src="/my-experience-with-jolt/jolt-demo.gif" alt="jolt demo">
+<img src="/assets/post/my-experience-with-jolt/jolt-demo.gif" alt="jolt demo">
 <figcaption>Jolt Physics working in enik-engine</figcaption>
 </figure>
 
@@ -86,7 +86,7 @@ It's designed to be extended by more specific components like `RigidBody` and `C
 ### RigidBody: Dynamic Physics Objects  
 
 <figure>
-<img src="/my-experience-with-jolt/inspector-rb.png" alt="RigidBody component in inspector">
+<img src="/assets/post/my-experience-with-jolt/inspector-rb.png" alt="RigidBody component in inspector">
 <figcaption>RigidBody component in inspector</figcaption>
 </figure>
 
@@ -101,7 +101,7 @@ In short, `RigidBody` component is for anything that needs to interact dynamical
 ### CollisionBody: Simplified Physics Interaction  
 
 <figure>
-<img src="/my-experience-with-jolt/inspector-cb.png" alt="CollisionBody component in inspector">
+<img src="/assets/post/my-experience-with-jolt/inspector-cb.png" alt="CollisionBody component in inspector">
 <figcaption>CollisionBody component in inspector</figcaption>
 </figure>
 
@@ -122,7 +122,7 @@ This keeps the system simple and ensures that only non-dynamic bodies can act as
 ### CollisionShape: Defining the Shape of Bodies  
 
 <figure>
-<img src="/my-experience-with-jolt/inspector-cs.png" alt="CollisionShape component in inspector">
+<img src="/assets/post/my-experience-with-jolt/inspector-cs.png" alt="CollisionShape component in inspector">
 <figcaption>CollisionShape component in inspector</figcaption>
 </figure>
 
