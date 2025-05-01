@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>My experience with Jolt Physics</title>
+		<link rel="stylesheet" href="/src/reset.css">
+		<link rel="stylesheet" href="/src/common.css"/>
+		<link rel="icon" type="image/png" href="/favicon.png"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+		<meta property="og:title" content="My experience with Jolt Physics" />
+		<meta property="og:image" content="cover.png" />
+
+	</head>
+	<body>
+		<div class="wrapper">
+			<nav class="site-nav">
+				<div class="nav-left">
+					<a href="/">hanion.dev</a>
+				</div>
+			</nav>
+
+			<header>
+				<h1>My experience with Jolt Physics</h1>
+				<p class="date">2025-02-03</p>
+				<p class="tags">
+					 game engine physics
+				</p>
+			</header>
+
+			<main class="content">
+				<figure>
+<img src="jolt-demo.gif" alt="jolt demo">
+<figcaption>
+Jolt Physics working in enik-engine
+</figcaption>
+</figure>
+<p>I’ve been using my own custom physics engine for a while now, and
+it’s been a great learning experience.<br />
+I built it from scratch, and it served me well. I even made <strong>two
+games</strong><sup id="two-games"><a href="#two-games-ref">[1]</a></sup>
+with it!</p>
+<p>But as my projects grew, I started feeling the need for more advanced
+features. Plus, I’m planning to move into <strong>3D</strong>
+eventually, and I didn’t want to spend more time expanding my physics
+engine.</p>
+<p>So, I decided to upgrade to <strong>Jolt Physics</strong>.</p>
+<hr />
+<h2 id="why-jolt">Why Jolt?</h2>
+<p>Jolt is a <strong>modern, fast, and open-source</strong> physics
+engine that seemed like a great fit for my needs. I wanted something
+that was <strong>well-designed, performant, and extensible</strong>, and
+Jolt checked all those boxes.<br />
+It supports proper angular velocity and 3D physics, which are things my
+custom physics engine lacked. Since I eventually plan to move into 3D, I
+didn’t want to spend more time expanding my own physics system when Jolt
+already provided a solid, ready-to-use solution. Switching to Jolt felt
+like the right move to future-proof my engine while also giving me
+access to more advanced physics capabilities.</p>
+<hr />
+<h2 id="getting-started-with-jolt">Getting Started with Jolt</h2>
+<p>The first thing I did was <strong>clone the Jolt repository</strong>
+separately and build it to make sure everything worked. No surprises
+here—it built without any issues.</p>
+<p>Once I confirmed that, I added Jolt as a <strong>submodule</strong>
+to my engine and integrated it into the build system. Again, no
+problems.</p>
+<p>Next, I started implementing Jolt into my engine. I began by reading
+the <strong>HelloWorld.cpp</strong> file that comes with Jolt.</p>
+<blockquote>
+<p>Honestly, this file is a goldmine. It’s a great starting point, and
+the comments are super helpful.</p>
+</blockquote>
+<p>I copied some of the setup code, even though I didn’t fully
+understand everything at first. I figured I’d get to that later. For
+now, I just wanted to <strong>get something working</strong>.</p>
+<hr />
+<h2 id="re-architecting-my-components">Re-architecting My
+Components</h2>
+<p>My custom physics engine was simple but effective. It had a
+<strong>Collider</strong> and <strong>RigidBody</strong> component and
+used <strong>Euler integration</strong> to handle forces, acceleration,
+velocity, and position.</p>
+<p>It worked well for 2D, but it was limited in several ways. There was
+no support for angular velocity, and it couldn’t handle a third
+dimension.<br />
+Jolt, on the other hand, is a full-featured physics engine, so I had to
+rethink my architecture to take advantage of its capabilities.<br />
+My first attempt at restructuring didn’t work out, but after some trial
+and error, I settled on a model that felt clean and intuitive.</p>
+<hr />
+<h2 id="the-architecture">The Architecture</h2>
+<p>When I started integrating Jolt into my engine, I knew I needed to
+rethink my component structure to align with Jolt’s approach to physics
+bodies.<br />
+Jolt defines three primary types of bodies:</p>
+<ul>
+<li><strong>Static Bodies</strong> – These bodies don’t move or simulate
+in the physics world. They are used for immovable objects like walls or
+floors that can still collide with other bodies but don’t respond to
+forces.<br />
+</li>
+<li><strong>Dynamic Bodies</strong> – These bodies are moved by forces,
+such as gravity or collisions, and are fully simulated in the physics
+world.<br />
+</li>
+<li><strong>Kinematic Bodies</strong> – These bodies are moved manually
+by directly setting their velocities, without using forces. They can
+still interact with other bodies, making them ideal for things like
+moving platforms or doors.</li>
+</ul>
+<p>For more on these concepts, check out the <a
+href="https://jrouwe.github.io/JoltPhysics/index.html">Jolt Physics
+documentation</a>.</p>
+<p>Along with these body types, Jolt provides a sensor flag, which is a
+simple checkbox to indicate whether a body should act as a sensor
+(detecting other objects but not interacting physically). In my engine,
+however, I chose to handle sensors as a flag applied specifically to
+<code>CollisionBody</code> components.</p>
+<h3 id="physicsbodybase-the-foundation">PhysicsBodyBase: The
+Foundation</h3>
+<p>At the core of my physics system is the <code>PhysicsBodyBase</code>
+struct, which serves as the foundation for all physics bodies in my
+engine. This struct holds a pointer to a Jolt body and includes some
+basic properties, such as:</p>
+<ul>
+<li><strong>Motion Type</strong> – This determines how the body behaves
+in the physics simulation. It can be static, dynamic, kinematic.<br />
+</li>
+<li><strong>Layer</strong> – Used for collision filtering. I haven’t
+fully implemented this yet, but it’s planned for future use.</li>
+</ul>
+<p>The <code>PhysicsBodyBase</code> struct also provides functionality
+for getting and setting the body’s position, velocity, friction, and
+restitution. It’s designed to be extended by more specific components
+like <code>RigidBody</code> and <code>CollisionBody</code>.</p>
+<h3 id="rigidbody-dynamic-physics-objects">RigidBody: Dynamic Physics
+Objects</h3>
+<figure>
+<img src="inspector-rb.png" alt="RigidBody component in inspector">
+<figcaption>
+RigidBody component in inspector
+</figcaption>
+</figure>
+<p>The <code>RigidBody</code> component inherits from
+<code>PhysicsBodyBase</code> and is specifically designed for
+<strong>dynamic bodies</strong>—objects that are fully simulated and
+moved by forces.</p>
+<p>It supports applying forces and impulses, which makes it great for
+things like jumping, explosions, or any kind of physics-based movement.
+Torque can be applied to rotate the body, and both mass and gravity can
+be adjusted to control how it reacts to the environment.</p>
+<p>In short, <code>RigidBody</code> component is for anything that needs
+to interact dynamically with the physics world.</p>
+<h3 id="collisionbody-simplified-physics-interaction">CollisionBody:
+Simplified Physics Interaction</h3>
+<figure>
+<img src="inspector-cb.png" alt="CollisionBody component in inspector">
+<figcaption>
+CollisionBody component in inspector
+</figcaption>
+</figure>
+<p>The <code>CollisionBody</code> component also inherits from
+<code>PhysicsBodyBase</code>, but it’s used for bodies that either
+<strong>don’t move</strong> or are <strong>moved manually</strong>.</p>
+<p>In my engine, the <strong>sensor</strong> flag is applied
+specifically to <code>CollisionBody</code> components. A
+<strong>sensor</strong> is a body that doesn’t physically collide with
+other bodies but instead detects when something enters or exits its
+area. This is useful for things like trigger zones or proximity
+detection.</p>
+<p>One important distinction in my engine is that <strong>only
+<code>CollisionBody</code> components can be sensors</strong>, which
+means a sensor cannot be a <code>RigidBody</code>. I decided this
+because I didn’t foresee a need for dynamic bodies that only detect
+interactions without reacting physically. Therefore, a sensor flag can
+only be applied to static or kinematic <code>CollisionBody</code>
+components.</p>
+<p>For example, a sensor could be used to detect when an object enters a
+certain area, like an enemy’s detection radius or a trigger for a door
+to open. This keeps the system simple and ensures that only non-dynamic
+bodies can act as sensors.</p>
+<h3 id="collisionshape-defining-the-shape-of-bodies">CollisionShape:
+Defining the Shape of Bodies</h3>
+<figure>
+<img src="inspector-cs.png" alt="CollisionShape component in inspector">
+<figcaption>
+CollisionShape component in inspector
+</figcaption>
+</figure>
+<p>Every physics body needs a shape, and that’s where the
+<code>CollisionShape</code> struct comes in. Currently, it supports two
+basic 2D shapes: Box and Circle.</p>
+<p>In the future, I plan to add more primitive shapes. Right now, there
+are no 3D primitives in the engine, but once I introduce them, I’ll be
+able to handle 3D physics shapes.</p>
+<p>The most important future feature for collision shapes is
+<strong>composite shapes</strong>. Composite shapes allow me to combine
+multiple primitives into a single body. For example, I could combine
+several boxes and spheres to create a more complex shape, like a car.
+Jolt’s documentation shows this is possible, and it’s something I’ll
+implement in the future. Once composite shapes are in place, each body
+will look at its child collision shapes, combine them into a single
+unified shape, and use that for the physics calculations. This will make
+it easier to create more complex objects.</p>
+<p>For now, each body only has one shape, but this approach will evolve
+to accommodate more complexity as the engine grows.</p>
+<hr />
+<h2 id="initial-results">Initial Results</h2>
+<p>After setting everything up, I was pleasantly surprised by how well
+everything worked. Jolt’s collision detection is reliable, and
+integration was smoother than expected. Overall, I’m satisfied with the
+results so far and how the architecture is shaping up.</p>
+<hr />
+<h2 id="whats-next">What’s Next?</h2>
+<p>For now, my focus is on perfecting the basics. But there’s plenty
+more to explore:<br />
+- Composite shapes<br />
+- 3D primitives and 3D physics<br />
+- 3D rendering<br />
+- Later on, soft bodies, joints, and vehicle physics</p>
+<hr />
+<p>If you’re considering integrating <strong>Jolt</strong> into your own
+engine, I highly recommend it. It offers <strong>great
+documentation</strong>, and it’s a reliable and future-proof choice.
+Whether you’re just getting started or looking to expand your engine,
+Jolt provides the solid foundation you need to grow. &gt; Go for it.</p>
+<p>You can check out the following links for more information:<br />
+- <strong>Jolt Physics</strong>: <a
+href="https://github.com/jrouwe/JoltPhysics">https://github.com/jrouwe/JoltPhysics</a><br />
+- <strong>My Game Engine</strong>: <a
+href="https://github.com/hanion/enik-engine">https://github.com/hanion/enik-engine</a></p>
+<iframe frameborder="0" src="https://itch.io/embed/3202738?linkback=true&amp;border_width=0&amp;bg_color=1a1a1a&amp;fg_color=ffffff&amp;link_color=00d929&amp;border_color=1a1a1a" width="100%" height="165">
+<a href="https://hanion.itch.io/enik-engine">enik-engine by hanion</a>
+</iframe>
+<hr />
+<p><small id="two-games-ref"><sup><a href="#two-games">[1]</a></sup>
+These two games were made during game jams and are available on itch.io:
+<a href="https://hanion.itch.io/reborn">reborn</a> and <a
+href="https://hanion.itch.io/gear-gambit">gear gambit</a>. </small></p>
+			</main>
+		</div>
+	</body>
+</html>
