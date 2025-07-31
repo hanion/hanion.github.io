@@ -1,24 +1,24 @@
 ---
-title: You should write bad code
-date: 2025-02-20
-tags: [programming, learning, mindset]
-image: "cover.png"
+page.title = "You should write bad code";
+page.date  = "2025-02-20";
+page.tags  = "programming learning mindset";
+//image: "cover.png"
 ---
 
 ## Break things
 
 I cannot overstate how much I love breaking things.
 If I can’t break something, I don’t really understand it.
-_And if you can’t break something, you don’t know why it **doesn’t** break._
+_And if you can’t break something, you don’t know why it_ ***doesn’t*** _break._
 
 Most beginner programmers are scared to write bad code.
 They fear breaking something or introducing bugs, and that fear holds them back.
 But breaking things is *how* you learn. It’s *how* you figure things out.
 
-This isn’t just about code—it applies to anything new.
+This isn’t just about code, it applies to anything new.
 If you avoid breaking things, you avoid real understanding.
 So don’t let the fear of breaking things stop you.
-Embrace breaking things—it’s not just okay, it’s an essential part of your growth.
+Embrace breaking things, it’s not just okay, it’s an essential part of your growth.
 
 
 ## Learn by doing
@@ -54,7 +54,7 @@ This new low-level coding felt alien compared to what I knew, but that didn’t 
 
 Take the time I built a 3D software rasterizer for a resource-constrained device.
 The project felt like a fun challenge... until the renderer started running too slow when I added face filling.
-Meanwhile, my projectile system devoured memory—the device couldn’t handle it
+Meanwhile, my projectile system devoured memory, the device couldn’t handle it
 
 Turns out embedded devices don’t appreciate unoptimized data structures.
 I had to adjust my approach and make things more efficient.
@@ -70,7 +70,7 @@ Perfectionism is the enemy of progress.
 I learned this the hard way when I spent countless hours designing data structures that were “perfect” but never used.
 I never even committed the code because I was obsessed with getting it just right.
 
-You don’t need perfect code—you just need code that works.
+You don’t need perfect code, you just need code that works.
 Start with something, no matter how rough, and improve it as you go.
 _Perfect code that doesn’t exist is worse than bad code that does._
 So dive in, embrace the journey, and let the mistakes teach you.
@@ -85,10 +85,10 @@ And every time, I’ve learned something that made me a better programmer.
 Every skill leap started with bad code.
 The multiplayer spaghetti, the tangled language interpreter, the memory-crashing renderer.
 
-I could have spent ages designing the *perfect* version of those projects, but instead, I jumped straight into building them—broken code and all.
+I could have spent ages designing the *perfect* version of those projects, but instead, I jumped straight into building them, broken code and all.
 And each time, I learned something I never would have by waiting.
 
-Bad code isn’t failure—it’s proof that you’re doing the work.
+Bad code isn’t failure, it’s proof that you’re doing the work.
 Every broken system and messy code is a step toward mastery.
 
 So I’ll keep writing bad code.

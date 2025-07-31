@@ -21,91 +21,129 @@
 				</div>
 			</nav>
 
+
 			<header>
 				<h1>Why I abandoned Notion</h1>
 				<p class="date">2025-05-07</p>
-				<p class="tags">
-					 rant workflow
-				</p>
+				<p class="tags">rant workflow</p>
 			</header>
 
-			<main class="content">
-				<p>Let’s talk about Notion and why I finally decided to abandon it.</p>
-<p>One of the most infuriating issues I faced was the input lag. You
-know what I mean, when you start typing, and there’s a noticeable delay
-before the text appears on the screen. This made me
-<strong>FURIOUS</strong>! <strong>HOW</strong> is it possible that in
-<strong>2025</strong>, a program can have input lag? It’s mind
-boggling.</p>
-<blockquote>
-<p>Tools should help me, not get in the way.</p>
-</blockquote>
-<p>Now, let’s talk about those “benefits” of Notion.</p>
-<p>Notion is on the cloud, so you can access it from anywhere. Great in
-theory, but honestly, I’ve never needed to take complex notes without
-access to my computer. If I’m away from my machine, I’m usually not
-taking huge notes anyway.</p>
-<p>Then there’s the claim that it has more features than most apps.
-Sure, it does, but I only ever used todo lists and basic notes. All
-those extra features are just clutter.</p>
-<p>And let’s not forget the AI assistant. Come on, this is not even a
-feature! I hate it. Am I too dumb to take my own notes? It was one of
-the final straws that pushed me to switch.</p>
-<p>I used Notion for years, and while I was initially hesitant to switch
-due to the fear of losing my notes, I started looking into alternatives.
-That’s when I discovered Obsidian, especially because it had an import
-feature for Notion. I thought, “Great! This could be my escape route.” I
-tried it out, but I didn’t feel like I could move quickly or stay in
-flow.</p>
-<p>Another issue I had with Obsidian was its file management. It splits
-everything into a million different files, and I didn’t want to jump
-between hundreds of them. That just slows down my flow. I wanted to see
-more at a glance.</p>
-<p>That’s when I questioned the whole setup:</p>
-<p><strong>If it’s just a text file, why am I using these apps at
-all?</strong></p>
-<p>I could just use my own editor, the one I’m actually fast in. And I
-could leverage native linux tools like <code>grep</code> and
-<code>fzf</code> to search through my notes efficiently.</p>
-<p>So, I took matters into my own hands.</p>
-<p>First, I wrote a simple shell script to import everything from
-Obsidian. It normalized file names, grouped notes by tags, and organized
-them into a single directory.</p>
-<p>Then I wrote a bash script (<a
-href="https://github.com/hanion/note.sh">note.sh</a>) to manage my
-notes. It opens my notes directory in <code>lf</code>, my file manager,
-and from there I open notes in <code>neovim</code>. The script also
-gives me shortcuts to interact with my notes easily.</p>
-<p>I designed the script so my notes are accessible from anywhere in the
-terminal, complete with quick shortcuts for grepping names, fuzzy
-searching content, and displaying my todo queue.</p>
-<p>Here’s what it can do:</p>
+			<main class="content"><p>
+Let’s talk about Notion and why I finally decided to abandon it.
+</p>
+
+<p>
+One of the most infuriating issues I faced was the input lag.
+You know what I mean, when you start typing, and there’s a noticeable delay before the text appears on the screen.
+This made me <strong>FURIOUS</strong>! <strong>HOW</strong> is it possible that in <strong>2025</strong>, a program can have input lag? It’s mind boggling.
+</p>
+<blockquote>Tools should help me, not get in the way.</blockquote>
+
+<p>
+Now, let's talk about those "benefits" of Notion.
+</p>
+
+<p>
+Notion is on the cloud, so you can access it from anywhere.
+Great in theory, but honestly, I’ve never needed to take complex notes without access to my computer.
+If I’m away from my machine, I’m usually not taking huge notes anyway.
+</p>
+
+<p>
+Then there’s the claim that it has more features than most apps.
+Sure, it does, but I only ever used todo lists and basic notes.
+All those extra features are just clutter.
+</p>
+
+<p>
+And let’s not forget the AI assistant.
+Come on, this is not even a feature!
+I hate it. Am I too dumb to take my own notes?
+It was one of the final straws that pushed me to switch.
+</p>
+
+<p>
+I used Notion for years, and while I was initially hesitant to switch due to the fear of losing my notes, I started looking into alternatives.
+That’s when I discovered Obsidian, especially because it had an import feature for Notion.
+I thought, “Great! This could be my escape route.”
+I tried it out, but I didn’t feel like I could move quickly or stay in flow.
+</p>
+
+<p>
+Another issue I had with Obsidian was its file management.
+It splits everything into a million different files, and I didn’t want to jump between hundreds of them.
+That just slows down my flow. I wanted to see more at a glance.
+</p>
+
+<p>
+That’s when I questioned the whole setup:
+</p>
+
+<p>
+<strong>If it’s just a text file, why am I using these apps at all?</strong>
+</p>
+
+<p>
+I could just use my own editor, the one I’m actually fast in.
+And I could leverage native linux tools like <code>grep</code> and <code>fzf</code> to search through my notes efficiently.
+</p>
+
+<p>
+So, I took matters into my own hands.
+</p>
+
+<p>
+First, I wrote a simple shell script to import everything from Obsidian.
+It normalized file names, grouped notes by tags, and organized them into a single directory.
+</p>
+
+<p>
+Then I wrote a bash script (<a href="https://github.com/hanion/note.sh">note.sh</a>) to manage my notes.
+It opens my notes directory in <code>lf</code>, my file manager, and from there I open notes in <code>neovim</code>.
+The script also gives me shortcuts to interact with my notes easily.
+</p>
+
+<p>
+I designed the script so my notes are accessible from anywhere in the terminal,
+complete with quick shortcuts for grepping names, fuzzy searching content, and displaying my todo queue.
+</p>
+
+<p>
+Here’s what it can do:
+</p>
 <ul>
-<li><code>note</code> open <code>lf</code> in the notes directory</li>
+<li><code>note</code>   open <code>lf</code> in the notes directory</li>
 <li><code>note g</code> grep note name</li>
 <li><code>note f</code> fuzzy search note content</li>
 <li><code>note q [n=10]</code> list the top n queue task</li>
 </ul>
-<p>With this setup, my note taking workflow became instantly better. The
-shortcuts made accessing my notes and managing tasks incredibly
-efficient. Now, whenever I think of an idea, writing it down takes mere
-seconds, less time than it takes for Notion to load its UI!</p>
-<blockquote>
-<p>Opening a text file is fast again.</p>
-</blockquote>
-<p>To wrap things up, I exported my data from Notion to HTML, imported
-it into Obsidian for markdown formatting, used my script to clean and
-merge everything, and customized the final format to my liking.</p>
-<p>And just like that, I left Notion, <strong>never to
-return</strong>.</p>
-<p>Making the switch was liberating. I realized that I didn’t need a
-complex tool to manage my notes, I just needed something that worked for
-me. A simple, efficient tool beats a feature rich one that gets in your
-way.</p>
-<blockquote>
-<p>Why complicate things?</p>
-</blockquote>
-			</main>
+
+<p>
+With this setup, my note taking workflow became instantly better.
+The shortcuts made accessing my notes and managing tasks incredibly efficient.
+Now, whenever I think of an idea, writing it down takes mere seconds,
+less time than it takes for Notion to load its UI!
+</p>
+<blockquote>Opening a text file is fast again.</blockquote>
+
+<p>
+To wrap things up,
+I exported my data from Notion to HTML, imported it into Obsidian for markdown formatting,
+used my script to clean and merge everything, and customized the final format to my liking.
+</p>
+
+<p>
+And just like that, I left Notion, <strong>never to return</strong>.
+</p>
+
+<p>
+Making the switch was liberating.
+I realized that I didn’t need a complex tool to manage my notes,
+I just needed something that worked for me.
+A simple, efficient tool beats a feature rich one that gets in your way.
+</p>
+<blockquote>Why complicate things?</blockquote>
+</main>
 		</div>
 	</body>
 </html>

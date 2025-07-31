@@ -5,6 +5,7 @@
 	--color-accent-active: #be7eff;
 	--color-muted-bg: #202020;
 	--color-muted-text: #aaaaaa;
+	--color-darker-bg: #101010;
 	--font-main: 'JetBrains Mono', monospace;
 	--font-size: 16px;
 	--max-width: 760px;
@@ -137,16 +138,23 @@ iframe, canvas {
 	border-radius: var(--border-radius);
 }
 
-code, pre {
-	background: var(--color-muted-bg);
+code {
 	padding: 0 0.4rem;
 	border-radius: var(--border-radius);
-}
-pre {
-	padding: 1rem;
-	overflow-x: auto;
-	white-space: pre-wrap;
 	background: var(--color-muted-bg);
+}
+
+pre {
+	margin: 1em 0;
+	padding: 0 1rem 1rem 1rem;
+	border-radius: var(--border-radius);
+	background: var(--color-darker-bg);
+	overflow-x: auto;
+}
+
+pre code {
+	background: none;
+	padding: 0;
 }
 
 blockquote {

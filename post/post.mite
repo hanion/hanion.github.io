@@ -2,37 +2,39 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>$title$</title>
+		<title><? STR(page.title) ?></title>
 		<link rel="stylesheet" href="/src/reset.css">
 		<link rel="stylesheet" href="/src/common.css"/>
 		<link rel="icon" type="image/png" href="/favicon.png"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-		<meta property="og:title" content="$title$" />
-		<meta property="og:image" content="$image$" />
+		<meta property="og:title" content="<? STR(page.title) ?>" />
+		<meta property="og:image" content="<? //STR(page.image) ?>" />
 
 	</head>
 	<body>
 		<div class="wrapper">
 			<nav class="site-nav">
 				<div class="nav-left">
-					<a href="/">hanion.dev</a>
+					<a href="/"><? STR(global.title) ?></a>
 				</div>
 			</nav>
 
+
 			<header>
-				<h1>$title$</h1>
-				<p class="date">$date$</p>
+				<h1><? STR(page.title) ?></h1>
+				<p class="date"><? STR(page.date) ?></p>
 				<p class="tags">
-					$for(tags)$ $tags$$endfor$
+					<? STR(page.tags) ?>
 				</p>
 			</header>
 
 			<main class="content">
-				$body$
+				<? CONTENT() ?>
 			</main>
 		</div>
 	</body>
 </html>
+
 

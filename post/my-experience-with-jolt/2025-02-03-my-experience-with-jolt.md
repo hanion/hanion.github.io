@@ -1,8 +1,8 @@
 ---
-title: My experience with Jolt Physics
-date: 2025-02-03
-image: "cover.png"
-tags: [game engine, physics]
+page.title = "My experience with Jolt Physics";
+page.date  = "2025-02-03";
+page.tags  = "game engine physics";
+//image: "cover.png"
 ---
 
 
@@ -12,7 +12,7 @@ tags: [game engine, physics]
 </figure>
 
 I’ve been using my own custom physics engine for a while now, and it’s been a great learning experience.  
-I built it from scratch, and it served me well. I even made **two games**<sup id="two-games">[[1]](#two-games-ref)</sup> with it!  
+I built it from scratch, and it served me well. I even made **two games**<sup id="two-games"><a href="#two-games-ref">[1]</a></sup> with it!  
 
 But as my projects grew, I started feeling the need for more advanced features. Plus, I’m planning to move into **3D** eventually, and I didn’t want to spend more time expanding my physics engine.  
 
@@ -32,7 +32,7 @@ Switching to Jolt felt like the right move to future-proof my engine while also 
 
 ## Getting Started with Jolt  
 
-The first thing I did was **clone the Jolt repository** separately and build it to make sure everything worked. No surprises here—it built without any issues.  
+The first thing I did was **clone the Jolt repository** separately and build it to make sure everything worked. No surprises here, it built without any issues.  
 
 Once I confirmed that, I added Jolt as a **submodule** to my engine and integrated it into the build system. Again, no problems.  
 
@@ -90,7 +90,7 @@ It's designed to be extended by more specific components like `RigidBody` and `C
 <figcaption>RigidBody component in inspector</figcaption>
 </figure>
 
-The `RigidBody` component inherits from `PhysicsBodyBase` and is specifically designed for **dynamic bodies**—objects that are fully simulated and moved by forces.
+The `RigidBody` component inherits from `PhysicsBodyBase` and is specifically designed for **dynamic bodies**, objects that are fully simulated and moved by forces.
 
 It supports applying forces and impulses, which makes it great for things like jumping, explosions, or any kind of physics-based movement.
 Torque can be applied to rotate the body, and both mass and gravity can be adjusted to control how it reacts to the environment.  
@@ -111,7 +111,7 @@ In my engine, the **sensor** flag is applied specifically to `CollisionBody` com
 A **sensor** is a body that doesn’t physically collide with other bodies but instead detects when something enters or exits its area.
 This is useful for things like trigger zones or proximity detection.
 
-One important distinction in my engine is that **only `CollisionBody` components can be sensors**, which means a sensor cannot be a `RigidBody`.
+One important distinction in my engine is that **only** `CollisionBody` **components can be sensors**, which means a sensor cannot be a `RigidBody`.
 I decided this because I didn’t foresee a need for dynamic bodies that only detect interactions without reacting physically.
 Therefore, a sensor flag can only be applied to static or kinematic `CollisionBody` components.
 
@@ -164,8 +164,8 @@ For now, my focus is on perfecting the basics. But there’s plenty more to expl
 If you're considering integrating **Jolt** into your own engine, I highly recommend it.
 It offers **great documentation**, and it’s a reliable and future-proof choice.
 Whether you're just getting started or looking to expand your engine, Jolt provides the solid foundation you need to grow.
-> Go for it.
 
+> Go for it.
 
 You can check out the following links for more information:  
 - **Jolt Physics**: [https://github.com/jrouwe/JoltPhysics](https://github.com/jrouwe/JoltPhysics)  
@@ -175,7 +175,6 @@ You can check out the following links for more information:
 
 ---
 
-<small id="two-games-ref"><sup>[[1]](#two-games)</sup>
- These two games were made during game jams and are available on itch.io: [reborn](https://hanion.itch.io/reborn) and [gear gambit](https://hanion.itch.io/gear-gambit).
+<small id="two-games-ref"><sup><a href="#two-games">[1]</a></sup> These two games were made during game jams and are available on itch.io: [reborn](https://hanion.itch.io/reborn) and [gear gambit](https://hanion.itch.io/gear-gambit).
 </small>
 

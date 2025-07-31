@@ -9,8 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-		<meta property="og:title" content="Writing a game engine for
-embedded" />
+		<meta property="og:title" content="Writing a game engine for embedded" />
 		<meta property="og:image" content="" />
 
 	</head>
@@ -22,299 +21,306 @@ embedded" />
 				</div>
 			</nav>
 
+
 			<header>
 				<h1>Writing a game engine for embedded</h1>
 				<p class="date">2025-07-21</p>
-				<p class="tags">
-					 embedded game engine rasterizer
-				</p>
+				<p class="tags">embedded game engine rasterizer</p>
 			</header>
 
-			<main class="content">
-				<figure>
+			<main class="content"><figure>
 <video controls autoplay muted playsinline width="100%">
 <source src="3d.mp4" type="video/mp4" alt="3D Rasterizer">
-</video>
-<figcaption>
-3D Rasterizer
-</figcaption>
-</figure>
-<p>This is a game engine running on an embedded microcontroller. No
-operating system, no GPU, just C/C++ and a frame buffer. It renders 3D
-models, runs a raycasting engine, and simulates things like falling sand
-and Tetris.</p>
-<h1 id="understanding-led-panels">Understanding LED Panels</h1>
-<p>I did not know how LED panels worked before jumping into this
-project. The first step was understanding how they work.</p>
-<p>Controlling each pixel individually would require too many pins. To
-solve this, LED panels use <a
-href="https://en.wikipedia.org/wiki/Shift_register">shift registers</a>,
-which let you send data serially and display it in parallel. You shift
-the data in, latch it, and the registers holds the full frame.</p>
-<p>Then comes the scanning. LED panels have certain scanning patterns, I
-needed to figure out how this one scans the panel. So I started pushing
-one pixel at a time, and just watched and counted how they appeared and
-in what order they appeared.</p>
-<p>With that knowledge, I wrote a display driver to push a <strong>frame
-buffer</strong> onto the panel.</p>
+</video><figcaption>3D Rasterizer</figcaption></figure>
+<p>
+This is a game engine running on an embedded microcontroller.
+No operating system, no GPU, just C/C++ and a frame buffer.
+It renders 3D models, runs a raycasting engine, and simulates things like falling sand and Tetris.
+</p>
+
+<h1>Understanding LED Panels</h1>
+
+<p>
+I did not know how LED panels worked before jumping into this project.
+The first step was understanding how they work.
+</p>
+
+<p>
+Controlling each pixel individually would require too many pins.
+To solve this, LED panels use <a href="https://en.wikipedia.org/wiki/Shift_register">shift registers</a>,
+which let you send data serially and display it in parallel.
+You shift the data in, latch it, and the registers holds the full frame.
+</p>
+
+<p>
+Then comes the scanning.
+LED panels have certain scanning patterns, I needed to figure out how this one scans the panel.
+So I started pushing one pixel at a time, and just watched and counted how they appeared and in what order they appeared.
+</p>
+
+<p>
+With that knowledge, I wrote a display driver to push a <strong>frame buffer</strong> onto the panel.
+</p>
 <figure>
 <img src="display_driving.png" alt="Display Driving Logic">
-<figcaption>
-Display Driving Logic
-</figcaption>
-</figure>
-<p>Then I spent a lot of time tweaking timings to reduce flickering and
-get a stable, uniform image. Most difficult part of this project was
-<em><strong>timing</strong></em>.</p>
+<figcaption>Display Driving Logic</figcaption></figure>
+<p>
+Then I spent a lot of time tweaking timings to reduce flickering and get a stable, uniform image.
+Most difficult part of this project was <strong><i>timing</i></strong>.
+</p>
 <figure>
 <img src="rendering.png" alt="Rendering Frame Buffer On The Panel">
-<figcaption>
-Rendering Frame Buffer
-</figcaption>
-</figure>
-<h1 id="rendering-text">Rendering text</h1>
-<p>After getting the display driver working, the next goal was to render
-and scroll text. So I implemented basic <a
-href="https://en.wikipedia.org/wiki/Computer_font#BITMAP">bitmap
-font</a> rendering.</p>
+<figcaption>Rendering Frame Buffer</figcaption></figure>
+<h1>Rendering text</h1>
+
+<p>
+After getting the display driver working, the next goal was to render and scroll text.
+So I implemented basic <a href="https://en.wikipedia.org/wiki/Computer_font#BITMAP">bitmap font</a> rendering.
+</p>
 <figure>
 <img src="text.png" alt="Text Rendering On The Panel" >
-<figcaption>
-Text Rendering
-</figcaption>
-</figure>
-<p>When I tried scrolling the text, there was noticable tearing.</p>
+<figcaption>Text Rendering</figcaption></figure>
+<p>
+When I tried scrolling the text, there was noticable tearing.
+</p>
 <figure>
 <img src="tearing.png" alt="Scrolling Text Tearing On The Panel" style="max-height: 250px;">
-<figcaption>
-Scrolling Text Tearing
-</figcaption>
-</figure>
-<p>I fixed it by adding double buffering and tweaking the timings
-<strong>a lot</strong>.</p>
-<h1 id="frame-buffer">Frame buffer ??</h1>
-<p>Wait… a frame buffer? That means I can draw anything to it! I figured
-the best thing to try on a 64×32 display was a cellular automaton. First
-I programmed <a href="https://en.wikipedia.org/wiki/Rule_110">The Rule
-110</a>. Then I programmed <a
-href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">The Game Of
-Life</a>.</p>
-<div
-style="display: flex; gap: 1em; flex-wrap: nowrap; justify-content: center; align-items: flex-start;">
+<figcaption>Scrolling Text Tearing</figcaption></figure>
+<p>
+I fixed it by adding double buffering and tweaking the timings <strong>a lot</strong>.
+</p>
+
+<h1>Frame buffer ??</h1>
+
+<p>
+Wait... a frame buffer? That means I can draw anything to it!
+I figured the best thing to try on a 64×32 display was a cellular automaton.
+First I programmed <a href="https://en.wikipedia.org/wiki/Rule_110">The Rule 110</a>.
+Then I programmed <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">The Game Of Life</a>.
+</p>
+<div style="display: flex; gap: 1em; flex-wrap: nowrap; justify-content: center; align-items: flex-start;">
 <figure>
 <img src="rule110.png" alt="Rule 110">
-<figcaption>
-Rule 110
-</figcaption>
-</figure>
-<figure>
+<figcaption>Rule 110</figcaption></figure><figure>
 <img src="gol.png" alt="Conways Game Of Life">
-<figcaption>
-Game Of Life
-</figcaption>
-</figure>
-</div>
-<h1 id="can-i-make-a-game">Can I make a game ?</h1>
-<p>I wanted to write a game for it, but how could I interact with it?
+<figcaption>Game Of Life</figcaption></figure></div>
+<h1>Can I make a game ?</h1>
+
+<p>
+I wanted to write a game for it, but how could I interact with it?
 The proprietary board running this panel had one button, for resetting.
-So I thought I could repurpose this button. I thought about what games
-could I make with one button, and <a
-href="https://en.wikipedia.org/wiki/Dinosaur_Game">Dinosaur Game</a>
-came to my mind.</p>
+So I thought I could repurpose this button.
+I thought about what games could I make with one button,
+and <a href="https://en.wikipedia.org/wiki/Dinosaur_Game">Dinosaur Game</a> came to my mind.
+</p>
 <figure>
 <video controls muted playsinline width="100%">
 <source src="dino.mp4" type="video/mp4" alt="Dinosaur Game">
-</video>
-<figcaption>
-Dinosaur Game
-</figcaption>
-</figure>
-<h1 id="connecting-a-keyboard">Connecting a keyboard</h1>
-<p>Dino game was fun but I wanted more. There wasn’t much to do with one
-button, so went looking something else. I decided to connect my keyboard
-through <a href="https://en.wikipedia.org/wiki/UART">UART</a>, this way
-I could interact with it properly. Which meant that I could make a
-proper game now.</p>
-<h1 id="simulation">Simulation</h1>
-<p>Since I am just drawing to a frame buffer, The platform underneath
-does not change the result of the drawing.</p>
-<p>So I decided to create a simulator, that just renders the frame
-buffer with raylib. This decreases the iteration time. I dont need to
-upload the code to the board everytime.</p>
-<h1 id="proper-game-engine">Proper game engine</h1>
-<p>If I want to make a proper game, I need a proper engine.</p>
-<h2 id="event-manager">Event manager</h2>
-<p>Having two platforms creates two different paths for receiving
-events.</p>
-<p>The simulations polls events at the start of each frame. This is
-achieved with Raylib functions like <code>IsKeyPressed</code>,
-<code>IsKeyDown</code>, <code>IsKeyReleased</code>.</p>
-<p>The embedded system however recieves events from UART with
-interrupts, and only for pressing or releasing buttons. We need an
-encompassing method for handling both versions.</p>
-<p>In the embedded system, we only receive interrupts when the key is
-pressed or released. We need to generate <code>Held</code> events in the
-<code>EventManager</code>.</p>
-<p>When we receive a key interrupt, we <em>“activate”</em> the key. This
-creates a <code>Pressed</code> event and adds the keycode into a list
-called <code>active_keys</code>. This list is iterated every frame, and
-<code>Held</code> events are generated for each item. When we
-<em>“deactivate”</em> a key, one <code>Released</code> event is
-generated and the keycode is removed from the list.</p>
-<h2 id="application-api">Application API</h2>
-<p>This is the entirity of the <code>Application</code> API:</p>
+</video><figcaption>Dinosaur Game</figcaption></figure>
+<h1>Connecting a keyboard</h1>
+
+<p>
+Dino game was fun but I wanted more.
+There wasn't much to do with one button, so went looking something else.
+I decided to connect my keyboard through <a href="https://en.wikipedia.org/wiki/UART">UART</a>,
+this way I could interact with it properly.
+Which meant that I could make a proper game now.
+</p>
+
+<h1>Simulation</h1>
+
+<p>
+Since I am just drawing to a frame buffer,
+The platform underneath does not change the result of the drawing.
+</p>
+
+<p>
+So I decided to create a simulator, that just renders the frame buffer with raylib.
+This decreases the iteration time.
+I dont need to upload the code to the board everytime.
+</p>
+
+<h1>Proper game engine</h1>
+
+<p>
+If I want to make a proper game, I need a proper engine.
+</p>
+
+<h2>Event manager</h2>
+
+<p>
+Having two platforms creates two different paths for receiving events.
+</p>
+
+<p>
+The simulations polls events at the start of each frame.
+This is achieved with Raylib functions like <code>IsKeyPressed</code>, <code>IsKeyDown</code>, <code>IsKeyReleased</code>.
+</p>
+
+<p>
+The embedded system however recieves events from UART with interrupts, and only for pressing or releasing buttons.
+We need an encompassing method for handling both versions.
+</p>
+
+<p>
+In the embedded system, we only receive interrupts when the key is pressed or released.
+We need to generate <code>Held</code> events in the <code>EventManager</code>.
+</p>
+
+<p>
+When we receive a key interrupt, we <i>&quot;activate&quot;</i> the key.
+This creates a <code>Pressed</code> event and adds the keycode into a list called <code>active_keys</code>.
+This list is iterated every frame, and <code>Held</code> events are generated for each item.
+When we <i>&quot;deactivate&quot;</i> a key, one <code>Released</code> event is generated and the keycode is removed from the list.
+</p>
+
+<h2>Application API</h2>
+
+<p>
+This is the entirity of the <code>Application</code> API:
+</p>
 <figure>
 <img src="application.png" alt="Application">
-<figcaption>
-Application
-</figcaption>
-</figure>
-<h1 id="d-rendering">3D Rendering</h1>
-<p>Why not write a software rasterizer? I have never written a sofware
-rasterizer before, but i knew how things work, thanks to <a
-href="https://pikuma.com">Pikuma</a>! There is an amazing <a
-href="https://www.youtube.com/playlist?list=PLYnrabpSIM-97qGEeOWnxZBqvR_zwjWoo">YouTube
-Playlist by Pikuma</a> explaining 3D Graphics. I started with
-implementing the basics, like Vector, Matrix, and Transform
-structures.</p>
+<figcaption>Application</figcaption></figure>
+<h1>3D Rendering</h1>
+
+<p>
+Why not write a software rasterizer?
+I have never written a sofware rasterizer before, but i knew how things work, thanks to <a href="https://pikuma.com">Pikuma</a>!
+There is an amazing <a href="https://www.youtube.com/playlist?list=PLYnrabpSIM-97qGEeOWnxZBqvR_zwjWoo">YouTube Playlist by Pikuma</a> explaining 3D Graphics.
+I started with implementing the basics, like Vector, Matrix, and Transform structures.
+</p>
 <figure>
 <img src="vec_transform.png" alt="Vector and Transform structures">
-<figcaption>
-Vector and Transform
-</figcaption>
-</figure>
-<p>Now when I look back at it, I couldve used vectors in the
-<code>Transform</code>, but I created the <code>Vec3</code> later, so I
-probably did not see that.</p>
+<figcaption>Vector and Transform</figcaption></figure>
+<p>
+Now when I look back at it, I couldve used vectors in the <code>Transform</code>,
+but I created the <code>Vec3</code> later, so I probably did not see that.
+</p>
 <figure>
 <img src="better_transform.png" alt="Better Transform">
-<figcaption>
-Better Transform
-</figcaption>
-</figure>
-<p>Then I implemented the matrix calculations.</p>
+<figcaption>Better Transform</figcaption></figure>
+<p>
+Then I implemented the matrix calculations.
+</p>
 <figure>
 <img src="matrix.png" alt="Matrix Functions">
-<figcaption>
-Matrix Functions
-</figcaption>
-</figure>
-<p>I created <code>Vertex</code> and <code>Face</code> for my
-<code>Mesh</code>.</p>
+<figcaption>Matrix Functions</figcaption></figure>
+<p>
+I created <code>Vertex</code> and <code>Face</code> for my <code>Mesh</code>.
+</p>
 <figure>
 <img src="vertex_face.png" alt="Vertex and Face">
-<figcaption>
-Vertex and Face
-</figcaption>
-</figure>
-<p>Then doing all the calculations and drawing the mesh to the
-buffer.</p>
+<figcaption>Vertex and Face</figcaption></figure>
+<p>
+Then doing all the calculations and drawing the mesh to the buffer.
+</p>
 <figure>
 <img src="projection.png" alt="Projection">
-<figcaption>
-Projection
-</figcaption>
-</figure>
-<p>Theres the cube rendered with perspective projection. Finally!</p>
+<figcaption>Projection</figcaption></figure>
+<p>
+Theres the cube rendered with perspective projection. Finally!
+</p>
 <figure>
 <img src="3d_cube.png" alt="3d cube">
-<figcaption>
-3D Cube
-</figcaption>
-</figure>
-<p>Then I wanted to render something more complicated than a hand
-crafted cube. I couldnt easily port <code>obj</code> files into my
-engine in C, so I wrote a python script to convert <code>obj</code>
-files into my mesh format. This python script takes the <code>obj</code>
-file and spits out a C source file containing the mesh data.</p>
+<figcaption>3D Cube</figcaption></figure>
+<p>
+Then I wanted to render something more complicated than a hand crafted cube.
+I couldnt easily port <code>obj</code> files into my engine in C,
+so I wrote a python script to convert <code>obj</code> files into my mesh format.
+This python script takes the <code>obj</code> file and spits out a C source file containing the mesh data.
+</p>
 <figure>
 <img src="formatted_model.png" alt="Formatted Model">
-<figcaption>
-Formatted Model
-</figcaption>
-</figure>
-<p>I went into blender and created a torus model, exported it to an
-<code>obj</code> file.</p>
+<figcaption>Formatted Model</figcaption></figure>
+<p>
+I went into blender and created a torus model, exported it to an <code>obj</code> file.
+</p>
 <figure>
 <img src="3d_torus.png" alt="3d torus">
-<figcaption>
-3D Torus
-</figcaption>
-</figure>
-<p>I tried to add face filling, drawing filled polygons instead of just
-outlines. But the device just couldn’t handle it. It was too slow. Just
-filling the faces slowed the device so much, that I did not even try
-implementing a depth buffer.</p>
+<figcaption>3D Torus</figcaption></figure>
+<p>
+I tried to add face filling, drawing filled polygons instead of just outlines.
+But the device just couldn't handle it. It was too slow.
+Just filling the faces slowed the device so much, that I did not even try implementing a depth buffer.
+</p>
 <figure>
 <video controls muted playsinline width="100%">
 <source src="face_filling.mp4" type="video/mp4" alt="Performance Drop Of Face Filling">
-</video>
-<figcaption>
-Performance Drop Of Face Filling
-</figcaption>
-</figure>
-<p>Without a depth buffer, the best I could do was backface culling.</p>
-<h1 id="plan-b-raycaster">Plan B: Raycaster</h1>
-<p>Adding raycaster was easier.</p>
+</video><figcaption>Performance Drop Of Face Filling</figcaption></figure>
+<p>
+Without a depth buffer, the best I could do was backface culling.
+</p>
+
+<h1>Plan B: Raycaster</h1>
+
+<p>
+Adding raycaster was easier.
+</p>
 <figure>
 <img src="raycast_result.png" alt="Raycast Result">
-<figcaption>
-Raycast Result
-</figcaption>
-</figure>
-<p>No projection matrix, no vertex transforms, just ray math.</p>
+<figcaption>Raycast Result</figcaption></figure>
+<p>
+No projection matrix, no vertex transforms, just ray math.
+</p>
 <figure>
 <img src="raycaster.png" alt="raycaster">
-<figcaption>
-Raycaster
-</figcaption>
-</figure>
-<p>I added sprite and texture rendering next. Then I created a simple
-enemy that follows the player and deals damage when it gets close. After
-that, I added a projectile system and implemented shooting.</p>
+<figcaption>Raycaster</figcaption></figure>
+<p>
+I added sprite and texture rendering next.
+Then I created a simple enemy that follows the player and deals damage when it gets close.
+After that, I added a projectile system and implemented shooting.
+</p>
 <figure>
 <img src="doom.png" alt="Raycaster 'Doom' Game">
-<figcaption>
-Raycaster “Doom” Game
-</figcaption>
-</figure>
-<p>But when I started firing a lot, the engine began crashing. Firing
-the 32nd bullet would freeze the entire system. Turns out, I was
-triggering an <code>std::vector</code> resize, which hit the heap limit
-and corrupted memory.</p>
-<p>The fix was increasing the heap size and giving projectiles a
-lifetime, so they could be recycled properly.</p>
-<h1 id="falling-sand">Falling sand</h1>
-<p>I always wanted to try falling sand simulation. I implemented it by
-learing it from <a
-href="https://www.youtube.com/watch?v=L4u7Zy_b868">Coding Train’s
-Video</a>.</p>
+<figcaption>Raycaster "Doom" Game</figcaption></figure>
+<p>
+But when I started firing a lot, the engine began crashing.
+Firing the 32nd bullet would freeze the entire system.
+Turns out, I was triggering an <code>std::vector</code> resize, which hit the heap limit and corrupted memory.
+</p>
+
+<p>
+The fix was increasing the heap size and giving projectiles a lifetime, so they could be recycled properly.
+</p>
+
+<h1>Falling sand</h1>
+
+<p>
+I always wanted to try falling sand simulation.
+I implemented it by learing it from <a href="https://www.youtube.com/watch?v=L4u7Zy_b868">Coding Train&#39;s Video</a>.
+</p>
 <figure>
 <img src="falling_sand.png" alt="falling sand simulation">
-<figcaption>
-Falling Sand Simulation
-</figcaption>
-</figure>
-<h1 id="tetris">Tetris</h1>
-<p>I love tetris, I have almost always implemented tetris whenever I saw
-the opportunity.</p>
+<figcaption>Falling Sand Simulation</figcaption></figure>
+<h1>Tetris</h1>
+
+<p>
+I love tetris, I have almost always implemented tetris whenever I saw the opportunity.
+</p>
 <figure>
 <img src="tetris.png" alt="tetris">
-<figcaption>
-Tetris
-</figcaption>
-</figure>
-<h1 id="final-thoughts">Final Thoughts</h1>
-<p>I really enjoyed working on this project. I loved learning more about
-3D projection, rasterization, and raycasting. The falling sand
-simulation was also fun to implement and play with.</p>
-<p>The hardest part was getting the <em><strong>timing</strong></em>
-right for the embedded system. Making my code run correctly on an
-embedded device feels kind of magical.</p>
-<h1 id="source-code">Source Code</h1>
-<p>The source code for this project is available on GitHub: <a
-href="https://github.com/hanion/embedded-engine">https://github.com/hanion/embedded-engine</a></p>
-			</main>
+<figcaption>Tetris</figcaption></figure>
+<h1>Final Thoughts</h1>
+
+<p>
+I really enjoyed working on this project.
+I loved learning more about 3D projection, rasterization, and raycasting.
+The falling sand simulation was also fun to implement and play with.
+</p>
+
+<p>
+The hardest part was getting the <strong><i>timing</i></strong> right for the embedded system.
+Making my code run correctly on an embedded device feels kind of magical.
+</p>
+
+<h1>Source Code</h1>
+
+<p>
+The source code for this project is available on GitHub: 
+<a href="https://github.com/hanion/embedded-engine">https://github.com/hanion/embedded-engine</a>
+</p>
+</main>
 		</div>
 	</body>
 </html>

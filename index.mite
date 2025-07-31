@@ -2,10 +2,10 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>hanion.dev</title>
-		<meta property="og:title" content="hanion.dev"/>
-		<meta name=       "description" content="recreational programmer"/>
-		<meta property="og:description" content="recreational programmer"/>
+		<title><? STR(global.title) ?></title>
+		<meta property="og:title" content="<? STR(global.title) ?>"/>
+		<meta name=       "description" content="<? STR(global.description) ?>"/>
+		<meta property="og:description" content="<? STR(global.description) ?>"/>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,8 +20,8 @@
 	<body class="home">
 		<div class="wrapper">
 			<header>
-				<h1 class="home-title">hanion.dev</h1>
-				<p class="intro">recreational programmer</p>
+				<h1 class="home-title"><? STR(global.title) ?></h1>
+				<p class="intro"><? STR(global.description) ?></p>
 			</header>
 
 			<section>

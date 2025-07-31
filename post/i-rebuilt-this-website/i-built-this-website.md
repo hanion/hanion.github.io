@@ -1,7 +1,7 @@
 ---
-title: I rebuilt this website from scratch
-tags: [webdev, rant]
-date: 2025-05-02
+page.title = "I rebuilt this website from scratch";
+page.date  = "2025-05-02";
+page.tags  = "webdev rant";
 ---
 
 After struggling with countless tools, dependencies, and configuration headaches just to get a simple static website running, I finally reached my breaking point.
