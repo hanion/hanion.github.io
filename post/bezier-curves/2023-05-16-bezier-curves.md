@@ -1,7 +1,7 @@
 ---
-page.title = "Bézier curves";
-page.date  = "2023-05-16";
-page.tags  = "math simulation";
+page->title = "Bézier curves";
+page->date  = "2023-05-16";
+page->tags  = "math simulation";
 //image: "bezier_curves_cover.png"
 ---
 

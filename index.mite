@@ -10,8 +10,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="icon" type="image/png" href="favicon.png"/>
-		<link rel="stylesheet" href="src/reset.css"/>
-		<link rel="stylesheet" href="src/common.css"/>
+		<link rel="stylesheet" href="/reset.css"/>
+		<link rel="stylesheet" href="/common.css"/>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,20 +57,23 @@
 			<section>
 				<h2>projects</h2>
 				<ul class="post-list">
-					<li> <a href="https://github.com/hanion/enik-engine">enik-engine</a> – a tiny game engine</li>
-					<li> <a href="post/embedded-engine">embedded-engine</a> – embedded game engine</li>
-					<li> <a href="https://github.com/hanion/cook">cook</a> – a single file build system, better make </li>
-					<li> <a href="https://github.com/hanion/minik-script">minik-script</a> – interpreted scripting language</li>
-					<li> <a href="https://github.com/hanion/cey">c* (cey)</a> – the Turkish C programming language</li>
-					<li> <a href="https://github.com/hanion/note.sh">note.sh</a> – fast note-taking script</li>
+					<? for (size_t i = 0; i < global.projects.count; ++i) { ?>
+						<li>
+							<a href="<? STR(global.projects.items[i]->url) ?>"><? STR(global.projects.items[i]->title) ?></a>
+							<? STR(" - ") STR(global.projects.items[i]->description) ?>
+						</li>
+					<? } ?>
 				</ul>
 			</section>
 
 			<footer>
 				<p>
-					<a href="https://github.com/hanion">github</a> |
-					<a href="https://hanion.itch.io">itch.io</a> |
-					<a href="https://bsky.app/profile/haniondev.bsky.social">bluesky</a>
+					<? for (size_t i = 0; i < global.socials.count; ++i) { ?>
+						<a href="<? STR(global.socials.items[i]->url) ?>"> <? STR(global.socials.items[i]->title) ?></a>
+						<? if (i < global.socials.count - 1) STR(" | "); ?>
+					<? } ?>
+				</p>
+				<p>
 				</p>
 			</footer>
 		</div>
