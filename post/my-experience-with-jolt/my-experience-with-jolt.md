@@ -1,7 +1,8 @@
 ---
-page->title = "My experience with Jolt Physics";
-page->date  = "2025-02-03";
-page->tags  = "game engine physics";
+page->layout = "post";
+page->title  = "My experience with Jolt Physics";
+page->date   = "2025-02-03";
+page->tags   = "game engine physics";
 //image: "cover.png"
 ---
 

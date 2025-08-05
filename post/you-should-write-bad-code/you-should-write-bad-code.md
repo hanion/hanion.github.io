@@ -1,7 +1,8 @@
 ---
-page->title = "You should write bad code";
-page->date  = "2025-02-20";
-page->tags  = "programming learning mindset";
+page->layout = "post";
+page->title  = "You should write bad code";
+page->date   = "2025-02-20";
+page->tags   = "programming learning mindset";
 //image: "cover.png"
 ---
 

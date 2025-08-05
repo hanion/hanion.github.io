@@ -1,4 +1,4 @@
----
+```c
 global.url = "https://hanion.dev";
 global.title = "hanion.dev";
 global.description = "recreational programmer";
@@ -14,5 +14,39 @@ ADD_PROJECT("mite", "static site generator with C templates" , "https://github.c
 ADD_PROJECT("minik-script", "interpreted scripting language", "https://github.com/hanion/minik-script");
 ADD_PROJECT("c* (cey)", "the Turkish C programming language", "https://github.com/hanion/cey");
 ADD_PROJECT("note.sh", "fast note-taking script", "https://github.com/hanion/note.sh");
----
+
+page->layout = "home";
+PAGE_SET("kind", "index")
+```
+
+## posts
+<ul class="post-list">
+    <li>
+        <time datetime="2025-07-21">2025-07-21 </time>
+        <a href="post/embedded-engine">Writing a game engine for embedded</a>
+    </li>
+    <li>
+        <time datetime="2025-05-07">2025-05-07 </time>
+        <a href="post/why-i-abandoned-notion">Why I abandoned Notion</a>
+    </li>
+    <li>
+        <time datetime="2025-02-20">2025-02-20 </time>
+        <a href="post/you-should-write-bad-code">You should write bad code</a>
+    </li>
+    <li>
+        <time datetime="2025-02-03">2025-02-03 </time>
+        <a href="post/my-experience-with-jolt">My experience with Jolt Physics</a>
+    </li>
+</ul>
+
+## projects
+<ul class="post-list">
+    <li><a href="https://github.com/hanion/enik-engine">enik-engine</a> - a tiny game engine</li>
+    <li><a href="post/embedded-engine">embedded-engine</a> - embedded game engine</li>
+    <li><a href="https://github.com/hanion/cook">cook</a> - a single file build system, better make</li>
+    <li><a href="https://github.com/hanion/mite">mite</a> - static site generator with C templates</li>
+    <li><a href="https://github.com/hanion/minik-script">minik-script</a> - interpreted scripting language</li>
+    <li><a href="https://github.com/hanion/cey">c* (cey)</a> - the Turkish C programming language</li>
+</ul>
+
 

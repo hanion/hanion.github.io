@@ -1,7 +1,8 @@
 ---
-page->title = "Why I abandoned Notion";
-page->date  = "2025-05-07";
-page->tags  = "rant workflow";
+page->layout = "post";
+page->title  = "Why I abandoned Notion";
+page->date   = "2025-05-07";
+page->tags   = "rant workflow";
 ---
 
 Let’s talk about Notion and why I finally decided to abandon it.

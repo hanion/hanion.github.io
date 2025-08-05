@@ -1,16 +1,12 @@
 ---
-page->title = "Bézier curves";
-page->date  = "2023-05-16";
-page->tags  = "math simulation";
+page->layout = "post";
+page->title  = "Bézier curves";
+page->date   = "2023-05-16";
+page->tags   = "math simulation";
+PAGE_SET("mathjax", "true");
 //image: "bezier_curves_cover.png"
 ---
 
-
-<? /* html update guard, for the mathjax script */ out->count = 0; return; ?>
-
-<div id="iframe-container">
-<iframe class="embed" src="embed/index.html" width="100%" height="500px" frameborder="0"></iframe>
-</div>
 
 
 A [Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) is defined by a set of control points \(P_0\) through \(P_n\).

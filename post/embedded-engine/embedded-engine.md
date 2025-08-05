@@ -1,7 +1,8 @@
 ---
-page->title = "Writing a game engine for embedded";
-page->date  = "2025-07-21";
-page->tags  = "embedded game engine rasterizer";
+page->layout = "post";
+page->title  = "Writing a game engine for embedded";
+page->date   = "2025-07-21";
+page->tags   = "embedded game engine rasterizer";
 ---
 
 
