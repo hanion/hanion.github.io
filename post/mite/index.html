@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Site generation with C templates - hanion.dev</title>
+		<meta property=      "og:title" content="Site generation with C templates - hanion.dev"/>
+		<meta name=       "description" content="0"/>
+		<meta property="og:description" content="0"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="icon" type="image/png" href="/asset/favicon.png"/>
+		<link rel="stylesheet" href="/asset/reset.css"/>
+		<link rel="stylesheet" href="/asset/style.css"/>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="wrapper"><nav class="site-nav">
+	<div class="nav-left">
+		<a href="/">hanion.dev</a>
+	</div>
+</nav>
+
+			<header>
+				<h1>Site generation with C templates</h1>
+				<p class="date">2025-08-09</p>
+				<p class="tags">static site generator c template markdown
+				</p>
+			</header>
+
+			<main class="content"><figure>
+<img src="intro_template.png" alt="mite template">
+<figcaption>Mite Template</figcaption></figure>
+<p>
+This is a <a href="https://github.com/hanion/mite">mite</a> template.
+It is HTML with C between <code>&lt;?</code> and <code>?&gt;</code>.
+</p>
+
+<h1>What is mite?</h1>
+
+<p>
+<a href="https://github.com/hanion/mite">mite</a> is a static site generator written in C.
+It uses templates that are basically plain HTML files with embedded C code between <code>&lt;?</code> and <code>?&gt;</code>.
+This lets you write your layouts as HTML while using C code for dynamic parts like
+inserting lists or including other templates.
+There are no dependencies or external tools.
+You just need a C compiler.
+The output is plain HTML files ready to be served.
+</p>
+
+<p>
+Here’s a simple template snippet that dynamically generates a list of links:
+</p>
+<figure>
+<img src="mite_template.png" alt="mite template">
+<figcaption>Mite Template</figcaption></figure>
+<p>
+You write mostly HTML with small embedded C blocks to insert dynamic content.
+No extra templating language, just plain C inside HTML.
+</p>
+
+<h1>Inspiration</h1>
+
+<p>
+I got nerd sniped by Tsoding's video <a href="https://www.youtube.com/watch?v=dkNv3KGOFT0">Server-Side Rendering in C</a>.
+The idea of templating with plain C hooked me.
+</p>
+<figure>
+<img src="https://imgs.xkcd.com/comics/nerd_sniping.png" alt="xkcd nerd_sniping">
+<figcaption>Nerd Sniping (<a href="https://xkcd.com/356">https://xkcd.com/356</a>)</figcaption></figure>
+<p>
+I had recently moved from Jekyll to plain HTML (<a href="/post/i-rebuilt-this-website">explained here</a>)
+and was using <a href="https://pandoc.org">pandoc</a> to convert Markdown to HTML.
+And I didn't want to use it anymore.
+</p>
+
+<p>
+I figured I could write my own Markdown renderer. Markdown looked simple enough. It wasn’t.
+I built <a href="https://github.com/hanion/md2html">a markdown renderer of my own</a>,
+which ended up taking more time than expected even for my limited needs.
+</p>
+
+<p>
+After that, I started working on the templating engine.
+</p>
+
+<h1>Templating engine</h1>
+
+<p>
+The engine runs in two modes: HTML and C.<br>
+
+It starts in HTML mode. When it sees <code>&lt;?</code>, it switches to C until <code>?&gt;</code>.
+</p>
+
+<h2>Example</h2>
+<figure>
+<img src="example_template.png" alt="example mite template">
+<figcaption>Mite Template</figcaption></figure><figure>
+<img src="example_c.png" alt="generated c">
+<figcaption>Generated C</figcaption></figure>
+<p>
+The macros handle output, they append to the current output <code>StringBuilder</code>.<br>
+
+HTML bytes are stored directly, so that we dont have to mess with escaping.<br>
+
+When this generated code runs, it outputs this:
+</p>
+<figure>
+<img src="example_html.png" alt="rendered html">
+<figcaption>Rendered HTML</figcaption></figure>
+<h1>Second Stage</h1>
+
+<p>
+The generated code is pasted into a new file <code>site.c</code> as the second stage in the process.
+It is compiled and run by the first stage.
+</p>
+
+<p>
+Second stage has these responsibilities:
+</p>
+<ul>
+<li>Construct a global state</li>
+<li>Construct the templates list with their details</li>
+<li>Render each page with its layout</li>
+</ul>
+
+<h2>Construct a global state</h2>
+
+<p>
+Second stage creates fills a global struct for all the pages and templates to use.
+This is done by pasting the front matter of all the pages.
+</p>
+<figure>
+<img src="global_state.png" alt="filling global state">
+<figcaption>Filling Global State</figcaption></figure>
+<h2>Construct the templates list with their details</h2>
+
+<p>
+We need to assign a function to the name of the template, heres where we fill this.
+</p>
+<figure>
+<img src="filling_template_list.png" alt="filling template list">
+<figcaption>Filling Template List</figcaption></figure>
+<h2>Render each page with its layout</h2>
+
+<p>
+First I was searching for "<code>CONTENT()</code>" in the templates
+and replacing it with the rendered HTML directly as a string.
+</p>
+
+<p>
+This meant every page had its layout printed directly into it at build time.
+It worked, but it wasn't flexible.
+The layout had to be known in the first stage,
+meaning layouts couldn’t be changed dynamically in the page's front matter.
+</p>
+
+<p>
+This made me rethink the architecture of the templating engine.
+Why was I manually searching and replacing <code>CONTENT()</code> ?
+</p>
+
+<p>
+A template should be able to render multiple pages, so I cant just make the macro the lines that render the content.
+</p>
+
+<p>
+Instead of printing templates everywhere, each template became a function.
+The function takes the page’s content rendering function as an argument, so any layout can render any content at runtime.
+</p>
+<figure>
+<img src="render_functions.png" alt="render functions">
+<figcaption>Render Functions</figcaption></figure>
+<p>
+At render time we find the correct template function and call it with the page and its content function.
+</p>
+<figure>
+<img src="rendering_the_page.png" alt="rendering the page">
+<figcaption>Rendering The Page</figcaption></figure>
+<p>
+And because the rendering happens at runtime (after parsing the front matter),
+the same templating system can be used not only in layouts,
+but also <strong>inside the markdown content itself</strong>.
+</p>
+
+<h1><code>INCLUDE</code> macro</h1>
+
+<p>
+I used the same approach with includes.
+Instead of concatenating the included file as static HTML, we just call its template function.
+That means includes can be templated too.
+</p>
+
+<p>
+An <code>include</code> template and a <code>layout</code> template are actually the same thing under the hood.
+We construct it the same, and we call it the same.
+</p>
+
+<p>
+An include can even have nested <code>INCLUDE()</code> calls or a <code>CONTENT()</code>.
+(it really shouldn't, but why not?)
+It can even include itself, until we blow the stack.
+</p>
+
+<h1>Real world usage</h1>
+
+<p>
+This site is built with mite. You can explore its source code to better understand how it works:
+<a href="https://github.com/hanion/hanion.github.io">https://github.com/hanion/hanion.github.io</a>
+</p>
+<h1>Source Code</h1>
+
+<p>
+Source is available on GitHub: <a href="https://github.com/hanion/mite">https://github.com/hanion/mite</a>
+</p>
+
+			</main>
+		</div>
+	</body>
+</html>
