@@ -37,6 +37,7 @@ PAGE_SET("kind", "index")
         <time datetime="2025-02-03">2025-02-03 </time>
         <a href="post/my-experience-with-jolt">My experience with Jolt Physics</a>
     </li>
+    <? // <li><a href="archive">...</a></li> ?>
 </ul>
 
 ## projects
@@ -47,5 +48,7 @@ PAGE_SET("kind", "index")
     <li><a href="https://github.com/hanion/mite">mite</a> - static site generator with C templates</li>
     <li><a href="https://github.com/hanion/minik-script">minik-script</a> - interpreted scripting language</li>
 </ul>
+
+<div style="text-align:center"><a href="archive">archive</a></div>
 <br>
 
