@@ -1,0 +1,6 @@
+<nav class="site-nav">
+	<div class="nav-left">
+		<a href="/"><? STR(global.title) ?></a>
+	</div>
+</nav>
+

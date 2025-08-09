@@ -46,7 +46,6 @@ PAGE_SET("kind", "index")
     <li><a href="https://github.com/hanion/cook">cook</a> - a single file build system, better make</li>
     <li><a href="https://github.com/hanion/mite">mite</a> - static site generator with C templates</li>
     <li><a href="https://github.com/hanion/minik-script">minik-script</a> - interpreted scripting language</li>
-    <li><a href="https://github.com/hanion/cey">c* (cey)</a> - the Turkish C programming language</li>
 </ul>
-
+<br>
 

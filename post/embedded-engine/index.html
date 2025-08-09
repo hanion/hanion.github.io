@@ -1,29 +1,28 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-	<meta charset="UTF-8">
-	<title>Writing a game engine for embedded</title>
-	<meta property=      "og:title" content="Writing a game engine for embedded"/>
-	<meta name=       "description" content="0"/>
-	<meta property="og:description" content="0"/>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Writing a game engine for embedded - hanion.dev</title>
+		<meta property=      "og:title" content="Writing a game engine for embedded - hanion.dev"/>
+		<meta name=       "description" content="0"/>
+		<meta property="og:description" content="0"/>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="icon" type="image/png" href="/favicon.png"/>
-	<link rel="stylesheet" href="/reset.css"/>
-	<link rel="stylesheet" href="/common.css"/>
+		<link rel="icon" type="image/png" href="/asset/favicon.png"/>
+		<link rel="stylesheet" href="/asset/reset.css"/>
+		<link rel="stylesheet" href="/asset/style.css"/>
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-</head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+	</head>
 	<body>
-		<div class="wrapper">
-			<nav class="site-nav">
-				<div class="nav-left">
-					<a href="/">hanion.dev</a>
-				</div>
-			</nav>
-
+		<div class="wrapper"><nav class="site-nav">
+	<div class="nav-left">
+		<a href="/">hanion.dev</a>
+	</div>
+</nav>
 
 			<header>
 				<h1>Writing a game engine for embedded</h1>
@@ -37,7 +36,7 @@
 <source src="3d.mp4" type="video/mp4" alt="3D Rasterizer">
 </video><figcaption>3D Rasterizer</figcaption></figure>
 <p>
-This is a game engine running on an embedded microcontroller.
+<a href="https://github.com/hanion/embedded-engine">This</a> is a game engine running on an embedded microcontroller.
 No operating system, no GPU, just C/C++ and a frame buffer.
 It renders 3D models, runs a raycasting engine, and simulates things like falling sand and Tetris.
 </p>
@@ -281,7 +280,7 @@ After that, I added a projectile system and implemented shooting.
 <p>
 But when I started firing a lot, the engine began crashing.
 Firing the 32nd bullet would freeze the entire system.
-Turns out, I was triggering an <code>std::vector</code> resize, which hit the heap limit and corrupted memory.
+Turns out, I was triggering an <code>std::vector</code> resize, which hit the heap limit.
 </p>
 
 <p>

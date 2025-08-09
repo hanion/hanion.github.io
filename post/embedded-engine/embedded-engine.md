@@ -14,7 +14,7 @@ page->tags   = "embedded game engine rasterizer";
 </figure>
 
 
-This is a game engine running on an embedded microcontroller.
+[This](https://github.com/hanion/embedded-engine) is a game engine running on an embedded microcontroller.
 No operating system, no GPU, just C/C++ and a frame buffer.
 It renders 3D models, runs a raycasting engine, and simulates things like falling sand and Tetris.
 
@@ -254,7 +254,7 @@ After that, I added a projectile system and implemented shooting.
 
 But when I started firing a lot, the engine began crashing.
 Firing the 32nd bullet would freeze the entire system.
-Turns out, I was triggering an `std::vector` resize, which hit the heap limit and corrupted memory.
+Turns out, I was triggering an `std::vector` resize, which hit the heap limit.
 
 The fix was increasing the heap size and giving projectiles a lifetime, so they could be recycled properly.
 
