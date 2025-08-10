@@ -43,3 +43,7 @@ Compared to the countless days I spent trying to make everything work in harmony
 
 > Sometimes, the simplest path is the one you build yourself.
 
+# Update
+This site is currently built with a site generator I wrote in C.
+There is a <a href="/post/mite">post</a> about it.
+

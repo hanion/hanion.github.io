@@ -124,7 +124,7 @@ Why was I manually searching and replacing `CONTENT()` ?
 A template should be able to render multiple pages, so I cant just make the macro the lines that render the content.
 
 Instead of printing templates everywhere, each template became a function.
-The function takes the page’s content rendering function as an argument, so any layout can render any content at runtime.
+The function takes the page's content rendering function as an argument, so any layout can render any content at runtime.
 
 <figure>
 <img src="render_functions.png" alt="render functions">
@@ -153,6 +153,11 @@ We construct it the same, and we call it the same.
 An include can even have nested `INCLUDE()` calls or a `CONTENT()`.
 (it really shouldn't, but why not?)
 It can even include itself, until we blow the stack.
+
+# RSS
+You can generate `rss.xml` by creating `rss.md` and setting this files
+output like `page->output = "rss.xml";` in its front matter.
+Take a look at this site's <a href="https://github.com/hanion/hanion.github.io/blob/main/rss.md">rss.md file</a>.
 
 # Real world usage
 This site is built with mite. You can explore its source code to better understand how it works:

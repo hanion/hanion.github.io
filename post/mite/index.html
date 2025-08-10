@@ -169,7 +169,7 @@ A template should be able to render multiple pages, so I cant just make the macr
 
 <p>
 Instead of printing templates everywhere, each template became a function.
-The function takes the page’s content rendering function as an argument, so any layout can render any content at runtime.
+The function takes the page's content rendering function as an argument, so any layout can render any content at runtime.
 </p>
 <figure>
 <img src="render_functions.png" alt="render functions">
@@ -203,6 +203,14 @@ We construct it the same, and we call it the same.
 An include can even have nested <code>INCLUDE()</code> calls or a <code>CONTENT()</code>.
 (it really shouldn't, but why not?)
 It can even include itself, until we blow the stack.
+</p>
+
+<h1>RSS</h1>
+
+<p>
+You can generate <code>rss.xml</code> by creating <code>rss.md</code> and setting this files
+output like <code>page-&gt;output = &quot;rss.xml&quot;;</code> in its front matter.
+Take a look at this site's <a href="https://github.com/hanion/hanion.github.io/blob/main/rss.md">rss.md file</a>.
 </p>
 
 <h1>Real world usage</h1>
