@@ -3,6 +3,8 @@ page->layout = "post";
 page->title  = "Site generation with C templates";
 page->date   = "2025-08-09";
 page->tags   = "static site generator c template markdown";
+page->description = page->title;
+SET_POST();
 ---
 
 <figure>

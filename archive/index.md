@@ -10,8 +10,8 @@ PAGE_SET("kind", "index")
 
 <ul class="post-list">
 <? sort_pages(&global.pages);
-for (int i = 0; i < global.pages.count; ++i) {
-    SitePage* p = global.pages.items[i];
+for (int i = 0; i < global.posts.count; ++i) {
+    SitePage* p = global.posts.items[i];
     if (DATA_IS(p, "kind", "index")) continue;
     if ((p->date) && *(p->date) == '0') continue; ?>
     <li><time datetime="<? STR(p->date); ?>"><? STR(p->date); ?></time> <a href="<? STR(p->url); ?>"><? STR(p->title); ?></a></li>

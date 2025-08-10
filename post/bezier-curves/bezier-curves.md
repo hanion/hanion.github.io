@@ -3,7 +3,9 @@ page->layout = "post";
 page->title  = "Bézier curves";
 page->date   = "2023-05-16";
 page->tags   = "math simulation";
+page->description = page->title;
 PAGE_SET("mathjax", "true");
+SET_POST();
 //image: "bezier_curves_cover.png"
 ---
 
