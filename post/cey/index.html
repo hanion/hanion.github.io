@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Building a custom C skin - hanion.dev</title>
+		<meta property=      "og:title" content="Building a custom C skin - hanion.dev"/>
+		<meta name=       "description" content="C* the Turkish C"/>
+		<meta property="og:description" content="C* the Turkish C"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="icon" type="image/png" href="/asset/favicon.png"/>
+		<link rel="stylesheet" href="/asset/reset.css"/>
+		<link rel="stylesheet" href="/asset/style.css"/>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+	</head>
+	<body><nav class="site-nav">
+	<div class="nav-left">
+		<a href="/">hanion.dev</a>
+	</div>
+	<div class="nav-right">
+		<a href="/archive" >archive</a>
+		<a href="/rss.xml" >rss</a>
+	</div>
+</nav>
+
+		<div class="wrapper">
+			<header>
+				<h1>Building a custom C skin</h1>
+				<p class="date">2025-08-24</p>
+				<p class="tags">programming language c
+				</p>
+			</header>
+
+			<main class="content"><figure>
+<img src="intro_cey.png" alt="C* code">
+<figcaption>C* code</figcaption></figure>
+<p>
+This is <a href="https://github.com/hanion/cey">C*</a>, the Turkish <code>C</code> skin.
+</p>
+
+<p>
+Its compiler transpiles <code>.cy</code> files into plain <code>C</code> and compiles them with <code>gcc</code> or <code>clang</code>.
+It can run in reverse to turn <code>C</code> back into <code>C*</code>.
+You can also modify the dictionary to create your own <code>C</code> skin.
+</p>
+
+<h1>Motivation</h1>
+
+<p>
+I was developing an interpreted language (<a href="https://github.com/hanion/minik-script">minik-script</a>)
+in <code>C++</code> following the book <a href="https://craftinginterpreters.com/">Crafting Interpreters</a>.
+This was my first experience developing an interpreter, so I followed the book as closely as I can.
+Including the dreaded <strong>Visitor Pattern</strong>.
+It was going well until there were any bugs or I needed to add a feature.
+Debugging or adding features was painful.
+The design felt too complex, and I hated dealing with it.
+</p>
+
+<p>
+I wanted to write another language using simpler design patterns.
+</p>
+
+<p>
+I also have always had a fear of strings. I relied on <code>std::string</code>.
+I didn't know how and where they were stored, who owned them,
+when was I copying or taking by reference ...<br>
+
+</p>
+
+<p>
+I realized I needed a deeper understanding of strings.
+So I tried handling strings in <code>C</code>.
+Is it as hard as I feared? I wanted to know.
+</p>
+
+<h1>How it works</h1>
+
+<p>
+The compiler itself, <code>cey</code>, handles parsing, tokenization, and string management entirely in <code>C</code>.
+It has a simple lexer, and a dictionary.
+It does not have a Parser.
+</p>
+
+<h2>Strings</h2>
+<figure>
+<img src="sv.png" alt="StringView">
+<figcaption>StringView</figcaption></figure>
+<p>
+I used a simple <code>StringView</code> idea, also called <code>slice</code> or <code>span</code>,
+that is just a pointer and a length, not claiming any ownership of the original string.
+</p>
+
+<p>
+The string (file content) is owned by the compiler.
+Compiler reads the file to a buffer, and passes it down to Lexer, and when compiler is done, it frees the buffer.
+Simple as that!
+</p>
+
+<h2>Token</h2>
+
+<p>
+Token has a <code>TokenType</code> and a <code>StringView</code>.
+</p>
+<figure>
+<img src="token_type.png" alt="TokenType">
+<figcaption>TokenType</figcaption></figure>
+<p>
+These are the only token types we need for translating the language.
+We have other token types like number, newline, comment to be able
+to support "packing" feature (minifying by stripping whitespace and newlines).
+It had no purpose other than to be a challenge to me.
+</p>
+
+<h2>Lexer</h2>
+<figure>
+<img src="lexer.png" alt="Lexer">
+<figcaption>Lexer</figcaption></figure>
+<p>
+Lexer is just scanning the content, and generating tokens.
+It needs to know if its in preprocessor mode, and if the preprocessor is in a string.
+Which is needed for include directives.
+</p>
+
+<h2>Dictionary</h2>
+<figure>
+<img src="dictionary.png" alt="Dictionary">
+<figcaption>Dictionary</figcaption></figure>
+<p>
+This is the part where we hold the <i>&quot;skin&quot;</i>.
+When a symbol token is found, the compiler looks it up in the dictionary and translates it.
+</p>
+
+<h2>Compiler</h2>
+<figure>
+<img src="cey_simplified.png" alt="cey compiler simplified">
+<figcaption>cey compiler simplified</figcaption></figure>
+<p>
+If the token is not a symbol, it is printed as is.
+If the token <strong>is</strong> a symbol, meaning its not in a string literal or in a comment,
+it will look for the symbol in the dictionary.
+If the token is found, it's translated.
+If the token is not found, it's kept as is.
+</p>
+
+<h1>Experiments</h1>
+
+<h2>Reverse mode</h2>
+
+<p>
+We can run the compiler in reverse and generate <code>C*</code> code from <code>C</code>
+by simply flipping the dictionary.
+This is what <code>yec</code> does.
+</p>
+
+<h2>Amalgamator</h2>
+<figure>
+<img src="amalgamator.png" alt="Amalgamator">
+<figcaption>Amalgamator</figcaption></figure>
+<p>
+I also wrote an amalgamate generator as another challenge.
+This program uses the lexer from <code>cey</code>.
+It reads <code>C</code> files and concatenates them, expanding include directives, keeping track of included files.
+</p>
+
+<p>
+I still use this for another project of mine: <a href="https://github.com/hanion/cook">cook</a>.
+</p>
+
+<h2>Bootstrapping</h2>
+
+<p>
+With <code>yec</code> and <code>amalgamator</code>, the compiler can bootstrap itself.
+This can be done with <code>make bootstrap</code>, and it will:
+</p>
+<ul>
+<li>Use <code>amalgamator</code> to generate <code>build/amalgamation.c</code> from <code>src/cey.c</code>.</li>
+<li>Reverse-transpile it into <code>examples/cey.cy</code> with <code>yec</code>.</li>
+<li>Rebuild <code>cey</code> from the <code>C*</code> source.</li>
+</ul>
+
+<h1>Make your own skin</h1>
+
+<p>
+Just change the dictionary in the <code>src/dictionary.c</code> and you have your own skin.
+You can use <code>yec</code> to transpile some <code>C</code> sources to demo your own skin.
+</p>
+
+<h1>Conclusion</h1>
+
+<p>
+The project started as a way to face my fear of strings, but ended up making me comfortable in <code>C</code> as a whole.
+Now I prefer direct, predictable <code>C</code> code.
+</p>
+
+<p>
+Along the way, I tried a couple ideas:
+</p>
+<ul>
+<li>I experimented with <a href="https://en.wikipedia.org/wiki/Unity_build">Unity Build</a>.</li>
+<li>I tried passing an options <code>struct</code> instead of a long argument list.</li>
+<li>I tried the dynamic arrays in <code>C</code> idea from <a href="https://x.com/tsoding/status/1897404532331831692">Tsoding&#39;s tweet</a>.</li>
+</ul>
+
+<h1>Source</h1>
+
+<p>
+Source is available on GitHub: <a href="https://github.com/hanion/cey">https://github.com/hanion/cey</a>
+</p>
+
+			</main>
+		</div>
+	</body>
+</html>

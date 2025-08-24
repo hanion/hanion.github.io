@@ -9,7 +9,7 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="icon" type="image/png" href="/asset/favicon.png"/>
+		<link rel="icon" type="image/png" href="<? STR(global.favicon_path) ?>"/>
 		<link rel="stylesheet" href="/asset/reset.css"/>
 		<link rel="stylesheet" href="/asset/style.css"/>
 
@@ -21,6 +21,7 @@
 	</head>
 
 	<body class="home">
+		<? INCLUDE("navbar") ?>
 		<div class="wrapper">
 			<header>
 				<h1 class="home-title"><? STR(global.title) ?></h1>

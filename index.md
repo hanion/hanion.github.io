@@ -2,6 +2,7 @@
 global.url = "https://hanion.dev";
 global.title = "hanion.dev";
 global.description = "recreational programmer";
+global.favicon_path = "/asset/favicon.png";
 
 ADD_SOCIAL("github", "https://github.com/hanion");
 ADD_SOCIAL("itch.io", "https://hanion.itch.io");
@@ -12,8 +13,8 @@ ADD_PROJECT("embedded-engine", "embedded game engine", "/post/embedded-engine");
 ADD_PROJECT("cook", "a single file build system, better make", "https://github.com/hanion/cook");
 ADD_PROJECT("mite", "static site generator with C templates" , "/post/mite");
 ADD_PROJECT("minik-script", "interpreted scripting language", "https://github.com/hanion/minik-script");
-ADD_PROJECT("c* (cey)", "the Turkish C programming language", "https://github.com/hanion/cey");
-ADD_PROJECT("note.sh", "fast note-taking script", "https://github.com/hanion/note.sh");
+ADD_PROJECT("c* (cey)", "the Turkish C programming language", "/post/cey");
+ADD_PROJECT("note.sh", "fast note-taking script", "/post/why-i-abandoned-notion");
 
 page->layout = "home";
 PAGE_SET("kind", "index")
@@ -21,6 +22,10 @@ PAGE_SET("kind", "index")
 
 ## posts
 <ul class="post-list">
+    <li>
+        <time datetime="2025-08-24">2025-08-24 </time>
+        <a href="post/cey">Building a custom C skin</a>
+    </li>
     <li>
         <time datetime="2025-08-09">2025-08-09 </time>
         <a href="post/mite">Site generation with C templates</a>
@@ -41,7 +46,6 @@ PAGE_SET("kind", "index")
         <time datetime="2025-02-03">2025-02-03 </time>
         <a href="post/my-experience-with-jolt">My experience with Jolt Physics</a>
     </li>
-    <? // <li><a href="archive">...</a></li> ?>
 </ul>
 
 ## projects
@@ -53,6 +57,5 @@ PAGE_SET("kind", "index")
     <li><a href="https://github.com/hanion/minik-script">minik-script</a> - interpreted scripting language</li>
 </ul>
 
-<div style="text-align:center"><a href="archive">archive</a></div>
 <br>
 

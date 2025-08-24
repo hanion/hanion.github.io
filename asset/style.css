@@ -69,10 +69,10 @@ header {
 	max-width: var(--max-width);
 	margin: 0 auto;
 	padding: 0 var(--wrapper-padding);
-	padding-bottom: 4rem;
+	/* padding-bottom: 4rem; */
 }
 .home header {
-	margin-top: 6.5rem;
+	margin-top: 3.0rem;
 }
 .home .intro {
 	font-size: 1.1rem;
@@ -113,6 +113,9 @@ footer {
 	text-align: center;
 	margin-bottom: 2rem;
 }
+footer a {
+	margin: 0 0.25rem;
+}
 
 a {
 	color: var(--color-accent);
@@ -128,6 +131,10 @@ a:hover, a:active {
 	align-items: center;
 	padding: 0.8rem;
 	margin-bottom: 3rem;
+}
+
+.site-nav a {
+	margin: 0 0.25rem;
 }
 
 .post-list time {
