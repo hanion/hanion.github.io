@@ -25,7 +25,7 @@ There are no dependencies or external tools.
 You just need a C compiler.
 The output is plain HTML files ready to be served.
 
-Here’s a simple template snippet that dynamically generates a list of links:
+Here's a simple template snippet that dynamically generates a list of links:
 
 <figure>
 <img src="mite_template.png" alt="mite template">
@@ -50,7 +50,7 @@ I had recently moved from Jekyll to plain HTML ([explained here](/post/i-rebuilt
 and was using [pandoc](https://pandoc.org) to convert Markdown to HTML.
 And I didn't want to use it anymore.
 
-I figured I could write my own Markdown renderer. Markdown looked simple enough. It wasn’t.
+I figured I could write my own Markdown renderer. Markdown looked simple enough. It wasn't.
 I built [a markdown renderer of my own](https://github.com/hanion/md2html),
 which ended up taking more time than expected even for my limited needs.
 
@@ -116,7 +116,7 @@ and replacing it with the rendered HTML directly as a string.
 This meant every page had its layout printed directly into it at build time.
 It worked, but it wasn't flexible.
 The layout had to be known in the first stage,
-meaning layouts couldn’t be changed dynamically in the page's front matter.
+meaning layouts couldn't be changed dynamically in the page's front matter.
 
 This made me rethink the architecture of the templating engine.
 Why was I manually searching and replacing `CONTENT()` ?

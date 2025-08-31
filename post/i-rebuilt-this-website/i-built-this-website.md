@@ -12,7 +12,7 @@ I was tired of using Jekyll, Ruby, Node, and all the other tools that turn even 
 So, I decided to take control and rebuild this site from the ground up using just pure HTML and CSS.
 
 What I learned from the process, and the frustrations that led to it, turned into this post.
-I’m not a web developer, and I’m not here to argue for or against modern web practices.
+I'm not a web developer, and I'm not here to argue for or against modern web practices.
 This is more of a personal rant on why I decided to ditch the bloat and go back to basics.
 
 
@@ -27,15 +27,15 @@ This is more of a personal rant on why I decided to ditch the bloat and go back 
   </figure>
 </div>
 
-It’s wild that we need multiple tools just to make a static website in 2025.
-I don’t like being a glue dev, just sticking libraries together until things work.
-I feel like a slave, forced to use someone else’s tools and obey someone else’s rules.
-If you don’t like the way something works? Sucks to be you!
-You’re expected to follow the majority and use whatever gets handed down to you.
-Don’t question it. Don’t try to _think different_.
+It's wild that we need multiple tools just to make a static website in 2025.
+I don't like being a glue dev, just sticking libraries together until things work.
+I feel like a slave, forced to use someone else's tools and obey someone else's rules.
+If you don't like the way something works? Sucks to be you!
+You're expected to follow the majority and use whatever gets handed down to you.
+Don't question it. Don't try to _think different_.
 
-I want control, not because I think I can do it better, but because it’s mine.
-It’s _my website_, _my software_. I want to do what _I want_.
+I want control, not because I think I can do it better, but because it's mine.
+It's _my website_, _my software_. I want to do what _I want_.
 
 And it took only one day!
 One day to get this new website up and running.
