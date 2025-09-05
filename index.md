@@ -8,7 +8,7 @@ ADD_SOCIAL("github", "https://github.com/hanion");
 ADD_SOCIAL("itch.io", "https://hanion.itch.io");
 ADD_SOCIAL("bluesky", "https://bsky.app/profile/haniondev.bsky.social");
 
-ADD_PROJECT("enik-engine", "a tiny game engine", "https://github.com/hanion/enik-engine");
+ADD_PROJECT("enik-engine", "a tiny game engine", "/post/enik-engine");
 ADD_PROJECT("embedded-engine", "embedded game engine", "/post/embedded-engine");
 ADD_PROJECT("cook", "a single file build system, better make", "https://github.com/hanion/cook");
 ADD_PROJECT("mite", "static site generator with C templates" , "/post/mite");
@@ -22,6 +22,10 @@ PAGE_SET("kind", "index")
 
 ## posts
 <ul class="post-list">
+    <li>
+        <time datetime="2025-09-05">2025-09-05 </time>
+        <a href="post/enik-engine">Building a game engine in C++</a>
+    </li>
     <li>
         <time datetime="2025-08-24">2025-08-24 </time>
         <a href="post/cey">Building a custom C skin</a>
@@ -50,10 +54,10 @@ PAGE_SET("kind", "index")
 
 ## projects
 <ul class="post-list">
-    <li><a href="https://github.com/hanion/enik-engine">enik-engine</a> - a tiny game engine</li>
-    <li><a href="post/embedded-engine">embedded-engine</a> - embedded game engine</li>
+    <li><a href="/post/enik-engine">enik-engine</a> - a tiny game engine</li>
+    <li><a href="/post/embedded-engine">embedded-engine</a> - embedded game engine</li>
     <li><a href="https://github.com/hanion/cook">cook</a> - a single file build system, better make</li>
-    <li><a href="post/mite">mite</a> - static site generator with C templates</li>
+    <li><a href="/post/mite">mite</a> - static site generator with C templates</li>
     <li><a href="https://github.com/hanion/minik-script">minik-script</a> - interpreted scripting language</li>
 </ul>
 

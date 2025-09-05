@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Building a game engine in C++ - hanion.dev</title>
+		<meta property=      "og:title" content="Building a game engine in C++ - hanion.dev"/>
+		<meta name=       "description" content="About my custom game engine enik-engine and its systems"/>
+		<meta property="og:description" content="About my custom game engine enik-engine and its systems"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="icon" type="image/png" href="/asset/favicon.png"/>
+		<link rel="stylesheet" href="/asset/reset.css"/>
+		<link rel="stylesheet" href="/asset/style.css"/>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+	</head>
+	<body><nav class="site-nav">
+	<div class="nav-left">
+		<a href="/">hanion.dev</a>
+	</div>
+	<div class="nav-right">
+		<a href="/archive">archive</a>
+		<a href="/rss.xml">rss</a>
+	</div>
+</nav>
+
+		<div class="wrapper">
+			<header>
+				<h1>Building a game engine in C++</h1>
+				<p class="date">2025-09-05</p>
+				<p class="tags">custom game engine editor scripting system physics
+				</p>
+			</header>
+
+			<main class="content"><figure>
+<img src="editor.png" alt="enik-engine editor">
+<figcaption>enik-engine editor</figcaption></figure>
+<p>
+<a href="https://github.com/hanion/enik-engine">enik-engine</a>
+is a <code>C++</code> game engine I've been building from scratch over the past few years.
+</p>
+
+<p>
+What began as a weekend experiment slowly turned into a full engine with an editor, scripting, physics, animation, and more.
+</p>
+
+<p>
+The whole point was to explore low-level systems programming, not to compete with Unity, Unreal, or Godot.
+I wanted something small, fast, and fun to build.
+</p>
+
+<p>
+The real joy of this project was <i>speed</i>: hot reloading made iteration almost instant, so I could try things out as soon as I wrote them.
+</p>
+
+<h1>Under the hood</h1>
+
+<p>
+enik-engine is written in <code>C++</code>.
+</p>
+<ul>
+<li><a href="https://github.com/glfw/glfw">GLFW</a> for windowing</li>
+<li><a href="https://github.com/g-truc/glm">GLM</a> for <a href="https://en.wikipedia.org/wiki/Mathematics">math</a></li>
+<li><a href="https://github.com/ocornut/imgui">Dear ImGui</a> for the editor interface</li>
+<li><a href="https://github.com/skypjack/entt">EnTT</a> for the <a href="https://en.wikipedia.org/wiki/Entity_component_system">ECS</a></li>
+<li><a href="https://github.com/jrouwe/JoltPhysics">Jolt</a> for physics</li>
+<li><a href="https://github.com/wolfpld/tracy">Tracy</a> for profiling</li>
+<li><a href="https://github.com/jbeder/yaml-cpp">yaml</a> for saving/loading data</li>
+</ul>
+
+<h1>Architecture</h1>
+
+<p>
+enik-engine is built for a fast development cycle.
+</p>
+
+<p>
+The core engine is a dynamic library, shared by both the editor and the game.
+Game code is compiled separately as a script module that the editor links at runtime.
+</p>
+
+<p>
+This setup makes hot reloading possible: you can recompile the game code and reload it in the editor without restarting.
+</p>
+<figure>
+<img src="arch.png" alt="enik-engine architecture">
+<figcaption>enik-engine architecture</figcaption></figure>
+<h1>Scripting system</h1>
+
+<h2>Live hot reloading</h2>
+
+<p>
+Hot reloading C or C++ code is not easy, especially if what you are reloading is complex.
+Many engines require complicated systems, and Unreal for example, often needs full rebuilds just to stay stable.
+</p>
+
+<p>
+enik-engine does something unusual.
+The game is running, update functions are being called every frame,
+and on the next frame, the new module is already loaded and running, just by replacing the module.
+It should not work.
+</p>
+
+<p>
+<strong>IT LIVE HOT RELOADS. ON THE FLY.</strong>
+</p>
+<figure>
+<video controls muted playsinline width="100%">
+<source src="hot_reload.mp4" type="video/mp4" alt="Hot Reloading">
+</video><figcaption><strong>Live</strong> Hot Reloading (November 2024)</figcaption></figure>
+<p>
+Seeing changes applied live, while the game continued running, was unbelievable.
+It was consistent, seamless, and crashed less than Unreal.
+I developed all my games using this system.
+</p>
+
+<p>
+The editor replaced the module and its instantiation functions, yet the game state remained intact and the new functions ran immediately.
+The module was replaced exactly as before, and the functions line up. How was the data still preserved?
+It boggled my mind.
+Because it worked consistently, I didn't investigate further and just used it as a killer feature.
+</p>
+
+<h2>What happened to live hot reload</h2>
+
+<p>
+I don't know. It just vanished.
+It still hot reloads, but now you need to stop the game and press play again.
+The editor itself doesn't require a restart, which is still convenient.
+<i>Still hot but not live hot.</i>
+</p>
+
+<p>
+When writing this post, I considered investigating why it worked, but it doesn't anymore.
+</p>
+
+<p>
+My best guess is that a Linux update changed the dynamic linkers behavior.
+If anyone has any idea about how that was happening, or why it stopped working, I'd love to hear it.
+</p>
+
+<h2>Scripting</h2>
+
+<p>
+Scripting is done by inheriting from the <code>ScriptableEntity</code> class and registering it.
+It holds an Entity ID and some callback functions like <code>OnCreate</code> and <code>OnUpdate</code>.
+</p>
+<figure>
+<img src="scriptable_entity.png" alt="Part of Scriptable Entity">
+<figcaption>Part of Scriptable Entity</figcaption></figure>
+<p>
+This class can be attached to an entity through a <code>NativeScript</code> component.
+</p>
+<figure>
+<img src="native_script.png" alt="Native Script">
+<figcaption>Native Script</figcaption></figure>
+<p>
+The instance is created by the engine when the Entity is created.
+</p>
+
+<p>
+Fun fact: I didn't know about tagged unions, so I reinvented them:
+</p>
+<figure>
+<img src="native_script_field.png" alt="Native Script Field">
+<figcaption>Native Script Field</figcaption></figure><blockquote>yes I managed the memory manually please don't look</blockquote>
+
+<p>
+The editor can show these fields in the inspector by calling <code>OnEditorGetFields</code>.
+This can be implemented by the developer in their class derived from <code>ScriptableEntity</code>.
+</p>
+<figure>
+<img src="on_get_fields.png" alt="OnEditorGetFields">
+<figcaption>OnEditorGetFields</figcaption></figure>
+<p>
+The instance must exist before we are able to call this function.
+So we create a temporary instance when binding the script, and save the fields to the <code>NativeScript</code> component's map.
+When the real instance is created, we copy the saved values from the map to the new instance.
+</p>
+
+<h1>Editor</h1>
+
+<p>
+enik-engine has a custom editor built with <a href="https://github.com/ocornut/imgui">Dear ImGui</a>.
+I worked on it more than necessary.
+I love <a href="https://en.wikipedia.org/wiki/Law_of_triviality">bike shedding</a> unfortunately.
+</p>
+
+<h2>Inspector</h2>
+
+<p>
+Inspector shows the entities components and values.
+It can also show any fields exported by the <code>ScriptableEntity</code>.
+</p>
+<figure>
+<img src="native_script_in_inspector.png" alt="Native Script in Inspector">
+<figcaption>Native Script in Inspector</figcaption></figure>
+<p>
+Of course I spent too much time working on the inspector
+so it includes all the 'nice to have' features like
+drag&drop and <code>Asset</code> buttons.
+</p>
+
+<h2>Colors</h2>
+
+<p>
+Assets and components are color-coded for quick identification.
+</p>
+<div style="display: flex; gap: 1em; flex-wrap: nowrap; justify-content: center; align-items: flex-start;">
+<figure>
+<img src="colors_fs.png" alt="File Colors">
+<figcaption>File Colors</figcaption></figure><figure>
+<img src="colors_in.png" alt="Component Colors">
+<figcaption>Component Colors</figcaption></figure></div>
+<h2>Tabs</h2>
+
+<p>
+While using Unity, the interface made me feel claustrophobic.
+When you need to check something in another scene,
+you have to find that scene, open it, check what you need,
+then go back to the first scene and open it again.
+Your file browser may also be in a different place, forcing you to browse again
+</p>
+
+<p>
+I used Unreal for a little bit and I loved the tabbed interface.
+So I stole it.
+In my engine you can open multiple scenes or prefabs or assets in tabs.
+</p>
+<figure>
+<img src="tabs.png" alt="Tabs">
+<figcaption>Tabs</figcaption></figure>
+<h1>Physics engine</h1>
+
+<p>
+I followed the <a href="https://www.youtube.com/watch?v=-_IspRG548E">Designing a Physics Engine in 5 minutes</a>
+video and created my own 2D physics engine,
+which I used for the first few games I made with the engine.
+</p>
+
+<p>
+I wanted to add 3D to the engine and I needed to support 3D physics.
+So I decided using a proven physics engine would be better,
+since I doubt I could make a performant physics engine in a short time.
+</p>
+
+<p>
+I chose Jolt Physics, which was an experience...
+Talked about it here: <a href="/post/my-experience-with-jolt">My experience with Jolt Physics</a>
+</p>
+<figure>
+<img src="jolt-demo.gif" alt="Jolt Physics working in enik-engine">
+<figcaption>Jolt Physics working in enik-engine</figcaption></figure>
+<h1>Prefab system</h1>
+
+<p>
+Prefabs are almost essential in an engine that is primarily used through an editor.
+Because creating an configuring entities take more time.
+</p>
+
+<p>
+I implemented prefabs like scenes in terms of serialization.
+A prefab is just a scene file with only one root entity.
+</p>
+
+<h2>I wish it was that easy...</h2>
+
+<p>
+We face a few problems: What to do with IDs? How to handle references?
+We cannot keep IDs in the prefab because multiple instantiations would collide.
+If we randomize the ID's, then the references between the entities inside the prefab does not work.
+</p>
+
+<p>
+To solve this, we randomize the ID we find, but when we encounter the same ID, we assign the same randomized ID to it.
+This both randomizes the ID's and preserves relationships.
+</p>
+
+<h3>Overrides</h3>
+
+<p>
+Even though it is a prefab, we should be able to override some of its values.
+Like its <code>Transform</code> and <code>Family</code> components.
+Otherwise every instance would appear in the same place with the same hierarchy.
+</p>
+
+<p>
+This means we need to instantiate the prefab first,
+then override some of its values with data from the scene.
+</p>
+
+<h3>Defaults</h3>
+
+<p>
+If all values were overridden, updating the prefab globally wouldn't work.
+The point of a prefab is to allow centralized updates.
+</p>
+
+<p>
+How should we handle it?
+Do we need to keep a pure instance of the prefab around and check each value?
+Do we only save the edited values?
+These would mean changing the whole system to track changes and stuff.
+</p>
+
+<p>
+How did I handle it?
+I only allow overrides of the <code>Transform</code> and <code>Parent</code> from <code>Family</code>.
+It's limited, but it worked well enough.
+</p>
+
+<h3>Nested prefabs</h3>
+
+<p>
+We need to be able know if the entity we created and are deserializing currently is a prefab.
+If it has a Prefab component, we delete it and instantiate the prefab it points to.
+</p>
+
+<p>
+To avoid recursively instantiating the original root prefab, we mark it as <code>RootPrefab</code>.
+</p>
+
+<h2>This took time...</h2>
+<figure>
+<img src="prefabs.png" alt="Debugging Prefab system">
+<figcaption>Debugging Prefab system</figcaption></figure>
+<h1>Asset System</h1>
+
+<p>
+Assets in enik-engine are shared.
+Each asset is referenced using an <code>AssetHandle</code>, so multiple systems or entities can use the same resource without duplicating it.
+The <code>AssetManager</code> takes care of loading, storing, and tracking assets for the engine.
+</p>
+
+<h1>Animation system</h1>
+
+<p>
+Since I was preparing the engine for a game jam, and had very little time,
+I have implemented a bare bones animation system.
+It is basically a value interpolator.
+</p>
+<figure>
+<img src="anim_editor.png" alt="Animation Editor">
+<figcaption>Animation Editor</figcaption></figure>
+<p>
+An <code>Animation</code> is a list of <code>Track</code>s that are played simultaneously.<br>
+
+A <code>Track</code> contains a <code>TrackProperty</code> and a list of <code>Keyframe</code>s.<br>
+
+Each <code>Keyframe</code> stores a time point and a value.
+</p>
+<figure>
+<img src="anim_player.png" alt="Animation Player">
+<figcaption>Animation Player</figcaption></figure>
+<p>
+It doesn't get the properties each frame, it relies on a value pointer.
+I think you can see what kind of problems it can create.
+And it did deliver! It made me bang my head to the wall a lot in the game jam!
+</p>
+
+<p>
+Property pointers meant that if an entity gets destroyed,
+and the ECS reorders the component arrays,
+we have a beautiful dangling pointer in our hands.
+</p>
+
+<p>
+How did I solve this issue at the game jam?
+</p>
+
+<p>
+I did what's called a "pro game developer move".
+I just didn't destroy any entity.
+I teleported the ones I wanted gone to infinity.
+</p>
+
+<h1>Text rendering</h1>
+
+<p>
+I used <a href="https://github.com/nothings/stb/blob/master/stb_truetype.h">stb_truetype</a>
+to import the font, pack it to an atlas, and save the glyphs into an asset.
+</p>
+<figure>
+<img src="text_rendering.png" alt="Text Rendering">
+<figcaption>Text Rendering</figcaption></figure>
+<p>
+Text is rendered using the atlas,
+so drawing strings is just fetching the right glyphs and drawing quads.
+</p>
+
+<h1>Audio system</h1>
+
+<p>
+For audio, I kept it simple.
+I used <a href="https://miniaud.io/">miniaudio</a>
+to play WAV files.
+</p>
+
+<p>
+It doesn’t have 3D spatialization, modulation, or fancy effects.
+I just needed it to exist for the same game jam where I implemented the animation system.
+</p>
+<figure>
+<img src="audio.png" alt="Audio Component">
+<figcaption>Audio Component</figcaption></figure>
+<p>
+It works reliably and is enough to play sounds, music, or simple cues in the engine.
+</p>
+
+<h1>Performance</h1>
+
+<p>
+Performance was good out of the box since the engine isn't as bloated as bigger engines.
+After adding batch rendering, it became more than enough for my needs.
+Here we are rendering 100k+ quads for testing:
+</p>
+<figure>
+<img src="batch.png" alt="Performance After Batch Rendering">
+<figcaption>Performance After Batch Rendering</figcaption></figure>
+<h1>Profiling</h1>
+
+<p>
+Used <a href="https://github.com/wolfpld/tracy">Tracy</a> for profiling the engine.
+</p>
+<figure>
+<img src="tracy.png" alt="Tracy">
+<figcaption>Tracy</figcaption></figure>
+<h1>Your first enik-engine project</h1>
+
+<p>
+Clone the repository with submodules using the <code>--recursive</code> flag:
+</p>
+<pre><code>
+git clone --recursive https://github.com/hanion/enik-engine
+cd enik-engine
+</code></pre>
+
+<p>
+Build the engine and its dependencies:
+</p>
+<pre><code>
+./build.sh
+# or alternatively:
+mkdir build &amp;&amp; cd build
+cmake ..
+cmake --build .
+</code></pre>
+
+<p>
+Open the editor:
+</p>
+<pre><code>
+./build.sh run
+# or alternatively:
+./build/editor/editor
+</code></pre>
+<figure>
+<img src="editor_home.png" alt="enik-engine editor">
+<figcaption>enik-engine editor</figcaption></figure>
+<p>
+Press <strong>New</strong> -> <strong>Project</strong> and select Empty or Example project.
+</p>
+<figure>
+<img src="new_project.png" alt="New Project">
+<figcaption>New Project</figcaption></figure>
+<p>
+Select an empty directory for the project to be created.
+Build your game, or play around with example projects.
+</p>
+
+<p>
+Export the project:
+</p>
+<pre><code>
+./export.sh platform game-title /path/to/project/
+</code></pre>
+
+<p>
+Ensure the directory contains a <code>project.enik</code> file before exporting.
+</p>
+
+<p>
+Exported project files are located in: <code>enik-engine/export/platform/game-title</code>
+</p>
+
+<p>
+You have built your first project in enik-engine!
+<strong>Congratulations!</strong>
+</p>
+
+<h1>Reflections</h1>
+
+<p>
+Building enik-engine taught me a lot about low-level systems programming,
+memory, architecture, hot reloading, and GUI design.
+</p>
+
+<p>
+I also learned how to structure a project for longevity, mostly by failing at it.
+</p>
+
+<h2>What I would do differently if I built it again</h2>
+<ul>
+<li>Focus on core features (avoid features I thought I might need)</li>
+<li>Cut unnecessary abstractions (renderer was abstracted but only OpenGL used)</li>
+<li>Reduce compile times (maybe avoid <code>C++</code>)</li>
+<li>Avoid <code>C++</code> templates (debugging is a nightmare)</li>
+<li>Consider using plain <code>C</code> instead of <code>C++</code></li>
+<li>Avoid smart pointers, use arenas instead</li>
+<li>Reduce third-party libraries (more fun to reinvent the wheel)</li>
+<li>Less perfectionism, more pragmatism</li>
+<li>Don’t fear things I haven’t tried (like text rendering)</li>
+<li>Too many API interfaces (preprocessor is good enough)</li>
+<li>Possibly create my own ECS</li>
+<li>Skip Jolt (stick to my own physics engine or something simpler)</li>
+<li>Avoid spdlog (too many linking issues on Windows)</li>
+</ul>
+
+<p>
+These are the notes I took while developing it, based on my experiences, and might not fit your situation.
+</p>
+
+<h1>Games made with enik-engine</h1>
+<iframe frameborder="0" src="https://itch.io/embed/3622718?border_width=0&amp;bg_color=141414&amp;fg_color=cfc6b8&amp;link_color=e6482e&amp;border_color=141414" width="100%" height="165">
+<a href="https://hanion.itch.io/square-up">square up by hanion</a></iframe><iframe frameborder="0" src="https://itch.io/embed/3197293?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=4d4640&amp;border_color=141414" width="100%" height="165">
+<a href="https://hanion.itch.io/reborn">reborn by hanion</a></iframe><iframe frameborder="0" src="https://itch.io/embed/2703182?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=b4724a&amp;border_color=141414" width="100%" height="165">
+<a href="https://hanion.itch.io/gear-gambit">gear gambit by hanion</a></iframe><iframe frameborder="0" src="https://itch.io/embed/2691954?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=198C19&amp;border_color=141414" width="100%" height="165">
+<a href="https://hanion.itch.io/snake-game">snake game by hanion</a></iframe>
+<h1>Source Code</h1>
+
+<p>
+<a href="https://github.com/hanion/enik-engine">https://github.com/hanion/enik-engine</a>
+</p>
+<iframe frameborder="0" src="https://itch.io/embed/3202738?border_width=0&amp;bg_color=141414&amp;fg_color=ffffff&amp;link_color=e57e19&amp;border_color=141414" width="100%" height="165">
+<a href="https://hanion.itch.io/enik-engine">enik-engine by hanion</a></iframe>
+			</main>
+		</div>
+	</body>
+</html>
