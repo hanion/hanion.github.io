@@ -1,11 +1,11 @@
----
+```c
 page->layout = "post";
 page->title  = "Site generation with C templates";
 page->date   = "2025-08-09";
 page->tags   = "static site generator c template markdown";
-page->description = page->title;
+page->desc   = page->title;
 SET_POST();
----
+```
 
 <figure>
 <img src="intro_template.png" alt="mite template">
@@ -158,6 +158,19 @@ It can even include itself, until we blow the stack.
 You can generate `rss.xml` by creating `rss.md` and setting this files
 output like `page->output = "rss.xml";` in its front matter.
 Take a look at this site's <a href="https://github.com/hanion/hanion.github.io/blob/main/rss.md">rss.md file</a>.
+
+# Incremental rendering
+I have implemented incremental rendering, just like build systems.
+As in only rendering files that have changes.
+It does not work as well as I have anticipated.
+Since some pages require every page to be known, like archive,
+we have to render every page.
+
+I decided to just keep the watcher.
+It runs on the background while serving with `--serve`,
+polling the changes, and if there are any changes,
+it just rerenders everything.
+Which saves one key press.
 
 # Real world usage
 This site is built with mite. You can explore its source code to better understand how it works:

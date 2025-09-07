@@ -217,6 +217,24 @@ output like <code>page-&gt;output = &quot;rss.xml&quot;;</code> in its front mat
 Take a look at this site's <a href="https://github.com/hanion/hanion.github.io/blob/main/rss.md">rss.md file</a>.
 </p>
 
+<h1>Incremental rendering</h1>
+
+<p>
+I have implemented incremental rendering, just like build systems.
+As in only rendering files that have changes.
+It does not work as well as I have anticipated.
+Since some pages require every page to be known, like archive,
+we have to render every page.
+</p>
+
+<p>
+I decided to just keep the watcher.
+It runs on the background while serving with <code>--serve</code>,
+polling the changes, and if there are any changes,
+it just rerenders everything.
+Which saves one key press.
+</p>
+
 <h1>Real world usage</h1>
 
 <p>
