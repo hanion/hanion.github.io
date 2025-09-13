@@ -35,8 +35,10 @@
 			</header>
 
 			<main class="content"><figure>
-<img src="intro_cey.png" alt="C* code">
-<figcaption>C* code</figcaption></figure>
+	<img src="intro_cey.png" alt="C* code">
+	<figcaption>C* code</figcaption>
+</figure>
+
 <p>
 This is <a href="https://github.com/hanion/cey">C*</a>, the Turkish <code>C</code> skin.
 </p>
@@ -86,8 +88,10 @@ It does not have a Parser.
 
 <h2>Strings</h2>
 <figure>
-<img src="sv.png" alt="StringView">
-<figcaption>StringView</figcaption></figure>
+	<img src="sv.png" alt="StringView">
+	<figcaption>StringView</figcaption>
+</figure>
+
 <p>
 I used a simple <code>StringView</code> idea, also called <code>slice</code> or <code>span</code>,
 that is just a pointer and a length, not claiming any ownership of the original string.
@@ -105,8 +109,10 @@ Simple as that!
 Token has a <code>TokenType</code> and a <code>StringView</code>.
 </p>
 <figure>
-<img src="token_type.png" alt="TokenType">
-<figcaption>TokenType</figcaption></figure>
+	<img src="token_type.png" alt="TokenType">
+	<figcaption>TokenType</figcaption>
+</figure>
+
 <p>
 These are the only token types we need for translating the language.
 We have other token types like number, newline, comment to be able
@@ -116,8 +122,10 @@ It had no purpose other than to be a challenge to me.
 
 <h2>Lexer</h2>
 <figure>
-<img src="lexer.png" alt="Lexer">
-<figcaption>Lexer</figcaption></figure>
+	<img src="lexer.png" alt="Lexer">
+	<figcaption>Lexer</figcaption>
+</figure>
+
 <p>
 Lexer is just scanning the content, and generating tokens.
 It needs to know if its in preprocessor mode, and if the preprocessor is in a string.
@@ -126,8 +134,10 @@ Which is needed for include directives.
 
 <h2>Dictionary</h2>
 <figure>
-<img src="dictionary.png" alt="Dictionary">
-<figcaption>Dictionary</figcaption></figure>
+	<img src="dictionary.png" alt="Dictionary">
+	<figcaption>Dictionary</figcaption>
+</figure>
+
 <p>
 This is the part where we hold the <i>&quot;skin&quot;</i>.
 When a symbol token is found, the compiler looks it up in the dictionary and translates it.
@@ -135,8 +145,9 @@ When a symbol token is found, the compiler looks it up in the dictionary and tra
 
 <h2>Compiler</h2>
 <figure>
-<img src="cey_simplified.png" alt="cey compiler simplified">
-<figcaption>cey compiler simplified</figcaption></figure>
+	<img src="cey_simplified.png" alt="cey compiler simplified">
+	<figcaption>cey compiler simplified</figcaption>
+</figure>
 <p>
 If the token is not a symbol, it is printed as is.
 If the token <strong>is</strong> a symbol, meaning its not in a string literal or in a comment,
@@ -157,8 +168,10 @@ This is what <code>yec</code> does.
 
 <h2>Amalgamator</h2>
 <figure>
-<img src="amalgamator.png" alt="Amalgamator">
-<figcaption>Amalgamator</figcaption></figure>
+	<img src="amalgamator.png" alt="Amalgamator">
+	<figcaption>Amalgamator</figcaption>
+</figure>
+
 <p>
 I also wrote an amalgamate generator as another challenge.
 This program uses the lexer from <code>cey</code>.

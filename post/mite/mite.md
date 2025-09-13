@@ -7,10 +7,7 @@ page->desc   = page->title;
 SET_POST();
 ```
 
-<figure>
-<img src="intro_template.png" alt="mite template">
-<figcaption>Mite Template</figcaption>
-</figure>
+![Mite Template](intro_template.png)
 
 This is a [mite](https://github.com/hanion/mite) template.
 It is HTML with C between `<?` and `?>`.
@@ -27,10 +24,7 @@ The output is plain HTML files ready to be served.
 
 Here's a simple template snippet that dynamically generates a list of links:
 
-<figure>
-<img src="mite_template.png" alt="mite template">
-<figcaption>Mite Template</figcaption>
-</figure>
+![Mite Template](mite_template.png)
 
 You write mostly HTML with small embedded C blocks to insert dynamic content.
 No extra templating language, just plain C inside HTML.
@@ -41,10 +35,9 @@ No extra templating language, just plain C inside HTML.
 I got nerd sniped by Tsoding's video [Server-Side Rendering in C](https://www.youtube.com/watch?v=dkNv3KGOFT0).
 The idea of templating with plain C hooked me.
 
-<figure>
-<img src="https://imgs.xkcd.com/comics/nerd_sniping.png" alt="xkcd nerd_sniping">
-<figcaption>Nerd Sniping (<a href="https://xkcd.com/356">https://xkcd.com/356</a>)</figcaption>
-</figure>
+
+![Nerd Sniping (<a href="https://xkcd.com/356">https://xkcd.com/356</a>)](https://imgs.xkcd.com/comics/nerd_sniping.png)
+
 
 I had recently moved from Jekyll to plain HTML ([explained here](/post/i-rebuilt-this-website))
 and was using [pandoc](https://pandoc.org) to convert Markdown to HTML.
@@ -62,25 +55,14 @@ It starts in HTML mode. When it sees `<?`, it switches to C until `?>`.
 
 ## Example
 
-<figure>
-<img src="example_template.png" alt="example mite template">
-<figcaption>Mite Template</figcaption>
-</figure>
-
-<figure>
-<img src="example_c.png" alt="generated c">
-<figcaption>Generated C</figcaption>
-</figure>
+![Mite Template](example_template.png)
+![Generated C](example_c.png)
 
 The macros handle output, they append to the current output `StringBuilder`.  
 HTML bytes are stored directly, so that we dont have to mess with escaping.  
 When this generated code runs, it outputs this:
 
-<figure>
-<img src="example_html.png" alt="rendered html">
-<figcaption>Rendered HTML</figcaption>
-</figure>
-
+![Rendered HTML](example_html.png)
 
 # Second Stage
 The generated code is pasted into a new file `site.c` as the second stage in the process.
@@ -95,19 +77,12 @@ Second stage has these responsibilities:
 Second stage creates fills a global struct for all the pages and templates to use.
 This is done by pasting the front matter of all the pages.
 
-<figure>
-<img src="global_state.png" alt="filling global state">
-<figcaption>Filling Global State</figcaption>
-</figure>
+![Filling Global State](global_state.png)
 
 ## Construct the templates list with their details
 We need to assign a function to the name of the template, heres where we fill this.
 
-<figure>
-<img src="filling_template_list.png" alt="filling template list">
-<figcaption>Filling Template List</figcaption>
-</figure>
-
+![Filling Template List](filling_template_list.png)
 
 ## Render each page with its layout
 First I was searching for "`CONTENT()`" in the templates
@@ -126,17 +101,11 @@ A template should be able to render multiple pages, so I cant just make the macr
 Instead of printing templates everywhere, each template became a function.
 The function takes the page's content rendering function as an argument, so any layout can render any content at runtime.
 
-<figure>
-<img src="render_functions.png" alt="render functions">
-<figcaption>Render Functions</figcaption>
-</figure>
+![Render Functions](render_functions.png)
 
 At render time we find the correct template function and call it with the page and its content function.
 
-<figure>
-    <img src="rendering_the_page.png" alt="rendering the page">
-    <figcaption>Rendering The Page</figcaption>
-</figure>
+![Rendering The Page](rendering_the_page.png)
 
 And because the rendering happens at runtime (after parsing the front matter),
 the same templating system can be used not only in layouts,
@@ -179,14 +148,10 @@ This site is built with mite. You can explore its source code to better understa
 I also made my friends sites using mite, and they turned out really good.
 
 <div style="display: flex; gap: 1em; flex-wrap: nowrap; justify-content: center; align-items: flex-start;">
-<figure>
-    <img src="mite_recep.png" alt="site made with mite">
-    <figcaption><a href="https://recepefee.github.io">site</a> made with mite</figcaption>
-</figure>
-<figure>
-    <img src="mite_enes.png" alt="site made with mite">
-    <figcaption><a href="https://enesibis.github.io">site</a> made with mite</figcaption>
-</figure>
+
+![<a href="https://recepefee.github.io">site</a> made with mite](mite_recep.png)
+![<a href="https://enesibis.github.io">site</a> made with mite](mite_enes.png)
+
 </div>
 
 # Source Code

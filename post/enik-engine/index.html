@@ -35,8 +35,10 @@
 			</header>
 
 			<main class="content"><figure>
-<img src="editor.png" alt="enik-engine editor">
-<figcaption>enik-engine editor</figcaption></figure>
+	<img src="editor.png" alt="enik-engine editor">
+	<figcaption>enik-engine editor</figcaption>
+</figure>
+
 <p>
 <a href="https://github.com/hanion/enik-engine">enik-engine</a>
 is a <code>C++</code> game engine I've been building from scratch over the past few years.
@@ -85,8 +87,10 @@ Game code is compiled separately as a script module that the editor links at run
 This setup makes hot reloading possible: you can recompile the game code and reload it in the editor without restarting.
 </p>
 <figure>
-<img src="arch.png" alt="enik-engine architecture">
-<figcaption>enik-engine architecture</figcaption></figure>
+	<img src="arch.png" alt="enik-engine architecture">
+	<figcaption>enik-engine architecture</figcaption>
+</figure>
+
 <h1>Scripting system</h1>
 
 <h2>Live hot reloading</h2>
@@ -107,9 +111,13 @@ It should not work.
 <strong>IT LIVE HOT RELOADS. ON THE FLY.</strong>
 </p>
 <figure>
-<video controls muted playsinline width="100%">
-<source src="hot_reload.mp4" type="video/mp4" alt="Hot Reloading">
-</video><figcaption><strong>Live</strong> Hot Reloading (November 2024)</figcaption></figure>
+	<video autoplay controls muted loop playsinline width="100%">
+		<source src="hot_reload.mp4" type="video/mp4" alt="&lt;strong&gt;Live&lt;/strong&gt; Hot Reloading (November 2024)">
+	</video>
+	<figcaption><strong>Live</strong> Hot Reloading (November 2024)
+	</figcaption>
+</figure>
+
 <p>
 Seeing changes applied live, while the game continued running, was unbelievable.
 It was consistent, seamless, and crashed less than Unreal.
@@ -148,14 +156,18 @@ Scripting is done by inheriting from the <code>ScriptableEntity</code> class and
 It holds an Entity ID and some callback functions like <code>OnCreate</code> and <code>OnUpdate</code>.
 </p>
 <figure>
-<img src="scriptable_entity.png" alt="Part of Scriptable Entity">
-<figcaption>Part of Scriptable Entity</figcaption></figure>
+	<img src="scriptable_entity.png" alt="Part of Scriptable Entity">
+	<figcaption>Part of Scriptable Entity</figcaption>
+</figure>
+
 <p>
 This class can be attached to an entity through a <code>NativeScript</code> component.
 </p>
 <figure>
-<img src="native_script.png" alt="Native Script">
-<figcaption>Native Script</figcaption></figure>
+	<img src="native_script.png" alt="Native Script">
+	<figcaption>Native Script</figcaption>
+</figure>
+
 <p>
 The instance is created by the engine when the Entity is created.
 </p>
@@ -164,16 +176,20 @@ The instance is created by the engine when the Entity is created.
 Fun fact: I didn't know about tagged unions, so I reinvented them:
 </p>
 <figure>
-<img src="native_script_field.png" alt="Native Script Field">
-<figcaption>Native Script Field</figcaption></figure><blockquote>yes I managed the memory manually please don't look</blockquote>
+	<img src="native_script_field.png" alt="Native Script Field">
+	<figcaption>Native Script Field</figcaption>
+</figure>
+<blockquote>yes I managed the memory manually please don't look</blockquote>
 
 <p>
 The editor can show these fields in the inspector by calling <code>OnEditorGetFields</code>.
 This can be implemented by the developer in their class derived from <code>ScriptableEntity</code>.
 </p>
 <figure>
-<img src="on_get_fields.png" alt="OnEditorGetFields">
-<figcaption>OnEditorGetFields</figcaption></figure>
+	<img src="on_get_fields.png" alt="OnEditorGetFields">
+	<figcaption>OnEditorGetFields</figcaption>
+</figure>
+
 <p>
 The instance must exist before we are able to call this function.
 So we create a temporary instance when binding the script, and save the fields to the <code>NativeScript</code> component's map.
@@ -195,8 +211,10 @@ Inspector shows the entities components and values.
 It can also show any fields exported by the <code>ScriptableEntity</code>.
 </p>
 <figure>
-<img src="native_script_in_inspector.png" alt="Native Script in Inspector">
-<figcaption>Native Script in Inspector</figcaption></figure>
+	<img src="native_script_in_inspector.png" alt="Native Script in Inspector">
+	<figcaption>Native Script in Inspector</figcaption>
+</figure>
+
 <p>
 Of course I spent too much time working on the inspector
 so it includes all the 'nice to have' features like
@@ -210,10 +228,14 @@ Assets and components are color-coded for quick identification.
 </p>
 <div style="display: flex; gap: 1em; flex-wrap: nowrap; justify-content: center; align-items: flex-start;">
 <figure>
-<img src="colors_fs.png" alt="File Colors">
-<figcaption>File Colors</figcaption></figure><figure>
-<img src="colors_in.png" alt="Component Colors">
-<figcaption>Component Colors</figcaption></figure></div>
+	<img src="colors_fs.png" alt="File Colors">
+	<figcaption>File Colors</figcaption>
+</figure>
+<figure>
+	<img src="colors_in.png" alt="Component Colors">
+	<figcaption>Component Colors</figcaption>
+</figure>
+</div>
 <h2>Tabs</h2>
 
 <p>
@@ -230,8 +252,10 @@ So I stole it.
 In my engine you can open multiple scenes or prefabs or assets in tabs.
 </p>
 <figure>
-<img src="tabs.png" alt="Tabs">
-<figcaption>Tabs</figcaption></figure>
+	<img src="tabs.png" alt="Tabs">
+	<figcaption>Tabs</figcaption>
+</figure>
+
 <h1>Physics engine</h1>
 
 <p>
@@ -251,8 +275,10 @@ I chose Jolt Physics, which was an experience...
 Talked about it here: <a href="/post/my-experience-with-jolt">My experience with Jolt Physics</a>
 </p>
 <figure>
-<img src="jolt-demo.gif" alt="Jolt Physics working in enik-engine">
-<figcaption>Jolt Physics working in enik-engine</figcaption></figure>
+	<img src="jolt-demo.gif" alt="Jolt Physics working in enik-engine">
+	<figcaption>Jolt Physics working in enik-engine</figcaption>
+</figure>
+
 <h1>Prefab system</h1>
 
 <p>
@@ -324,8 +350,10 @@ To avoid recursively instantiating the original root prefab, we mark it as <code
 
 <h2>This took time...</h2>
 <figure>
-<img src="prefabs.png" alt="Debugging Prefab system">
-<figcaption>Debugging Prefab system</figcaption></figure>
+	<img src="prefabs.png" alt="Debugging Prefab system">
+	<figcaption>Debugging Prefab system</figcaption>
+</figure>
+
 <h1>Asset System</h1>
 
 <p>
@@ -342,8 +370,10 @@ I have implemented a bare bones animation system.
 It is basically a value interpolator.
 </p>
 <figure>
-<img src="anim_editor.png" alt="Animation Editor">
-<figcaption>Animation Editor</figcaption></figure>
+	<img src="anim_editor.png" alt="Animation Editor">
+	<figcaption>Animation Editor</figcaption>
+</figure>
+
 <p>
 An <code>Animation</code> is a list of <code>Track</code>s that are played simultaneously.<br>
 
@@ -352,8 +382,10 @@ A <code>Track</code> contains a <code>TrackProperty</code> and a list of <code>K
 Each <code>Keyframe</code> stores a time point and a value.
 </p>
 <figure>
-<img src="anim_player.png" alt="Animation Player">
-<figcaption>Animation Player</figcaption></figure>
+	<img src="anim_player.png" alt="Animation Player">
+	<figcaption>Animation Player</figcaption>
+</figure>
+
 <p>
 It doesn't get the properties each frame, it relies on a value pointer.
 I think you can see what kind of problems it can create.
@@ -383,8 +415,10 @@ I used <a href="https://github.com/nothings/stb/blob/master/stb_truetype.h">stb_
 to import the font, pack it to an atlas, and save the glyphs into an asset.
 </p>
 <figure>
-<img src="text_rendering.png" alt="Text Rendering">
-<figcaption>Text Rendering</figcaption></figure>
+	<img src="text_rendering.png" alt="Text Rendering">
+	<figcaption>Text Rendering</figcaption>
+</figure>
+
 <p>
 Text is rendered using the atlas,
 so drawing strings is just fetching the right glyphs and drawing quads.
@@ -403,8 +437,10 @@ It doesn’t have 3D spatialization, modulation, or fancy effects.
 I just needed it to exist for the same game jam where I implemented the animation system.
 </p>
 <figure>
-<img src="audio.png" alt="Audio Component">
-<figcaption>Audio Component</figcaption></figure>
+	<img src="audio.png" alt="Audio Component">
+	<figcaption>Audio Component</figcaption>
+</figure>
+
 <p>
 It works reliably and is enough to play sounds, music, or simple cues in the engine.
 </p>
@@ -417,16 +453,20 @@ After adding batch rendering, it became more than enough for my needs.
 Here we are rendering 100k+ quads for testing:
 </p>
 <figure>
-<img src="batch.png" alt="Performance After Batch Rendering">
-<figcaption>Performance After Batch Rendering</figcaption></figure>
+	<img src="batch.png" alt="Performance After Batch Rendering">
+	<figcaption>Performance After Batch Rendering</figcaption>
+</figure>
+
 <h1>Profiling</h1>
 
 <p>
 Used <a href="https://github.com/wolfpld/tracy">Tracy</a> for profiling the engine.
 </p>
 <figure>
-<img src="tracy.png" alt="Tracy">
-<figcaption>Tracy</figcaption></figure>
+	<img src="tracy.png" alt="Tracy">
+	<figcaption>Tracy</figcaption>
+</figure>
+
 <h1>Your first enik-engine project</h1>
 
 <p>
@@ -457,14 +497,18 @@ Open the editor:
 ./build/editor/editor
 </code></pre>
 <figure>
-<img src="editor_home.png" alt="enik-engine editor">
-<figcaption>enik-engine editor</figcaption></figure>
+	<img src="editor_home.png" alt="enik-engine editor">
+	<figcaption>enik-engine editor</figcaption>
+</figure>
+
 <p>
 Press <strong>New</strong> -> <strong>Project</strong> and select Empty or Example project.
 </p>
 <figure>
-<img src="new_project.png" alt="New Project">
-<figcaption>New Project</figcaption></figure>
+	<img src="new_project.png" alt="New Project">
+	<figcaption>New Project</figcaption>
+</figure>
+
 <p>
 Select an empty directory for the project to be created.
 Build your game, or play around with example projects.

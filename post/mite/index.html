@@ -35,8 +35,10 @@
 			</header>
 
 			<main class="content"><figure>
-<img src="intro_template.png" alt="mite template">
-<figcaption>Mite Template</figcaption></figure>
+	<img src="intro_template.png" alt="Mite Template">
+	<figcaption>Mite Template</figcaption>
+</figure>
+
 <p>
 This is a <a href="https://github.com/hanion/mite">mite</a> template.
 It is HTML with C between <code>&lt;?</code> and <code>?&gt;</code>.
@@ -58,8 +60,10 @@ The output is plain HTML files ready to be served.
 Here's a simple template snippet that dynamically generates a list of links:
 </p>
 <figure>
-<img src="mite_template.png" alt="mite template">
-<figcaption>Mite Template</figcaption></figure>
+	<img src="mite_template.png" alt="Mite Template">
+	<figcaption>Mite Template</figcaption>
+</figure>
+
 <p>
 You write mostly HTML with small embedded C blocks to insert dynamic content.
 No extra templating language, just plain C inside HTML.
@@ -72,8 +76,10 @@ I got nerd sniped by Tsoding's video <a href="https://www.youtube.com/watch?v=dk
 The idea of templating with plain C hooked me.
 </p>
 <figure>
-<img src="https://imgs.xkcd.com/comics/nerd_sniping.png" alt="xkcd nerd_sniping">
-<figcaption>Nerd Sniping (<a href="https://xkcd.com/356">https://xkcd.com/356</a>)</figcaption></figure>
+	<img src="https://imgs.xkcd.com/comics/nerd_sniping.png" alt="Nerd Sniping (&lt;a href=&quot;https://xkcd.com/356&quot;&gt;https://xkcd.com/356&lt;/a&gt;)">
+	<figcaption>Nerd Sniping (<a href="https://xkcd.com/356">https://xkcd.com/356</a>)</figcaption>
+</figure>
+
 <p>
 I had recently moved from Jekyll to plain HTML (<a href="/post/i-rebuilt-this-website">explained here</a>)
 and was using <a href="https://pandoc.org">pandoc</a> to convert Markdown to HTML.
@@ -100,10 +106,14 @@ It starts in HTML mode. When it sees <code>&lt;?</code>, it switches to C until 
 
 <h2>Example</h2>
 <figure>
-<img src="example_template.png" alt="example mite template">
-<figcaption>Mite Template</figcaption></figure><figure>
-<img src="example_c.png" alt="generated c">
-<figcaption>Generated C</figcaption></figure>
+	<img src="example_template.png" alt="Mite Template">
+	<figcaption>Mite Template</figcaption>
+</figure>
+<figure>
+	<img src="example_c.png" alt="Generated C">
+	<figcaption>Generated C</figcaption>
+</figure>
+
 <p>
 The macros handle output, they append to the current output <code>StringBuilder</code>.<br>
 
@@ -112,8 +122,10 @@ HTML bytes are stored directly, so that we dont have to mess with escaping.<br>
 When this generated code runs, it outputs this:
 </p>
 <figure>
-<img src="example_html.png" alt="rendered html">
-<figcaption>Rendered HTML</figcaption></figure>
+	<img src="example_html.png" alt="Rendered HTML">
+	<figcaption>Rendered HTML</figcaption>
+</figure>
+
 <h1>Second Stage</h1>
 
 <p>
@@ -137,16 +149,20 @@ Second stage creates fills a global struct for all the pages and templates to us
 This is done by pasting the front matter of all the pages.
 </p>
 <figure>
-<img src="global_state.png" alt="filling global state">
-<figcaption>Filling Global State</figcaption></figure>
+	<img src="global_state.png" alt="Filling Global State">
+	<figcaption>Filling Global State</figcaption>
+</figure>
+
 <h2>Construct the templates list with their details</h2>
 
 <p>
 We need to assign a function to the name of the template, heres where we fill this.
 </p>
 <figure>
-<img src="filling_template_list.png" alt="filling template list">
-<figcaption>Filling Template List</figcaption></figure>
+	<img src="filling_template_list.png" alt="Filling Template List">
+	<figcaption>Filling Template List</figcaption>
+</figure>
+
 <h2>Render each page with its layout</h2>
 
 <p>
@@ -175,14 +191,18 @@ Instead of printing templates everywhere, each template became a function.
 The function takes the page's content rendering function as an argument, so any layout can render any content at runtime.
 </p>
 <figure>
-<img src="render_functions.png" alt="render functions">
-<figcaption>Render Functions</figcaption></figure>
+	<img src="render_functions.png" alt="Render Functions">
+	<figcaption>Render Functions</figcaption>
+</figure>
+
 <p>
 At render time we find the correct template function and call it with the page and its content function.
 </p>
 <figure>
-<img src="rendering_the_page.png" alt="rendering the page">
-<figcaption>Rendering The Page</figcaption></figure>
+	<img src="rendering_the_page.png" alt="Rendering The Page">
+	<figcaption>Rendering The Page</figcaption>
+</figure>
+
 <p>
 And because the rendering happens at runtime (after parsing the front matter),
 the same templating system can be used not only in layouts,
@@ -246,10 +266,14 @@ I also made my friends sites using mite, and they turned out really good.
 </p>
 <div style="display: flex; gap: 1em; flex-wrap: nowrap; justify-content: center; align-items: flex-start;">
 <figure>
-<img src="mite_recep.png" alt="site made with mite">
-<figcaption><a href="https://recepefee.github.io">site</a> made with mite</figcaption></figure><figure>
-<img src="mite_enes.png" alt="site made with mite">
-<figcaption><a href="https://enesibis.github.io">site</a> made with mite</figcaption></figure></div>
+	<img src="mite_recep.png" alt="&lt;a href=&quot;https://recepefee.github.io&quot;&gt;site&lt;/a&gt; made with mite">
+	<figcaption><a href="https://recepefee.github.io">site</a> made with mite</figcaption>
+</figure>
+<figure>
+	<img src="mite_enes.png" alt="&lt;a href=&quot;https://enesibis.github.io&quot;&gt;site&lt;/a&gt; made with mite">
+	<figcaption><a href="https://enesibis.github.io">site</a> made with mite</figcaption>
+</figure>
+</div>
 <h1>Source Code</h1>
 
 <p>

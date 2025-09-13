@@ -7,10 +7,7 @@ page->description = "About my custom game engine enik-engine and its systems";
 SET_POST();
 ```
 
-<figure>
-    <img src="editor.png" alt="enik-engine editor">
-    <figcaption>enik-engine editor</figcaption>
-</figure>
+![enik-engine editor](editor.png)
 
 [enik-engine](https://github.com/hanion/enik-engine)
 is a `C++` game engine I've been building from scratch over the past few years.
@@ -43,10 +40,7 @@ Game code is compiled separately as a script module that the editor links at run
 
 This setup makes hot reloading possible: you can recompile the game code and reload it in the editor without restarting.
 
-<figure>
-    <img src="arch.png" alt="enik-engine architecture">
-    <figcaption>enik-engine architecture</figcaption>
-</figure>
+![enik-engine architecture](arch.png)
 
 
 # Scripting system
@@ -60,13 +54,7 @@ and on the next frame, the new module is already loaded and running, just by rep
 It should not work.
 
 **IT LIVE HOT RELOADS. ON THE FLY.**
-
-<figure>
-    <video controls muted playsinline width="100%">
-        <source src="hot_reload.mp4" type="video/mp4" alt="Hot Reloading">
-    </video>
-    <figcaption><strong>Live</strong> Hot Reloading (November 2024)</figcaption>
-</figure>
+![<strong>Live</strong> Hot Reloading (November 2024)](hot_reload.mp4)
 
 Seeing changes applied live, while the game continued running, was unbelievable.
 It was consistent, seamless, and crashed less than Unreal.
@@ -92,36 +80,24 @@ If anyone has any idea about how that was happening, or why it stopped working, 
 Scripting is done by inheriting from the `ScriptableEntity` class and registering it.
 It holds an Entity ID and some callback functions like `OnCreate` and `OnUpdate`.
 
-<figure>
-    <img src="scriptable_entity.png" alt="Part of Scriptable Entity">
-    <figcaption>Part of Scriptable Entity</figcaption>
-</figure>
+![Part of Scriptable Entity](scriptable_entity.png)
 
 This class can be attached to an entity through a `NativeScript` component.
 
-<figure>
-    <img src="native_script.png" alt="Native Script">
-    <figcaption>Native Script</figcaption>
-</figure>
+![Native Script](native_script.png)
 
 The instance is created by the engine when the Entity is created.
 
 Fun fact: I didn't know about tagged unions, so I reinvented them:
 
-<figure>
-    <img src="native_script_field.png" alt="Native Script Field">
-    <figcaption>Native Script Field</figcaption>
-</figure>
+![Native Script Field](native_script_field.png)
 
 > yes I managed the memory manually please don't look
 
 The editor can show these fields in the inspector by calling `OnEditorGetFields`.
 This can be implemented by the developer in their class derived from `ScriptableEntity`.
 
-<figure>
-    <img src="on_get_fields.png" alt="OnEditorGetFields">
-    <figcaption>OnEditorGetFields</figcaption>
-</figure>
+![OnEditorGetFields](on_get_fields.png)
 
 The instance must exist before we are able to call this function.
 So we create a temporary instance when binding the script, and save the fields to the `NativeScript` component's map.
@@ -138,10 +114,7 @@ I love [bike shedding](https://en.wikipedia.org/wiki/Law_of_triviality) unfortun
 Inspector shows the entities components and values.
 It can also show any fields exported by the `ScriptableEntity`.
 
-<figure>
-    <img src="native_script_in_inspector.png" alt="Native Script in Inspector">
-    <figcaption>Native Script in Inspector</figcaption>
-</figure>
+![Native Script in Inspector](native_script_in_inspector.png)
 
 Of course I spent too much time working on the inspector
 so it includes all the 'nice to have' features like
@@ -152,14 +125,8 @@ drag&drop and `Asset` buttons.
 Assets and components are color-coded for quick identification.
 
 <div style="display: flex; gap: 1em; flex-wrap: nowrap; justify-content: center; align-items: flex-start;">
-<figure>
-    <img src="colors_fs.png" alt="File Colors">
-    <figcaption>File Colors</figcaption>
-</figure>
-<figure>
-    <img src="colors_in.png" alt="Component Colors">
-    <figcaption>Component Colors</figcaption>
-</figure>
+![File Colors](colors_fs.png)
+![Component Colors](colors_in.png)
 </div>
 
 
@@ -175,10 +142,7 @@ I used Unreal for a little bit and I loved the tabbed interface.
 So I stole it.
 In my engine you can open multiple scenes or prefabs or assets in tabs.
 
-<figure>
-    <img src="tabs.png" alt="Tabs">
-    <figcaption>Tabs</figcaption>
-</figure>
+![Tabs](tabs.png)
 
 
 # Physics engine
@@ -193,10 +157,7 @@ since I doubt I could make a performant physics engine in a short time.
 I chose Jolt Physics, which was an experience...
 Talked about it here: [My experience with Jolt Physics](/post/my-experience-with-jolt)
 
-<figure>
-    <img src="jolt-demo.gif" alt="Jolt Physics working in enik-engine">
-    <figcaption>Jolt Physics working in enik-engine</figcaption>
-</figure>
+![Jolt Physics working in enik-engine](jolt-demo.gif)
 
 
 # Prefab system
@@ -242,10 +203,7 @@ If it has a Prefab component, we delete it and instantiate the prefab it points 
 To avoid recursively instantiating the original root prefab, we mark it as `RootPrefab`.
 
 ## This took time...
-<figure>
-    <img src="prefabs.png" alt="Debugging Prefab system">
-    <figcaption>Debugging Prefab system</figcaption>
-</figure>
+![Debugging Prefab system](prefabs.png)
 
 
 # Asset System
@@ -258,19 +216,13 @@ Since I was preparing the engine for a game jam, and had very little time,
 I have implemented a bare bones animation system.
 It is basically a value interpolator.
 
-<figure>
-    <img src="anim_editor.png" alt="Animation Editor">
-    <figcaption>Animation Editor</figcaption>
-</figure>
+![Animation Editor](anim_editor.png)
 
 An `Animation` is a list of `Track`s that are played simultaneously.  
 A `Track` contains a `TrackProperty` and a list of `Keyframe`s.  
 Each `Keyframe` stores a time point and a value.
 
-<figure>
-    <img src="anim_player.png" alt="Animation Player">
-    <figcaption>Animation Player</figcaption>
-</figure>
+![Animation Player](anim_player.png)
 
 It doesn't get the properties each frame, it relies on a value pointer.
 I think you can see what kind of problems it can create.
@@ -291,10 +243,7 @@ I teleported the ones I wanted gone to infinity.
 I used [stb_truetype](https://github.com/nothings/stb/blob/master/stb_truetype.h)
 to import the font, pack it to an atlas, and save the glyphs into an asset.
 
-<figure>
-    <img src="text_rendering.png" alt="Text Rendering">
-    <figcaption>Text Rendering</figcaption>
-</figure>
+![Text Rendering](text_rendering.png)
 
 Text is rendered using the atlas,
 so drawing strings is just fetching the right glyphs and drawing quads.
@@ -308,10 +257,7 @@ to play WAV files.
 It doesn’t have 3D spatialization, modulation, or fancy effects.
 I just needed it to exist for the same game jam where I implemented the animation system.
 
-<figure>
-    <img src="audio.png" alt="Audio Component">
-    <figcaption>Audio Component</figcaption>
-</figure>
+![Audio Component](audio.png)
 
 It works reliably and is enough to play sounds, music, or simple cues in the engine.
 
@@ -320,19 +266,13 @@ Performance was good out of the box since the engine isn't as bloated as bigger 
 After adding batch rendering, it became more than enough for my needs.
 Here we are rendering 100k+ quads for testing:
 
-<figure>
-    <img src="batch.png" alt="Performance After Batch Rendering">
-    <figcaption>Performance After Batch Rendering</figcaption>
-</figure>
+![Performance After Batch Rendering](batch.png)
 
 
 # Profiling
 Used [Tracy](https://github.com/wolfpld/tracy) for profiling the engine.
 
-<figure>
-    <img src="tracy.png" alt="Tracy">
-    <figcaption>Tracy</figcaption>
-</figure>
+![Tracy](tracy.png)
 
 
 
@@ -358,18 +298,12 @@ Open the editor:
 # or alternatively:
 ./build/editor/editor
 ```
-<figure>
-    <img src="editor_home.png" alt="enik-engine editor">
-    <figcaption>enik-engine editor</figcaption>
-</figure>
+![enik-engine editor](editor_home.png)
 
 
 Press **New** -> **Project** and select Empty or Example project.
 
-<figure>
-    <img src="new_project.png" alt="New Project">
-    <figcaption>New Project</figcaption>
-</figure>
+![New Project](new_project.png)
 
 Select an empty directory for the project to be created.
 Build your game, or play around with example projects.

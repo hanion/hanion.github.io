@@ -7,10 +7,7 @@ page->desc   = "C* the Turkish C";
 SET_POST();
 ```
 
-<figure>
-    <img src="intro_cey.png" alt="C* code">
-    <figcaption>C* code</figcaption>
-</figure>
+![C* code](intro_cey.png)
 
 This is [C*](https://github.com/hanion/cey), the Turkish `C` skin.
 
@@ -46,10 +43,8 @@ It does not have a Parser.
 
 
 ## Strings
-<figure>
-    <img src="sv.png" alt="StringView">
-    <figcaption>StringView</figcaption>
-</figure>
+
+![StringView](sv.png)
 
 I used a simple `StringView` idea, also called `slice` or `span`,
 that is just a pointer and a length, not claiming any ownership of the original string.
@@ -62,10 +57,7 @@ Simple as that!
 ## Token
 Token has a `TokenType` and a `StringView`.
 
-<figure>
-    <img src="token_type.png" alt="TokenType">
-    <figcaption>TokenType</figcaption>
-</figure>
+![TokenType](token_type.png)
 
 These are the only token types we need for translating the language.
 We have other token types like number, newline, comment to be able
@@ -74,30 +66,21 @@ It had no purpose other than to be a challenge to me.
 
 
 ## Lexer
-<figure>
-    <img src="lexer.png" alt="Lexer">
-    <figcaption>Lexer</figcaption>
-</figure>
+![Lexer](lexer.png)
 
 Lexer is just scanning the content, and generating tokens.
 It needs to know if its in preprocessor mode, and if the preprocessor is in a string.
 Which is needed for include directives.
 
 ## Dictionary
-<figure>
-    <img src="dictionary.png" alt="Dictionary">
-    <figcaption>Dictionary</figcaption>
-</figure>
+![Dictionary](dictionary.png)
 
 This is the part where we hold the *"skin"*.
 When a symbol token is found, the compiler looks it up in the dictionary and translates it.
 
 
 ## Compiler
-<figure>
-    <img src="cey_simplified.png" alt="cey compiler simplified">
-    <figcaption>cey compiler simplified</figcaption>
-</figure>
+![cey compiler simplified](cey_simplified.png)
 
 <?/* code in the figure:
 if (token.type == TOKEN_SYMBOL) {
@@ -121,10 +104,7 @@ by simply flipping the dictionary.
 This is what `yec` does.
 
 ## Amalgamator
-<figure>
-    <img src="amalgamator.png" alt="Amalgamator">
-    <figcaption>Amalgamator</figcaption>
-</figure>
+![Amalgamator](amalgamator.png)
 
 I also wrote an amalgamate generator as another challenge.
 This program uses the lexer from `cey`.

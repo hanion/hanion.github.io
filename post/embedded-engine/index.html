@@ -35,9 +35,13 @@
 			</header>
 
 			<main class="content"><figure>
-<video controls autoplay muted playsinline width="100%">
-<source src="3d.webm" type="video/webm" alt="3D Rasterizer">
-</video><figcaption>3D Rasterizer</figcaption></figure>
+	<video autoplay controls muted loop playsinline width="100%">
+		<source src="3d.webm" type="video/webm" alt="3D Rasterizer">
+	</video>
+	<figcaption>3D Rasterizer
+	</figcaption>
+</figure>
+
 <p>
 <a href="https://github.com/hanion/embedded-engine">embedded-engine</a> is a game engine running on an embedded microcontroller.
 No operating system, no GPU, just C/C++ and a frame buffer.
@@ -68,15 +72,19 @@ So I started pushing one pixel at a time, and just watched and counted how they 
 With that knowledge, I wrote a display driver to push a <strong>frame buffer</strong> onto the panel.
 </p>
 <figure>
-<img src="display_driving.png" alt="Display Driving Logic">
-<figcaption>Display Driving Logic</figcaption></figure>
+	<img src="display_driving.png" alt="Display Driving Logic">
+	<figcaption>Display Driving Logic</figcaption>
+</figure>
+
 <p>
 Then I spent a lot of time tweaking timings to reduce flickering and get a stable, uniform image.
 Most difficult part of this project was <strong><i>timing</i></strong>.
 </p>
 <figure>
-<img src="rendering.png" alt="Rendering Frame Buffer On The Panel">
-<figcaption>Rendering Frame Buffer</figcaption></figure>
+	<img src="rendering.png" alt="Rendering Frame Buffer">
+	<figcaption>Rendering Frame Buffer</figcaption>
+</figure>
+
 <h1>Rendering text</h1>
 
 <p>
@@ -84,14 +92,18 @@ After getting the display driver working, the next goal was to render and scroll
 So I implemented basic <a href="https://en.wikipedia.org/wiki/Computer_font#BITMAP">bitmap font</a> rendering.
 </p>
 <figure>
-<img src="text.png" alt="Text Rendering On The Panel" >
-<figcaption>Text Rendering</figcaption></figure>
+	<img src="text.png" alt="Text Rendering">
+	<figcaption>Text Rendering</figcaption>
+</figure>
+
 <p>
 When I tried scrolling the text, there was noticable tearing.
 </p>
 <figure>
-<img src="tearing.png" alt="Scrolling Text Tearing On The Panel" style="max-height: 250px;">
-<figcaption>Scrolling Text Tearing</figcaption></figure>
+	<img src="tearing.png" alt="Scrolling Text Tearing">
+	<figcaption>Scrolling Text Tearing</figcaption>
+</figure>
+
 <p>
 I fixed it by adding double buffering and tweaking the timings <strong>a lot</strong>.
 </p>
@@ -106,10 +118,14 @@ Then I programmed <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 </p>
 <div style="display: flex; gap: 1em; flex-wrap: nowrap; justify-content: center; align-items: flex-start;">
 <figure>
-<img src="rule110.png" alt="Rule 110">
-<figcaption>Rule 110</figcaption></figure><figure>
-<img src="gol.png" alt="Conways Game Of Life">
-<figcaption>Game Of Life</figcaption></figure></div>
+	<img src="rule110.png" alt="Rule 110">
+	<figcaption>Rule 110</figcaption>
+</figure>
+<figure>
+	<img src="gol.png" alt="Game Of Life">
+	<figcaption>Game Of Life</figcaption>
+</figure>
+</div>
 <h1>Can I make a game ?</h1>
 
 <p>
@@ -120,9 +136,13 @@ I thought about what games could I make with one button,
 and <a href="https://en.wikipedia.org/wiki/Dinosaur_Game">Dinosaur Game</a> came to my mind.
 </p>
 <figure>
-<video controls muted playsinline width="100%">
-<source src="dino.webm" type="video/webm" alt="Dinosaur Game">
-</video><figcaption>Dinosaur Game</figcaption></figure>
+	<video autoplay controls muted loop playsinline width="100%">
+		<source src="dino.webm" type="video/webm" alt="Dinosaur Game">
+	</video>
+	<figcaption>Dinosaur Game
+	</figcaption>
+</figure>
+
 <h1>Connecting a keyboard</h1>
 
 <p>
@@ -186,8 +206,10 @@ When we <i>&quot;deactivate&quot;</i> a key, one <code>Released</code> event is 
 This is the entirity of the <code>Application</code> API:
 </p>
 <figure>
-<img src="application.png" alt="Application">
-<figcaption>Application</figcaption></figure>
+	<img src="application.png" alt="Application">
+	<figcaption>Application</figcaption>
+</figure>
+
 <h1>3D Rendering</h1>
 
 <p>
@@ -197,39 +219,51 @@ There is an amazing <a href="https://www.youtube.com/playlist?list=PLYnrabpSIM-9
 I started with implementing the basics, like Vector, Matrix, and Transform structures.
 </p>
 <figure>
-<img src="vec_transform.png" alt="Vector and Transform structures">
-<figcaption>Vector and Transform</figcaption></figure>
+	<img src="vec_transform.png" alt="Vector and Transform">
+	<figcaption>Vector and Transform</figcaption>
+</figure>
+
 <p>
 Now when I look back at it, I couldve used vectors in the <code>Transform</code>,
 but I created the <code>Vec3</code> later, so I probably did not see that.
 </p>
 <figure>
-<img src="better_transform.png" alt="Better Transform">
-<figcaption>Better Transform</figcaption></figure>
+	<img src="better_transform.png" alt="Better Transform">
+	<figcaption>Better Transform</figcaption>
+</figure>
+
 <p>
 Then I implemented the matrix calculations.
 </p>
 <figure>
-<img src="matrix.png" alt="Matrix Functions">
-<figcaption>Matrix Functions</figcaption></figure>
+	<img src="matrix.png" alt="Matrix Functions">
+	<figcaption>Matrix Functions</figcaption>
+</figure>
+
 <p>
 I created <code>Vertex</code> and <code>Face</code> for my <code>Mesh</code>.
 </p>
 <figure>
-<img src="vertex_face.png" alt="Vertex and Face">
-<figcaption>Vertex and Face</figcaption></figure>
+	<img src="vertex_face.png" alt="Vertex and Face">
+	<figcaption>Vertex and Face</figcaption>
+</figure>
+
 <p>
 Then doing all the calculations and drawing the mesh to the buffer.
 </p>
 <figure>
-<img src="projection.png" alt="Projection">
-<figcaption>Projection</figcaption></figure>
+	<img src="projection.png" alt="Projection">
+	<figcaption>Projection</figcaption>
+</figure>
+
 <p>
 Theres the cube rendered with perspective projection. Finally!
 </p>
 <figure>
-<img src="3d_cube.png" alt="3d cube">
-<figcaption>3D Cube</figcaption></figure>
+	<img src="3d_cube.png" alt="3D Cube">
+	<figcaption>3D Cube</figcaption>
+</figure>
+
 <p>
 Then I wanted to render something more complicated than a hand crafted cube.
 I couldnt easily port <code>obj</code> files into my engine in C,
@@ -237,23 +271,31 @@ so I wrote a python script to convert <code>obj</code> files into my mesh format
 This python script takes the <code>obj</code> file and spits out a C source file containing the mesh data.
 </p>
 <figure>
-<img src="formatted_model.png" alt="Formatted Model">
-<figcaption>Formatted Model</figcaption></figure>
+	<img src="formatted_model.png" alt="Formatted Model">
+	<figcaption>Formatted Model</figcaption>
+</figure>
+
 <p>
 I went into blender and created a torus model, exported it to an <code>obj</code> file.
 </p>
 <figure>
-<img src="3d_torus.png" alt="3d torus">
-<figcaption>3D Torus</figcaption></figure>
+	<img src="3d_torus.png" alt="3D Torus">
+	<figcaption>3D Torus</figcaption>
+</figure>
+
 <p>
 I tried to add face filling, drawing filled polygons instead of just outlines.
 But the device just couldn't handle it. It was too slow.
 Just filling the faces slowed the device so much, that I did not even try implementing a depth buffer.
 </p>
 <figure>
-<video controls muted playsinline width="100%">
-<source src="face_filling.webm" type="video/webm" alt="Performance Drop Of Face Filling">
-</video><figcaption>Performance Drop Of Face Filling</figcaption></figure>
+	<video autoplay controls muted loop playsinline width="100%">
+		<source src="face_filling.webm" type="video/webm" alt="Performance Drop Of Face Filling">
+	</video>
+	<figcaption>Performance Drop Of Face Filling
+	</figcaption>
+</figure>
+
 <p>
 Without a depth buffer, the best I could do was backface culling.
 </p>
@@ -264,23 +306,31 @@ Without a depth buffer, the best I could do was backface culling.
 Adding raycaster was easier.
 </p>
 <figure>
-<img src="raycast_result.png" alt="Raycast Result">
-<figcaption>Raycast Result</figcaption></figure>
+	<img src="raycast_result.png" alt="Raycast Result">
+	<figcaption>Raycast Result</figcaption>
+</figure>
+
 <p>
 No projection matrix, no vertex transforms, just ray math.
 </p>
 <figure>
-<img src="raycaster.png" alt="raycaster">
-<figcaption>Raycaster</figcaption></figure>
+	<img src="raycaster.png" alt="Raycaster">
+	<figcaption>Raycaster</figcaption>
+</figure>
+
 <p>
 I added sprite and texture rendering next.
 Then I created a simple enemy that follows the player and deals damage when it gets close.
 After that, I added a projectile system and implemented shooting.
 </p>
 <figure>
-<video controls autoplay muted playsinline width="100%">
-<source src="doom.webm" type="video/webm" alt="Raycaster 'Doom' Game">
-</video><figcaption>Raycaster "Doom" Game</figcaption></figure>
+	<video autoplay controls muted loop playsinline width="100%">
+		<source src="doom.webm" type="video/webm" alt="Raycaster &quot;Doom&quot; Game">
+	</video>
+	<figcaption>Raycaster "Doom" Game
+	</figcaption>
+</figure>
+
 <p>
 But when I started firing a lot, the engine began crashing.
 Firing the 32nd bullet would freeze the entire system.
@@ -298,16 +348,20 @@ I always wanted to try falling sand simulation.
 I implemented it by learing it from <a href="https://www.youtube.com/watch?v=L4u7Zy_b868">Coding Train&#39;s Video</a>.
 </p>
 <figure>
-<img src="falling_sand.png" alt="falling sand simulation">
-<figcaption>Falling Sand Simulation</figcaption></figure>
+	<img src="falling_sand.png" alt="Falling Sand Simulation">
+	<figcaption>Falling Sand Simulation</figcaption>
+</figure>
+
 <h1>Tetris</h1>
 
 <p>
 I love tetris, I have almost always implemented tetris whenever I saw the opportunity.
 </p>
 <figure>
-<img src="tetris.png" alt="tetris">
-<figcaption>Tetris</figcaption></figure>
+	<img src="tetris.png" alt="Tetris">
+	<figcaption>Tetris</figcaption>
+</figure>
+
 <h1>Final Thoughts</h1>
 
 <p>
