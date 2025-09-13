@@ -1,0 +1,25 @@
+
+<div id="preview-overlay" style="display:none;">
+	<figure>
+		<img id="preview-img" src="" alt="">
+		<figcaption id="preview-caption"></figcaption>
+	</figure>
+</div>
+
+<script>
+document.querySelectorAll('figure img').forEach(img => {
+	img.addEventListener('click', () => {
+		const overlay = document.getElementById('preview-overlay');
+		const previewImg = document.getElementById('preview-img');
+		const caption = document.getElementById('preview-caption');
+		previewImg.src = img.src;
+		const figcaption = img.closest('figure')?.querySelector('figcaption');
+		caption.textContent = figcaption ? figcaption.textContent : '';
+		overlay.style.display = 'flex';
+	});
+});
+document.getElementById('preview-overlay').addEventListener('click', () => {
+	document.getElementById('preview-overlay').style.display = 'none';
+});
+</script>
+

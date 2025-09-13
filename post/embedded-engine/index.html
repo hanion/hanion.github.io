@@ -17,7 +17,8 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 	</head>
-	<body><nav class="site-nav">
+	<body>
+		<div class="wrapper"><nav class="site-nav">
 	<div class="nav-left">
 		<a href="/">hanion.dev</a>
 	</div>
@@ -26,8 +27,6 @@
 		<a href="/rss.xml">rss</a>
 	</div>
 </nav>
-
-		<div class="wrapper">
 			<header>
 				<h1>Writing a game engine for embedded</h1>
 				<p class="date">2025-07-21</p>
@@ -37,10 +36,10 @@
 
 			<main class="content"><figure>
 <video controls autoplay muted playsinline width="100%">
-<source src="3d.mp4" type="video/mp4" alt="3D Rasterizer">
+<source src="3d.webm" type="video/webm" alt="3D Rasterizer">
 </video><figcaption>3D Rasterizer</figcaption></figure>
 <p>
-<a href="https://github.com/hanion/embedded-engine">This</a> is a game engine running on an embedded microcontroller.
+<a href="https://github.com/hanion/embedded-engine">embedded-engine</a> is a game engine running on an embedded microcontroller.
 No operating system, no GPU, just C/C++ and a frame buffer.
 It renders 3D models, runs a raycasting engine, and simulates things like falling sand and Tetris.
 </p>
@@ -122,7 +121,7 @@ and <a href="https://en.wikipedia.org/wiki/Dinosaur_Game">Dinosaur Game</a> came
 </p>
 <figure>
 <video controls muted playsinline width="100%">
-<source src="dino.mp4" type="video/mp4" alt="Dinosaur Game">
+<source src="dino.webm" type="video/webm" alt="Dinosaur Game">
 </video><figcaption>Dinosaur Game</figcaption></figure>
 <h1>Connecting a keyboard</h1>
 
@@ -253,7 +252,7 @@ Just filling the faces slowed the device so much, that I did not even try implem
 </p>
 <figure>
 <video controls muted playsinline width="100%">
-<source src="face_filling.mp4" type="video/mp4" alt="Performance Drop Of Face Filling">
+<source src="face_filling.webm" type="video/webm" alt="Performance Drop Of Face Filling">
 </video><figcaption>Performance Drop Of Face Filling</figcaption></figure>
 <p>
 Without a depth buffer, the best I could do was backface culling.
@@ -279,8 +278,9 @@ Then I created a simple enemy that follows the player and deals damage when it g
 After that, I added a projectile system and implemented shooting.
 </p>
 <figure>
-<img src="doom.png" alt="Raycaster 'Doom' Game">
-<figcaption>Raycaster "Doom" Game</figcaption></figure>
+<video controls autoplay muted playsinline width="100%">
+<source src="doom.webm" type="video/webm" alt="Raycaster 'Doom' Game">
+</video><figcaption>Raycaster "Doom" Game</figcaption></figure>
 <p>
 But when I started firing a lot, the engine began crashing.
 Firing the 32nd bullet would freeze the entire system.

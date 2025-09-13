@@ -176,20 +176,18 @@ Which saves one key press.
 This site is built with mite. You can explore its source code to better understand how it works:
 [https://github.com/hanion/hanion.github.io](https://github.com/hanion/hanion.github.io)
 
-<? /*
-I also made my friends websites using mite, and they turned out really good.
+I also made my friends sites using mite, and they turned out really good.
 
 <div style="display: flex; gap: 1em; flex-wrap: nowrap; justify-content: center; align-items: flex-start;">
 <figure>
-    <img src="mite_enes.png" alt="site made with mite">
-    <figcaption><a href="https://enesibis.github.io">Site</a> made with mite</figcaption>
+    <img src="mite_recep.png" alt="site made with mite">
+    <figcaption><a href="https://recepefee.github.io">site</a> made with mite</figcaption>
 </figure>
 <figure>
-    <img src="mite_recep.png" alt="site made with mite">
-    <figcaption><a href="https://recepefee.github.io">Site</a> made with mite</figcaption>
+    <img src="mite_enes.png" alt="site made with mite">
+    <figcaption><a href="https://enesibis.github.io">site</a> made with mite</figcaption>
 </figure>
 </div>
-*/ ?>
 
 # Source Code
 Source is available on GitHub: [https://github.com/hanion/mite](https://github.com/hanion/mite)

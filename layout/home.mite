@@ -21,8 +21,9 @@
 	</head>
 
 	<body class="home">
-		<? INCLUDE("navbar") ?>
 		<div class="wrapper">
+			<? INCLUDE("navbar") ?>
+
 			<header>
 				<h1 class="home-title"><? STR(global.title) ?></h1>
 				<p class="intro"><? STR(global.description) ?></p>

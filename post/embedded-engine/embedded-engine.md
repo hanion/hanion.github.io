@@ -10,13 +10,13 @@ SET_POST();
 
 <figure>
     <video controls autoplay muted playsinline width="100%">
-        <source src="3d.mp4" type="video/mp4" alt="3D Rasterizer">
+        <source src="3d.webm" type="video/webm" alt="3D Rasterizer">
     </video>
     <figcaption>3D Rasterizer</figcaption>
 </figure>
 
 
-[This](https://github.com/hanion/embedded-engine) is a game engine running on an embedded microcontroller.
+[embedded-engine](https://github.com/hanion/embedded-engine) is a game engine running on an embedded microcontroller.
 No operating system, no GPU, just C/C++ and a frame buffer.
 It renders 3D models, runs a raycasting engine, and simulates things like falling sand and Tetris.
 
@@ -96,7 +96,7 @@ and [Dinosaur Game](https://en.wikipedia.org/wiki/Dinosaur_Game) came to my mind
 
 <figure>
     <video controls muted playsinline width="100%">
-        <source src="dino.mp4" type="video/mp4" alt="Dinosaur Game">
+        <source src="dino.webm" type="video/webm" alt="Dinosaur Game">
     </video>
     <figcaption>Dinosaur Game</figcaption>
 </figure>
@@ -222,7 +222,7 @@ Just filling the faces slowed the device so much, that I did not even try implem
 
 <figure>
     <video controls muted playsinline width="100%">
-        <source src="face_filling.mp4" type="video/mp4" alt="Performance Drop Of Face Filling">
+        <source src="face_filling.webm" type="video/webm" alt="Performance Drop Of Face Filling">
     </video>
     <figcaption>Performance Drop Of Face Filling</figcaption>
 </figure>
@@ -250,7 +250,9 @@ Then I created a simple enemy that follows the player and deals damage when it g
 After that, I added a projectile system and implemented shooting.
 
 <figure>
-    <img src="doom.png" alt="Raycaster 'Doom' Game">
+    <video controls autoplay muted playsinline width="100%">
+        <source src="doom.webm" type="video/webm" alt="Raycaster 'Doom' Game">
+    </video>
     <figcaption>Raycaster "Doom" Game</figcaption>
 </figure>
 
