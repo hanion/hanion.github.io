@@ -4,8 +4,8 @@
 		<meta charset="UTF-8">
 		<title>hanion.dev</title>
 		<meta property=      "og:title" content="hanion.dev"/>
-		<meta name=       "description" content="recreational programmer"/>
-		<meta property="og:description" content="recreational programmer"/>
+		<meta name=       "description" content="low-level, systems, game engines, compilers, tools, embedded"/>
+		<meta property="og:description" content="low-level, systems, game engines, compilers, tools, embedded"/>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -18,6 +18,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script> if (localStorage.getItem("theme") === "alt-theme") { document.documentElement.classList.add("alt-theme"); } </script>
 	</head>
 
 	<body class="home">
@@ -28,18 +29,35 @@
 	<div class="nav-right">
 		<a href="/archive">archive</a>
 		<a href="/rss.xml">rss</a>
+<a id="theme-toggle">theme</a>
+
+<script>
+const toggleBtn = document.getElementById("theme-toggle");
+toggleBtn.addEventListener("click", () => {
+	document.documentElement.classList.toggle("alt-theme");
+	if (document.documentElement.classList.contains("alt-theme")) {
+		localStorage.setItem("theme", "alt-theme");
+	} else {
+		localStorage.removeItem("theme");
+	}
+});
+</script>
 	</div>
 </nav>
 
 			<header>
 				<h1 class="home-title">hanion.dev</h1>
-				<p class="intro">recreational programmer</p>
+				<p class="intro">low-level, systems, game engines, compilers, tools, embedded</p>
+<div class="socials">
+		<a href="https://github.com/hanion">github</a>
+		<a href="https://hanion.itch.io">itch.io</a>
+		<a href="https://bsky.app/profile/haniondev.bsky.social">bluesky</a>
+</div>
 			</header>
 <h1>posts</h1>
 <ul class="post-list">
 <li>
 <time datetime="2025-09-05">2025-09-05 </time><a href="/post/enik-engine">Building a game engine in C++</a></li><li>
-<time datetime="2025-08-24">2025-08-24 </time><a href="/post/cey">Building a custom C skin</a></li><li>
 <time datetime="2025-08-09">2025-08-09 </time><a href="/post/mite">Site generation with C templates</a></li><li>
 <time datetime="2025-07-21">2025-07-21 </time><a href="/post/embedded-engine">Writing a game engine for embedded</a></li></ul>
 <h1>projects</h1>
@@ -113,7 +131,7 @@ Read more: <a href="/post/embedded-engine/">Writing a game engine for embedded</
 <h2>mite</h2>
 
 <p>
-Site generator with C templates in C<br>
+Site generator with C templates in C. This site is built with mite!<br>
 
 Read more: <a href="/post/mite/">Site generation with C templates</a>
 </p>
@@ -263,7 +281,7 @@ Source: <a href="https://github.com/hanion/tablordia">github.com/hanion/tablordi
 <h2>radien</h2>
 
 <p>
-CPU path tracer<br>
+Multithreaded CPU path tracer<br>
 
 Source: <a href="https://github.com/hanion/radien">github.com/hanion/radien</a>
 </p>
@@ -299,13 +317,8 @@ document.querySelectorAll('figure img').forEach(img => {
 document.getElementById('preview-overlay').addEventListener('click', () => {
 	document.getElementById('preview-overlay').style.display = 'none';
 });
-</script><footer>
-	<p>
-			<a href="https://github.com/hanion">github</a>
-			<a href="https://hanion.itch.io">itch.io</a>
-			<a href="https://bsky.app/profile/haniondev.bsky.social">bluesky</a>
-	</p>
-</footer>
+</script>
+
 
 		</div>
 	</body>

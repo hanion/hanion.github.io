@@ -16,6 +16,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script> if (localStorage.getItem("theme") === "alt-theme") { document.documentElement.classList.add("alt-theme"); } </script>
 			<script type="text/javascript" async
 			src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 			</script>
@@ -28,6 +29,19 @@
 	<div class="nav-right">
 		<a href="/archive">archive</a>
 		<a href="/rss.xml">rss</a>
+<a id="theme-toggle">theme</a>
+
+<script>
+const toggleBtn = document.getElementById("theme-toggle");
+toggleBtn.addEventListener("click", () => {
+	document.documentElement.classList.toggle("alt-theme");
+	if (document.documentElement.classList.contains("alt-theme")) {
+		localStorage.setItem("theme", "alt-theme");
+	} else {
+		localStorage.removeItem("theme");
+	}
+});
+</script>
 	</div>
 </nav>
 			<header>
@@ -37,7 +51,8 @@
 				</p>
 			</header>
 
-			<main class="content">
+			<main class="content"><div id="iframe-container">
+<iframe class="embed" src="embed/index.html" width="100%" height="500px" frameborder="0"></iframe></div>
 <p>
 A <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve">Bézier curve</a> is defined by a set of control points \(P_0\) through \(P_n\).
 </p>

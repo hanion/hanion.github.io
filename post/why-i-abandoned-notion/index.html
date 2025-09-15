@@ -16,6 +16,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script> if (localStorage.getItem("theme") === "alt-theme") { document.documentElement.classList.add("alt-theme"); } </script>
 	</head>
 	<body>
 		<div class="wrapper"><nav class="site-nav">
@@ -25,6 +26,19 @@
 	<div class="nav-right">
 		<a href="/archive">archive</a>
 		<a href="/rss.xml">rss</a>
+<a id="theme-toggle">theme</a>
+
+<script>
+const toggleBtn = document.getElementById("theme-toggle");
+toggleBtn.addEventListener("click", () => {
+	document.documentElement.classList.toggle("alt-theme");
+	if (document.documentElement.classList.contains("alt-theme")) {
+		localStorage.setItem("theme", "alt-theme");
+	} else {
+		localStorage.removeItem("theme");
+	}
+});
+</script>
 	</div>
 </nav>
 			<header>

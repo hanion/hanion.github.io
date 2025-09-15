@@ -18,6 +18,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+		<? INCLUDE("load_theme") ?>
 	</head>
 
 	<body class="home">
@@ -27,11 +28,11 @@
 			<header>
 				<h1 class="home-title"><? STR(global.title) ?></h1>
 				<p class="intro"><? STR(global.description) ?></p>
+				<? INCLUDE("socials") ?>
 			</header>
 
 			<? CONTENT() ?>
 
-			<? INCLUDE("footer") ?>
 
 		</div>
 	</body>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>hanion.dev</title><link>https://hanion.dev</link><description>recreational programmer</description><language>en-us</language><lastBuildDate>Fri, 05 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hanion.dev/rss.xml" rel="self" type="application/rss+xml" /><item>
+<title>hanion.dev</title><link>https://hanion.dev</link><description>low-level, systems, game engines, compilers, tools, embedded</description><language>en-us</language><lastBuildDate>Fri, 05 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hanion.dev/rss.xml" rel="self" type="application/rss+xml" /><item>
 <title>Building a game engine in C++</title><link>https://hanion.dev/post/enik-engine/index.html</link><guid isPermaLink="true">https://hanion.dev/post/enik-engine/index.html</guid><pubDate>Fri, 05 Sep 2025 00:00:00 +0000</pubDate><description>About my custom game engine enik-engine and its systems</description></item><item>
 <title>Building a custom C skin</title><link>https://hanion.dev/post/cey/index.html</link><guid isPermaLink="true">https://hanion.dev/post/cey/index.html</guid><pubDate>Sun, 24 Aug 2025 00:00:00 +0000</pubDate><description>C* the Turkish C</description></item><item>
 <title>Site generation with C templates</title><link>https://hanion.dev/post/mite/index.html</link><guid isPermaLink="true">https://hanion.dev/post/mite/index.html</guid><pubDate>Sat, 09 Aug 2025 00:00:00 +0000</pubDate><description>Site generation with C templates</description></item><item>

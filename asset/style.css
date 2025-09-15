@@ -13,6 +13,20 @@
 	--border-radius: 4px;
 	--showcase-columns: 1;
 }
+html.alt-theme {
+	--color-bg: #fbfbf8;
+	--color-fg: #1c140f;
+	--color-accent: #6a32a8;
+	--color-accent-active: #d45500;
+	--color-muted-text: #5a4636;
+	--color-muted-bg: #f2efed;
+	--color-darker-bg: #f0eeea;
+}
+
+html, body, code, pre, figcaption,
+header .date, header .tags, .post-list time {
+	transition: background 0.4s ease, color 0.4s ease;
+}
 
 html, body {
 	background: var(--color-bg);
@@ -88,6 +102,9 @@ header {
 .home h1, .home h2, .home h3 {
 	text-align: center;
 }
+.home h1 {
+	padding-top: 1rem;
+}
 
 .center {
 	text-align: center;
@@ -100,6 +117,9 @@ header {
 	.home ul {
 		padding-left: 1rem;
 	}
+	.post-list time {
+		display: none;
+	}
 }
 
 header .date {
@@ -110,11 +130,18 @@ header .tags {
 	color: var(--color-muted-text);
 	text-align: center;
 }
+
 footer {
 	text-align: center;
 	margin-bottom: 2rem;
 }
 footer a {
+	margin: 0 0.25rem;
+}
+.socials {
+	text-align: center;
+}
+.socials a {
 	margin: 0 0.25rem;
 }
 
@@ -174,7 +201,7 @@ blockquote {
 	font-style: italic;
 }
 
-img {
+img, video {
 	max-width: 100%;
 	display: block;
 	margin: auto;
@@ -290,4 +317,8 @@ hr::before {
 	object-fit: contain;
 	display: block;
 }
+
+#preview-caption { color: #efefef; }
+
+#theme-toggle { cursor: pointer; }
 

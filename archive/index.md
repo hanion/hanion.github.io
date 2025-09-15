@@ -29,6 +29,7 @@ for (int i = 0; i < global.posts.count; ++i) {
 </ul>
 
 <br>
-<? INCLUDE("footer") ?>
+
+<? INCLUDE("socials") ?>
 
 </div>

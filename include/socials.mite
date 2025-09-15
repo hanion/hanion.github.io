@@ -1,0 +1,6 @@
+
+<div class="socials">
+	<? for (size_t i = 0; i < global.socials.count; ++i) { ?>
+		<a href="<? STR(global.socials.items[i]->url) ?>"><? STR(global.socials.items[i]->title) ?></a>
+	<? } ?>
+</div>

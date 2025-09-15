@@ -1,7 +1,7 @@
 ```c
 global.url          = "https://hanion.dev";
 global.title        = "hanion.dev";
-global.description  = "recreational programmer";//"low-level programmer interested in systems, game dev, and embedded";
+global.description  = "low-level, systems, game engines, compilers, tools, embedded";
 global.favicon_path = "/asset/favicon.png";
 
 ADD_SOCIAL("github", "https://github.com/hanion");
@@ -25,10 +25,6 @@ PAGE_SET("kind", "index")
     <li>
         <time datetime="2025-09-05">2025-09-05 </time>
         <a href="/post/enik-engine">Building a game engine in C++</a>
-    </li>
-    <li>
-        <time datetime="2025-08-24">2025-08-24 </time>
-        <a href="/post/cey">Building a custom C skin</a>
     </li>
     <li>
         <time datetime="2025-08-09">2025-08-09 </time>
@@ -82,7 +78,7 @@ Read more: [Writing a game engine for embedded](/post/embedded-engine/)
 <article>
 
 ## mite
-Site generator with C templates in C  
+Site generator with C templates in C. This site is built with mite!  
 Read more: [Site generation with C templates](/post/mite/)
 <div class="screenshots">
 
@@ -191,7 +187,7 @@ Source: [github.com/hanion/tablordia](https://github.com/hanion/tablordia)
 <article>
 
 ## radien
-CPU path tracer  
+Multithreaded CPU path tracer  
 Source: [github.com/hanion/radien](https://github.com/hanion/radien)
 <div class="screenshots">
 

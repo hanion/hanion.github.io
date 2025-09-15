@@ -9,6 +9,9 @@ SET_POST();
 //image: "bezier_curves_cover.png"
 ---
 
+<div id="iframe-container">
+<iframe class="embed" src="embed/index.html" width="100%" height="500px" frameborder="0"></iframe>
+</div>
 
 
 A [Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) is defined by a set of control points \(P_0\) through \(P_n\).

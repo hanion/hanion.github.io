@@ -1,0 +1,2 @@
+
+<script> if (localStorage.getItem("theme") === "alt-theme") { document.documentElement.classList.add("alt-theme"); } </script>
