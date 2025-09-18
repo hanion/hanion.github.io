@@ -23,15 +23,15 @@ PAGE_SET("kind", "index")
 # posts
 <ul class="post-list">
     <li>
-        <time datetime="2025-09-05">2025-09-05 </time>
+        <time>2025-09-05 </time>
         <a href="/post/enik-engine">Building a game engine in C++</a>
     </li>
     <li>
-        <time datetime="2025-08-09">2025-08-09 </time>
+        <time>2025-08-09 </time>
         <a href="/post/mite">Site generation with C templates</a>
     </li>
     <li>
-        <time datetime="2025-07-21">2025-07-21 </time>
+        <time>2025-07-21 </time>
         <a href="/post/embedded-engine">Writing a game engine for embedded</a>
     </li>
 </ul>

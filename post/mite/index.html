@@ -10,12 +10,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="icon" type="image/png" href="/asset/favicon.png"/>
+		<link rel="alternate" type="application/rss+xml" title="hanion.dev rss feed" href="/rss.xml" />
+
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="stylesheet" href="/asset/reset.css"/>
 		<link rel="stylesheet" href="/asset/style.css"/>
-
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script> if (localStorage.getItem("theme") === "alt-theme") { document.documentElement.classList.add("alt-theme"); } </script>
 	</head>
 	<body>
@@ -49,7 +48,7 @@ toggleBtn.addEventListener("click", () => {
 			</header>
 
 			<main class="content"><figure>
-	<img src="intro_template.png" alt="Mite Template">
+	<img src="intro_template.png" loading="lazy" alt="Mite Template">
 	<figcaption>Mite Template</figcaption>
 </figure>
 
@@ -74,7 +73,7 @@ The output is plain HTML files ready to be served.
 Here's a simple template snippet that dynamically generates a list of links:
 </p>
 <figure>
-	<img src="mite_template.png" alt="Mite Template">
+	<img src="mite_template.png" loading="lazy" alt="Mite Template">
 	<figcaption>Mite Template</figcaption>
 </figure>
 
@@ -90,7 +89,7 @@ I got nerd sniped by Tsoding's video <a href="https://www.youtube.com/watch?v=dk
 The idea of templating with plain C hooked me.
 </p>
 <figure>
-	<img src="https://imgs.xkcd.com/comics/nerd_sniping.png" alt="Nerd Sniping (&lt;a href=&quot;https://xkcd.com/356&quot;&gt;https://xkcd.com/356&lt;/a&gt;)">
+	<img src="https://imgs.xkcd.com/comics/nerd_sniping.png" loading="lazy" alt="Nerd Sniping (&lt;a href=&quot;https://xkcd.com/356&quot;&gt;https://xkcd.com/356&lt;/a&gt;)">
 	<figcaption>Nerd Sniping (<a href="https://xkcd.com/356">https://xkcd.com/356</a>)</figcaption>
 </figure>
 
@@ -120,11 +119,11 @@ It starts in HTML mode. When it sees <code>&lt;?</code>, it switches to C until 
 
 <h2>Example</h2>
 <figure>
-	<img src="example_template.png" alt="Mite Template">
+	<img src="example_template.png" loading="lazy" alt="Mite Template">
 	<figcaption>Mite Template</figcaption>
 </figure>
 <figure>
-	<img src="example_c.png" alt="Generated C">
+	<img src="example_c.png" loading="lazy" alt="Generated C">
 	<figcaption>Generated C</figcaption>
 </figure>
 
@@ -136,7 +135,7 @@ HTML bytes are stored directly, so that we dont have to mess with escaping.<br>
 When this generated code runs, it outputs this:
 </p>
 <figure>
-	<img src="example_html.png" alt="Rendered HTML">
+	<img src="example_html.png" loading="lazy" alt="Rendered HTML">
 	<figcaption>Rendered HTML</figcaption>
 </figure>
 
@@ -163,7 +162,7 @@ Second stage creates fills a global struct for all the pages and templates to us
 This is done by pasting the front matter of all the pages.
 </p>
 <figure>
-	<img src="global_state.png" alt="Filling Global State">
+	<img src="global_state.png" loading="lazy" alt="Filling Global State">
 	<figcaption>Filling Global State</figcaption>
 </figure>
 
@@ -173,7 +172,7 @@ This is done by pasting the front matter of all the pages.
 We need to assign a function to the name of the template, heres where we fill this.
 </p>
 <figure>
-	<img src="filling_template_list.png" alt="Filling Template List">
+	<img src="filling_template_list.png" loading="lazy" alt="Filling Template List">
 	<figcaption>Filling Template List</figcaption>
 </figure>
 
@@ -205,7 +204,7 @@ Instead of printing templates everywhere, each template became a function.
 The function takes the page's content rendering function as an argument, so any layout can render any content at runtime.
 </p>
 <figure>
-	<img src="render_functions.png" alt="Render Functions">
+	<img src="render_functions.png" loading="lazy" alt="Render Functions">
 	<figcaption>Render Functions</figcaption>
 </figure>
 
@@ -213,7 +212,7 @@ The function takes the page's content rendering function as an argument, so any 
 At render time we find the correct template function and call it with the page and its content function.
 </p>
 <figure>
-	<img src="rendering_the_page.png" alt="Rendering The Page">
+	<img src="rendering_the_page.png" loading="lazy" alt="Rendering The Page">
 	<figcaption>Rendering The Page</figcaption>
 </figure>
 
@@ -280,11 +279,11 @@ I also made my friends sites using mite, and they turned out really good.
 </p>
 <div style="display: flex; gap: 1em; flex-wrap: nowrap; justify-content: center; align-items: flex-start;">
 <figure>
-	<img src="mite_recep.png" alt="&lt;a href=&quot;https://recepefee.github.io&quot;&gt;site&lt;/a&gt; built with mite">
+	<img src="mite_recep.png" loading="lazy" alt="&lt;a href=&quot;https://recepefee.github.io&quot;&gt;site&lt;/a&gt; built with mite">
 	<figcaption><a href="https://recepefee.github.io">site</a> built with mite</figcaption>
 </figure>
 <figure>
-	<img src="/post/mite/mite_enes.png" alt="site built with mite">
+	<img src="/post/mite/mite_enes.png" loading="lazy" alt="site built with mite">
 	<figcaption>site built with mite</figcaption>
 </figure>
 </div>

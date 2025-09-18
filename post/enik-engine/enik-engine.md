@@ -346,19 +346,19 @@ These are the notes I took while developing it, based on my experiences, and mig
 
 # Games made with enik-engine
 
-<iframe frameborder="0" src="https://itch.io/embed/3622718?border_width=0&amp;bg_color=141414&amp;fg_color=cfc6b8&amp;link_color=e6482e&amp;border_color=141414" width="100%" height="165">
+<iframe loading="lazy" frameborder="0" src="https://itch.io/embed/3622718?border_width=0&amp;bg_color=141414&amp;fg_color=cfc6b8&amp;link_color=e6482e&amp;border_color=141414" width="100%" height="165">
     <a href="https://hanion.itch.io/square-up">square up by hanion</a>
 </iframe>
 
-<iframe frameborder="0" src="https://itch.io/embed/3197293?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=4d4640&amp;border_color=141414" width="100%" height="165">
+<iframe loading="lazy" frameborder="0" src="https://itch.io/embed/3197293?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=4d4640&amp;border_color=141414" width="100%" height="165">
     <a href="https://hanion.itch.io/reborn">reborn by hanion</a>
 </iframe>
 
-<iframe frameborder="0" src="https://itch.io/embed/2703182?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=b4724a&amp;border_color=141414" width="100%" height="165">
+<iframe loading="lazy" frameborder="0" src="https://itch.io/embed/2703182?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=b4724a&amp;border_color=141414" width="100%" height="165">
     <a href="https://hanion.itch.io/gear-gambit">gear gambit by hanion</a>
 </iframe>
 
-<iframe frameborder="0" src="https://itch.io/embed/2691954?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=198C19&amp;border_color=141414" width="100%" height="165">
+<iframe loading="lazy" frameborder="0" src="https://itch.io/embed/2691954?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=198C19&amp;border_color=141414" width="100%" height="165">
     <a href="https://hanion.itch.io/snake-game">snake game by hanion</a>
 </iframe>
 
@@ -366,7 +366,7 @@ These are the notes I took while developing it, based on my experiences, and mig
 # Source Code
 [https://github.com/hanion/enik-engine](https://github.com/hanion/enik-engine)
 
-<iframe frameborder="0" src="https://itch.io/embed/3202738?border_width=0&amp;bg_color=141414&amp;fg_color=ffffff&amp;link_color=e57e19&amp;border_color=141414" width="100%" height="165">
+<iframe loading="lazy" frameborder="0" src="https://itch.io/embed/3202738?border_width=0&amp;bg_color=141414&amp;fg_color=ffffff&amp;link_color=e57e19&amp;border_color=141414" width="100%" height="165">
     <a href="https://hanion.itch.io/enik-engine">enik-engine by hanion</a>
 </iframe>
 

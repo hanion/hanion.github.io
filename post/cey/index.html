@@ -10,12 +10,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="icon" type="image/png" href="/asset/favicon.png"/>
+		<link rel="alternate" type="application/rss+xml" title="hanion.dev rss feed" href="/rss.xml" />
+
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="stylesheet" href="/asset/reset.css"/>
 		<link rel="stylesheet" href="/asset/style.css"/>
-
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script> if (localStorage.getItem("theme") === "alt-theme") { document.documentElement.classList.add("alt-theme"); } </script>
 	</head>
 	<body>
@@ -49,7 +48,7 @@ toggleBtn.addEventListener("click", () => {
 			</header>
 
 			<main class="content"><figure>
-	<img src="intro_cey.png" alt="C* code">
+	<img src="intro_cey.png" loading="lazy" alt="C* code">
 	<figcaption>C* code</figcaption>
 </figure>
 
@@ -102,7 +101,7 @@ It does not have a Parser.
 
 <h2>Strings</h2>
 <figure>
-	<img src="sv.png" alt="StringView">
+	<img src="sv.png" loading="lazy" alt="StringView">
 	<figcaption>StringView</figcaption>
 </figure>
 
@@ -123,7 +122,7 @@ Simple as that!
 Token has a <code>TokenType</code> and a <code>StringView</code>.
 </p>
 <figure>
-	<img src="token_type.png" alt="TokenType">
+	<img src="token_type.png" loading="lazy" alt="TokenType">
 	<figcaption>TokenType</figcaption>
 </figure>
 
@@ -136,7 +135,7 @@ It had no purpose other than to be a challenge to me.
 
 <h2>Lexer</h2>
 <figure>
-	<img src="lexer.png" alt="Lexer">
+	<img src="lexer.png" loading="lazy" alt="Lexer">
 	<figcaption>Lexer</figcaption>
 </figure>
 
@@ -148,7 +147,7 @@ Which is needed for include directives.
 
 <h2>Dictionary</h2>
 <figure>
-	<img src="dictionary.png" alt="Dictionary">
+	<img src="dictionary.png" loading="lazy" alt="Dictionary">
 	<figcaption>Dictionary</figcaption>
 </figure>
 
@@ -159,7 +158,7 @@ When a symbol token is found, the compiler looks it up in the dictionary and tra
 
 <h2>Compiler</h2>
 <figure>
-	<img src="cey_simplified.png" alt="cey compiler simplified">
+	<img src="cey_simplified.png" loading="lazy" alt="cey compiler simplified">
 	<figcaption>cey compiler simplified</figcaption>
 </figure>
 <p>
@@ -182,7 +181,7 @@ This is what <code>yec</code> does.
 
 <h2>Amalgamator</h2>
 <figure>
-	<img src="amalgamator.png" alt="Amalgamator">
+	<img src="amalgamator.png" loading="lazy" alt="Amalgamator">
 	<figcaption>Amalgamator</figcaption>
 </figure>
 

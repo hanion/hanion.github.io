@@ -10,12 +10,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="icon" type="image/png" href="/asset/favicon.png"/>
+		<link rel="alternate" type="application/rss+xml" title="hanion.dev rss feed" href="/rss.xml" />
+
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="stylesheet" href="/asset/reset.css"/>
 		<link rel="stylesheet" href="/asset/style.css"/>
-
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script> if (localStorage.getItem("theme") === "alt-theme") { document.documentElement.classList.add("alt-theme"); } </script>
 	</head>
 	<body>
@@ -49,7 +48,7 @@ toggleBtn.addEventListener("click", () => {
 			</header>
 
 			<main class="content"><figure>
-	<img src="editor.png" alt="enik-engine editor">
+	<img src="editor.png" loading="lazy" alt="enik-engine editor">
 	<figcaption>enik-engine editor</figcaption>
 </figure>
 
@@ -101,7 +100,7 @@ Game code is compiled separately as a script module that the editor links at run
 This setup makes hot reloading possible: you can recompile the game code and reload it in the editor without restarting.
 </p>
 <figure>
-	<img src="arch.png" alt="enik-engine architecture">
+	<img src="arch.png" loading="lazy" alt="enik-engine architecture">
 	<figcaption>enik-engine architecture</figcaption>
 </figure>
 
@@ -170,7 +169,7 @@ Scripting is done by inheriting from the <code>ScriptableEntity</code> class and
 It holds an Entity ID and some callback functions like <code>OnCreate</code> and <code>OnUpdate</code>.
 </p>
 <figure>
-	<img src="scriptable_entity.png" alt="Part of Scriptable Entity">
+	<img src="scriptable_entity.png" loading="lazy" alt="Part of Scriptable Entity">
 	<figcaption>Part of Scriptable Entity</figcaption>
 </figure>
 
@@ -178,7 +177,7 @@ It holds an Entity ID and some callback functions like <code>OnCreate</code> and
 This class can be attached to an entity through a <code>NativeScript</code> component.
 </p>
 <figure>
-	<img src="native_script.png" alt="Native Script">
+	<img src="native_script.png" loading="lazy" alt="Native Script">
 	<figcaption>Native Script</figcaption>
 </figure>
 
@@ -190,7 +189,7 @@ The instance is created by the engine when the Entity is created.
 Fun fact: I didn't know about tagged unions, so I reinvented them:
 </p>
 <figure>
-	<img src="native_script_field.png" alt="Native Script Field">
+	<img src="native_script_field.png" loading="lazy" alt="Native Script Field">
 	<figcaption>Native Script Field</figcaption>
 </figure>
 <blockquote>yes I managed the memory manually please don't look</blockquote>
@@ -200,7 +199,7 @@ The editor can show these fields in the inspector by calling <code>OnEditorGetFi
 This can be implemented by the developer in their class derived from <code>ScriptableEntity</code>.
 </p>
 <figure>
-	<img src="on_get_fields.png" alt="OnEditorGetFields">
+	<img src="on_get_fields.png" loading="lazy" alt="OnEditorGetFields">
 	<figcaption>OnEditorGetFields</figcaption>
 </figure>
 
@@ -225,7 +224,7 @@ Inspector shows the entities components and values.
 It can also show any fields exported by the <code>ScriptableEntity</code>.
 </p>
 <figure>
-	<img src="native_script_in_inspector.png" alt="Native Script in Inspector">
+	<img src="native_script_in_inspector.png" loading="lazy" alt="Native Script in Inspector">
 	<figcaption>Native Script in Inspector</figcaption>
 </figure>
 
@@ -242,11 +241,11 @@ Assets and components are color-coded for quick identification.
 </p>
 <div style="display: flex; gap: 1em; flex-wrap: nowrap; justify-content: center; align-items: flex-start;">
 <figure>
-	<img src="colors_fs.png" alt="File Colors">
+	<img src="colors_fs.png" loading="lazy" alt="File Colors">
 	<figcaption>File Colors</figcaption>
 </figure>
 <figure>
-	<img src="colors_in.png" alt="Component Colors">
+	<img src="colors_in.png" loading="lazy" alt="Component Colors">
 	<figcaption>Component Colors</figcaption>
 </figure>
 </div>
@@ -266,7 +265,7 @@ So I stole it.
 In my engine you can open multiple scenes or prefabs or assets in tabs.
 </p>
 <figure>
-	<img src="tabs.png" alt="Tabs">
+	<img src="tabs.png" loading="lazy" alt="Tabs">
 	<figcaption>Tabs</figcaption>
 </figure>
 
@@ -289,7 +288,7 @@ I chose Jolt Physics, which was an experience...
 Talked about it here: <a href="/post/my-experience-with-jolt">My experience with Jolt Physics</a>
 </p>
 <figure>
-	<img src="jolt-demo.gif" alt="Jolt Physics working in enik-engine">
+	<img src="jolt-demo.gif" loading="lazy" alt="Jolt Physics working in enik-engine">
 	<figcaption>Jolt Physics working in enik-engine</figcaption>
 </figure>
 
@@ -364,7 +363,7 @@ To avoid recursively instantiating the original root prefab, we mark it as <code
 
 <h2>This took time...</h2>
 <figure>
-	<img src="prefabs.png" alt="Debugging Prefab system">
+	<img src="prefabs.png" loading="lazy" alt="Debugging Prefab system">
 	<figcaption>Debugging Prefab system</figcaption>
 </figure>
 
@@ -384,7 +383,7 @@ I have implemented a bare bones animation system.
 It is basically a value interpolator.
 </p>
 <figure>
-	<img src="anim_editor.png" alt="Animation Editor">
+	<img src="anim_editor.png" loading="lazy" alt="Animation Editor">
 	<figcaption>Animation Editor</figcaption>
 </figure>
 
@@ -396,7 +395,7 @@ A <code>Track</code> contains a <code>TrackProperty</code> and a list of <code>K
 Each <code>Keyframe</code> stores a time point and a value.
 </p>
 <figure>
-	<img src="anim_player.png" alt="Animation Player">
+	<img src="anim_player.png" loading="lazy" alt="Animation Player">
 	<figcaption>Animation Player</figcaption>
 </figure>
 
@@ -429,7 +428,7 @@ I used <a href="https://github.com/nothings/stb/blob/master/stb_truetype.h">stb_
 to import the font, pack it to an atlas, and save the glyphs into an asset.
 </p>
 <figure>
-	<img src="text_rendering.png" alt="Text Rendering">
+	<img src="text_rendering.png" loading="lazy" alt="Text Rendering">
 	<figcaption>Text Rendering</figcaption>
 </figure>
 
@@ -451,7 +450,7 @@ It doesn’t have 3D spatialization, modulation, or fancy effects.
 I just needed it to exist for the same game jam where I implemented the animation system.
 </p>
 <figure>
-	<img src="audio.png" alt="Audio Component">
+	<img src="audio.png" loading="lazy" alt="Audio Component">
 	<figcaption>Audio Component</figcaption>
 </figure>
 
@@ -467,7 +466,7 @@ After adding batch rendering, it became more than enough for my needs.
 Here we are rendering 100k+ quads for testing:
 </p>
 <figure>
-	<img src="batch.png" alt="Performance After Batch Rendering">
+	<img src="batch.png" loading="lazy" alt="Performance After Batch Rendering">
 	<figcaption>Performance After Batch Rendering</figcaption>
 </figure>
 
@@ -477,7 +476,7 @@ Here we are rendering 100k+ quads for testing:
 Used <a href="https://github.com/wolfpld/tracy">Tracy</a> for profiling the engine.
 </p>
 <figure>
-	<img src="tracy.png" alt="Tracy">
+	<img src="tracy.png" loading="lazy" alt="Tracy">
 	<figcaption>Tracy</figcaption>
 </figure>
 
@@ -511,7 +510,7 @@ Open the editor:
 ./build/editor/editor
 </code></pre>
 <figure>
-	<img src="editor_home.png" alt="enik-engine editor">
+	<img src="editor_home.png" loading="lazy" alt="enik-engine editor">
 	<figcaption>enik-engine editor</figcaption>
 </figure>
 
@@ -519,7 +518,7 @@ Open the editor:
 Press <strong>New</strong> -> <strong>Project</strong> and select Empty or Example project.
 </p>
 <figure>
-	<img src="new_project.png" alt="New Project">
+	<img src="new_project.png" loading="lazy" alt="New Project">
 	<figcaption>New Project</figcaption>
 </figure>
 
@@ -581,17 +580,17 @@ These are the notes I took while developing it, based on my experiences, and mig
 </p>
 
 <h1>Games made with enik-engine</h1>
-<iframe frameborder="0" src="https://itch.io/embed/3622718?border_width=0&amp;bg_color=141414&amp;fg_color=cfc6b8&amp;link_color=e6482e&amp;border_color=141414" width="100%" height="165">
-<a href="https://hanion.itch.io/square-up">square up by hanion</a></iframe><iframe frameborder="0" src="https://itch.io/embed/3197293?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=4d4640&amp;border_color=141414" width="100%" height="165">
-<a href="https://hanion.itch.io/reborn">reborn by hanion</a></iframe><iframe frameborder="0" src="https://itch.io/embed/2703182?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=b4724a&amp;border_color=141414" width="100%" height="165">
-<a href="https://hanion.itch.io/gear-gambit">gear gambit by hanion</a></iframe><iframe frameborder="0" src="https://itch.io/embed/2691954?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=198C19&amp;border_color=141414" width="100%" height="165">
+<iframe loading="lazy" frameborder="0" src="https://itch.io/embed/3622718?border_width=0&amp;bg_color=141414&amp;fg_color=cfc6b8&amp;link_color=e6482e&amp;border_color=141414" width="100%" height="165">
+<a href="https://hanion.itch.io/square-up">square up by hanion</a></iframe><iframe loading="lazy" frameborder="0" src="https://itch.io/embed/3197293?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=4d4640&amp;border_color=141414" width="100%" height="165">
+<a href="https://hanion.itch.io/reborn">reborn by hanion</a></iframe><iframe loading="lazy" frameborder="0" src="https://itch.io/embed/2703182?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=b4724a&amp;border_color=141414" width="100%" height="165">
+<a href="https://hanion.itch.io/gear-gambit">gear gambit by hanion</a></iframe><iframe loading="lazy" frameborder="0" src="https://itch.io/embed/2691954?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=198C19&amp;border_color=141414" width="100%" height="165">
 <a href="https://hanion.itch.io/snake-game">snake game by hanion</a></iframe>
 <h1>Source Code</h1>
 
 <p>
 <a href="https://github.com/hanion/enik-engine">https://github.com/hanion/enik-engine</a>
 </p>
-<iframe frameborder="0" src="https://itch.io/embed/3202738?border_width=0&amp;bg_color=141414&amp;fg_color=ffffff&amp;link_color=e57e19&amp;border_color=141414" width="100%" height="165">
+<iframe loading="lazy" frameborder="0" src="https://itch.io/embed/3202738?border_width=0&amp;bg_color=141414&amp;fg_color=ffffff&amp;link_color=e57e19&amp;border_color=141414" width="100%" height="165">
 <a href="https://hanion.itch.io/enik-engine">enik-engine by hanion</a></iframe>
 			</main>
 		</div>
