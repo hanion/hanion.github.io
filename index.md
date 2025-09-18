@@ -85,7 +85,7 @@ Read more: [Site generation with C templates](/post/mite/)
 ![mite template](/post/mite/intro_template.png)
 ![mite template](/post/mite/mite_template.png)
 ![<a href="https://recepefee.github.io">site</a> built with mite](/post/mite/mite_recep.png)
-![<a href="https://enesibis.github.io">site</a> built with mite](/post/mite/mite_enes.png)
+![site built with mite](/post/mite/mite_enes.png)
 
 </div>
 </article>

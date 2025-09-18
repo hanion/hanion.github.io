@@ -149,8 +149,8 @@ I also made my friends sites using mite, and they turned out really good.
 
 <div style="display: flex; gap: 1em; flex-wrap: nowrap; justify-content: center; align-items: flex-start;">
 
-![<a href="https://recepefee.github.io">site</a> made with mite](mite_recep.png)
-![<a href="https://enesibis.github.io">site</a> made with mite](mite_enes.png)
+![<a href="https://recepefee.github.io">site</a> built with mite](mite_recep.png)
+![site built with mite](/post/mite/mite_enes.png)
 
 </div>
 
