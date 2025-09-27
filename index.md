@@ -23,6 +23,10 @@ PAGE_SET("kind", "index")
 # posts
 <ul class="post-list">
     <li>
+        <time>2025-09-27 </time>
+        <a href="/post/ev">Engineering an electric vehicle</a>
+    </li>
+    <li>
         <time>2025-09-05 </time>
         <a href="/post/enik-engine">Building a game engine in C++</a>
     </li>
@@ -69,6 +73,24 @@ Read more: [Writing a game engine for embedded](/post/embedded-engine/)
 ![Raycaster 'Doom' Game](/post/embedded-engine/doom.webm)
 ![Face Filling](/post/embedded-engine/face_filling.webm)
 ![The Panel](/post/embedded-engine/rendering.png)
+
+</div>
+</article>
+
+
+
+<article>
+
+## Electric Vehicle
+Electric vehicle built for the Teknofest Efficiency Challenge 2025.
+I worked on the VCU, telemetry system, ADAS, dashboard, and parts of the motor driver.  
+Read more: [Engineering an electric vehicle](/post/ev/)
+<div class="screenshots">
+
+![The Electric Vehicle](/post/ev/car.jpg)
+![Motor Driver](/post/ev/md0.png)
+![VCU and Telemetry System](/post/ev/lora.jpg)
+![ADAS Raspberry Pi](/post/ev/pi.jpg)
 
 </div>
 </article>
