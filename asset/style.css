@@ -29,8 +29,6 @@ header .date, header .tags, .post-list time {
 }
 
 html, body {
-	background: var(--color-bg);
-	color: var(--color-fg);
 	font-family: var(--font-main);
 	font-size: var(--font-size);
 	width: 100%;
@@ -40,6 +38,10 @@ html, body {
 	position: relative;
 }
 
+html {
+	background: var(--color-bg);
+	color: var(--color-fg);
+}
 body {
 	max-width: var(--max-width);
 	margin: 2rem auto;
@@ -60,7 +62,7 @@ p, li {
 	margin: 1rem 0;
 }
 ul, ol {
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 	list-style: disc inside;
 }
 i, em {

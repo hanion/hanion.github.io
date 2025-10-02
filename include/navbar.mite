@@ -3,7 +3,6 @@
 		<a href="/"><? STR(global.title) ?></a>
 	</div>
 	<div class="nav-right">
-		<a href="/archive">archive</a>
 		<a href="/rss.xml">rss</a>
 		<? INCLUDE("theme_toggle") ?>
 	</div>

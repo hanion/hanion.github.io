@@ -40,6 +40,9 @@ PAGE_SET("kind", "index")
     </li>
 </ul>
 
+<div style="text-align:center;">
+    <a href="/post">all posts</a>
+</div>
 
 # projects
 <section class="showcase">
