@@ -141,6 +141,23 @@ polling the changes, and if there are any changes,
 it just rerenders everything.
 Which saves one key press.
 
+
+# `sprintf` is heavy
+While my friends were running `mite` on Windows, it was noticeably slow, so I investigated.
+Profiling with `callgrind` showed that 65% of all instructions came from a single `sprintf` line.
+
+![sprintf line](sprintf.png)
+
+I replaced it with a tiny hex printer.
+Instruction count dropped from 58 million to 10 million (while building this site).
+
+![sprintf replacement](to_hex_char.png)
+
+## Windows is slow
+Turns out file operations on windows are just slow.
+Nothing much I can do about it.
+
+
 # Real world usage
 This site is built with mite. You can explore its source code to better understand how it works:
 [https://github.com/hanion/hanion.github.io](https://github.com/hanion/hanion.github.io)

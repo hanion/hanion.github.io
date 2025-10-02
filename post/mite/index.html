@@ -266,6 +266,33 @@ it just rerenders everything.
 Which saves one key press.
 </p>
 
+<h1><code>sprintf</code> is heavy</h1>
+
+<p>
+While my friends were running <code>mite</code> on Windows, it was noticeably slow, so I investigated.
+Profiling with <code>callgrind</code> showed that 65% of all instructions came from a single <code>sprintf</code> line.
+</p>
+<figure>
+	<img src="sprintf.png" loading="lazy" alt="sprintf line">
+	<figcaption>sprintf line</figcaption>
+</figure>
+
+<p>
+I replaced it with a tiny hex printer.
+Instruction count dropped from 58 million to 10 million (while building this site).
+</p>
+<figure>
+	<img src="to_hex_char.png" loading="lazy" alt="sprintf replacement">
+	<figcaption>sprintf replacement</figcaption>
+</figure>
+
+<h2>Windows is slow</h2>
+
+<p>
+Turns out file operations on windows are just slow.
+Nothing much I can do about it.
+</p>
+
 <h1>Real world usage</h1>
 
 <p>
