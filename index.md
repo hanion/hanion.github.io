@@ -155,7 +155,7 @@ Read more: [Building a custom C skin](/post/cey)
 <div class="screenshots">
 
 ![C* example program](/post/cey/intro_cey.png)
-![C* compiler simplified](/post/cey/cey_simplified.png)
+![Old Turkic C](/post/cey/cey_otk.png)
 
 </div>
 </article>

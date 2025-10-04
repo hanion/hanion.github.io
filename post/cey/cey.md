@@ -15,6 +15,8 @@ Its compiler transpiles `.cy` files into plain `C` and compiles them with `gcc` 
 It can run in reverse to turn `C` back into `C*`.
 You can also modify the dictionary to create your own `C` skin.
 
+![Old Turkic C](cey_otk.png)
+
 
 # Motivation
 I was developing an interpreted language ([minik-script](https://github.com/hanion/minik-script))
