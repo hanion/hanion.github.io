@@ -259,7 +259,7 @@ I just needed it to exist for the same game jam where I implemented the animatio
 
 ![Audio Component](audio.png)
 
-It works reliably and is enough to play sounds, music, or simple cues in the engine.
+It works reliably and is enough to play sounds or music.
 
 # Performance
 Performance was good out of the box since the engine isn't as bloated as bigger engines.
@@ -346,7 +346,11 @@ These are the notes I took while developing it, based on my experiences, and mig
 
 # Games made with enik-engine
 
-<iframe loading="lazy" frameborder="0" src="https://itch.io/embed/3622718?border_width=0&amp;bg_color=141414&amp;fg_color=cfc6b8&amp;link_color=e6482e&amp;border_color=141414" width="100%" height="165">
+<iframe loading="lazy" frameborder="0" src="https://itch.io/embed/3898976?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=faab60&amp;border_color=141414" width="100%" height="165">
+    <a href="https://hanion.itch.io/spindle">spindle by hanion</a>
+</iframe>
+
+<iframe loading="lazy" frameborder="0" src="https://itch.io/embed/3622718?border_width=0&amp;bg_color=141414&amp;fg_color=eeeeee&amp;link_color=e6482e&amp;border_color=141414" width="100%" height="165">
     <a href="https://hanion.itch.io/square-up">square up by hanion</a>
 </iframe>
 
