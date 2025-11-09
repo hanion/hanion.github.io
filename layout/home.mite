@@ -16,6 +16,22 @@
 		<link rel="stylesheet" href="/asset/reset.css"/>
 		<link rel="stylesheet" href="/asset/style.css"/>
 
+
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "<? STR(global.title) ?>",
+			"url": "<? STR(global.url) ?>",
+			"description": "<? STR(global.description) ?>",
+			"sameAs": [
+				<? for (size_t i = 0; i < global.socials.count; ++i) { ?>
+					"<? STR(global.socials.items[i]->url) ?>"
+				<? } ?>
+			]
+		}
+		</script>
+
 		<? INCLUDE("load_theme") ?>
 	</head>
 
