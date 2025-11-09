@@ -124,7 +124,7 @@ Interpreted scripting language inspired by Jai and Odin
 Source: [github.com/hanion/minik-script](https://github.com/hanion/minik-script)
 <div class="screenshots">
 
-![minik-script Raylib Hello World](/asset/showcase/mn0.png)
+![minik-script Raylib Hello World](/asset/showcase/mn0.webp)
 ![Breakout written in minik-script](/asset/showcase/mn_breakout.webm)
 
 </div>
@@ -139,8 +139,8 @@ Single-file build system, simpler alternative to Make. Currently experimental.
 Source: [github.com/hanion/cook](https://github.com/hanion/cook)
 <div class="screenshots">
 
-![Example Cookfile](/asset/showcase/cook0.png)
-![Example Cookfile Equivalent Makefile](/asset/showcase/cook1.png)
+![Example Cookfile](/asset/showcase/cook0.webp)
+![Example Cookfile Equivalent Makefile](/asset/showcase/cook1.webp)
 
 </div>
 </article>
@@ -166,10 +166,10 @@ Read more: [Building a custom C skin](/post/cey)
 ## Games made with enik-engine
 <div class="screenshots">
 
-![<a href="https://hanion.itch.io/square-up">Square Up</a>](/asset/showcase/games-square-up.png)
-![<a href="https://hanion.itch.io/reborn">Reborn</a>](/asset/showcase/games-reborn.png)
-![<a href="https://hanion.itch.io/gear-gambit">Gear Gambit</a>](/asset/showcase/games-gear-gambit.png)
-![<a href="https://hanion.itch.io/snake-game">Snake</a>](/asset/showcase/games-snake-game.png)
+![<a href="https://hanion.itch.io/square-up">Square Up</a>](/asset/showcase/games-square-up.webp)
+![<a href="https://hanion.itch.io/reborn">Reborn</a>](/asset/showcase/games-reborn.webp)
+![<a href="https://hanion.itch.io/gear-gambit">Gear Gambit</a>](/asset/showcase/games-gear-gambit.webp)
+![<a href="https://hanion.itch.io/snake-game">Snake</a>](/asset/showcase/games-snake-game.webp)
 
 </div>
 </article>
@@ -180,10 +180,10 @@ Read more: [Building a custom C skin](/post/cey)
 ## Game Jam Submissions
 <div class="screenshots">
 
-![<a href="https://hanion.itch.io/shoveler">Shoveler</a>](/asset/showcase/games-shoveler.png)
-![<a href="https://hanion.itch.io/cozy-camp">Cozy Camp</a>](/asset/showcase/games-cozy-camp.png)
-![<a href="https://hanion.itch.io/rescue-your-crew">Rescue Your Crew</a>](/asset/showcase/games-ryc.png)
-![<a href="https://hanion.itch.io/calidor-gum">Calidor Gum</a>](/asset/showcase/games-calidor-gum.png)
+![<a href="https://hanion.itch.io/shoveler">Shoveler</a>](/asset/showcase/games-shoveler.webp)
+![<a href="https://hanion.itch.io/cozy-camp">Cozy Camp</a>](/asset/showcase/games-cozy-camp.webp)
+![<a href="https://hanion.itch.io/rescue-your-crew">Rescue Your Crew</a>](/asset/showcase/games-ryc.webp)
+![<a href="https://hanion.itch.io/calidor-gum">Calidor Gum</a>](/asset/showcase/games-calidor-gum.webp)
 
 </div>
 </article>
@@ -199,10 +199,10 @@ Source: [github.com/hanion/tablordia](https://github.com/hanion/tablordia)
 
 <div class="screenshots">
 
-![Tablordia](/asset/showcase/tablordia0.png)
-![Board Royale in Tablordia](/asset/showcase/tablordia1.png)
-![Board Royale in Tablordia](/asset/showcase/tablordia2.png)
-![Tablordia Spawn Menu](/asset/showcase/tablordia3.png)
+![Tablordia](/asset/showcase/tablordia0.webp)
+![Board Royale in Tablordia](/asset/showcase/tablordia1.webp)
+![Board Royale in Tablordia](/asset/showcase/tablordia2.webp)
+![Tablordia Spawn Menu](/asset/showcase/tablordia3.webp)
 
 </div>
 </article>
@@ -216,8 +216,8 @@ Multithreaded CPU path tracer
 Source: [github.com/hanion/radien](https://github.com/hanion/radien)
 <div class="screenshots">
 
-![Radien](/asset/showcase/radien0.png)
-![Sample Render From Radien](/asset/showcase/radien1.png)
+![Radien](/asset/showcase/radien0.webp)
+![Sample Render From Radien](/asset/showcase/radien1.webp)
 
 </div>
 </article>
@@ -233,8 +233,8 @@ Source: [github.com/hanion/evren](https://github.com/hanion/evren)
 
 <div class="screenshots">
 
-![Text Rendering](/asset/showcase/evren1.png)
-![Tetris in evren](/asset/showcase/evren2.png)
+![Text Rendering](/asset/showcase/evren1.webp)
+![Tetris in evren](/asset/showcase/evren2.webp)
 
 </div>
 </article>
