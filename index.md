@@ -221,6 +221,26 @@ Source: [github.com/hanion/radien](https://github.com/hanion/radien)
 
 </div>
 </article>
+
+
+
+<article>
+
+## evren
+Operating system from scratch in `C` with a bootloader in `fasm`.
+Runs embedded-engine game ports like tetris.  
+Source: [github.com/hanion/evren](https://github.com/hanion/evren)
+
+<div class="screenshots">
+
+![Text Rendering](/asset/showcase/evren1.png)
+![Tetris in evren](/asset/showcase/evren2.png)
+
+</div>
+</article>
+
+
+
 </section>
 
 <br>
