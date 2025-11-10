@@ -20,15 +20,19 @@
 		<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
-			"@type": "Person",
-			"name": "hanion.dev",
+			"@type": "ProfilePage",
 			"url": "https://hanion.dev",
+			"name": "hanion.dev",
 			"description": "low-level, systems, game engines, compilers, tools, embedded",
-			"sameAs": [
-					"https://github.com/hanion"
-					"https://hanion.itch.io"
-					"https://bsky.app/profile/haniondev.bsky.social"
-			]
+			"mainEntity": {
+				"@type": "Person",
+				"name": "hanion.dev",
+				"sameAs": [
+						"https://github.com/hanion",
+						"https://hanion.itch.io",
+						"https://bsky.app/profile/haniondev.bsky.social"
+				]
+			}
 		}
 		</script>
 <script> if (localStorage.getItem("theme") === "alt-theme") { document.documentElement.classList.add("alt-theme"); } </script>
@@ -66,6 +70,8 @@ toggleBtn.addEventListener("click", () => {
 		<a href="https://bsky.app/profile/haniondev.bsky.social">bluesky</a>
 </div>
 			</header>
+
+			<main>
 <h1>posts</h1>
 <ul class="post-list">
 <li>
@@ -378,7 +384,7 @@ document.getElementById('preview-overlay').addEventListener('click', () => {
 	document.getElementById('preview-overlay').style.display = 'none';
 });
 </script>
-
+			</main>
 
 		</div>
 	</body>

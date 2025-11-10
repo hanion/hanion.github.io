@@ -20,15 +20,20 @@
 		<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
-			"@type": "Person",
-			"name": "<? STR(global.title) ?>",
+			"@type": "ProfilePage",
 			"url": "<? STR(global.url) ?>",
+			"name": "<? STR(global.title) ?>",
 			"description": "<? STR(global.description) ?>",
-			"sameAs": [
-				<? for (size_t i = 0; i < global.socials.count; ++i) { ?>
-					"<? STR(global.socials.items[i]->url) ?>"
-				<? } ?>
-			]
+			"mainEntity": {
+				"@type": "Person",
+				"name": "<? STR(global.title) ?>",
+				"sameAs": [
+					<? for (size_t i = 0; i < global.socials.count; ++i) { ?>
+						"<? STR(global.socials.items[i]->url) ?>"
+						<? if (i+1 != global.socials.count) { STR(",") } ?>
+					<? } ?>
+				]
+			}
 		}
 		</script>
 
@@ -45,8 +50,9 @@
 				<? INCLUDE("socials") ?>
 			</header>
 
-			<? CONTENT() ?>
-
+			<main>
+				<? CONTENT() ?>
+			</main>
 
 		</div>
 	</body>
